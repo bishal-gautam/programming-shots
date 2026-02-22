@@ -16,15 +16,14 @@ interface PageProps {
 
 export default function CourseDetailPage({ params }: PageProps) {
   const { locale, courseSlug } = use(params);
-  const { t, tcourses } = useLanguage();
+  const { t } = useLanguage();
   const [enrolled, setEnrolled] = useState(false);
   
   const course = courses.find((c) => c.slug === courseSlug);
 
-  // Get translated title and description if available
-  const courseTranslations = tcourses(courseSlug) as { title?: string; description?: string; lessons?: Record<string, { title: string }> } | undefined;
-  const displayTitle = locale === 'ne' && courseTranslations?.title ? courseTranslations.title : course?.title;
-  const displayDescription = locale === 'ne' && courseTranslations?.description ? courseTranslations.description : course?.description;
+  // Get translated title and description based on locale
+  const displayTitle = course?.title[locale] || course?.title.en;
+  const displayDescription = course?.description[locale] || course?.description.en;
 
   if (!course) {
     return (
@@ -58,7 +57,7 @@ export default function CourseDetailPage({ params }: PageProps) {
           <Breadcrumb
             items={[
               { label: locale === 'ne' ? 'कोर्सहरू' : 'Courses', href: `/${locale}/courses` },
-              { label: course.title },
+              { label: displayTitle },
             ]}
           />
 
@@ -74,37 +73,18 @@ export default function CourseDetailPage({ params }: PageProps) {
 
             <div className="p-8">
               <div className="flex flex-wrap items-center gap-4 mb-6">
-                <DifficultyBadge difficulty={course.difficulty} />
+                <DifficultyBadge difficulty="beginner" />
                 <span className="text-gray-600 dark:text-gray-300">
                   {course.lessons.length} {t('lessons')}
                 </span>
                 <span className="text-gray-600 dark:text-gray-300">
-                  {course.duration}
+                  {course.phase} {t('phase') || 'Phase'}
                 </span>
               </div>
 
               <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">
                 {displayDescription}
               </p>
-
-              {/* What You Will Learn */}
-              {course.learningObjectives && (
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    {t('whatYouWillLearn') || 'What You Will Learn'}
-                  </h2>
-                  <ul className="grid md:grid-cols-2 gap-3">
-                    {course.learningObjectives.map((objective, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-700 dark:text-gray-300">{objective}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
 
               {/* Enroll Button */}
               {!enrolled ? (
@@ -126,9 +106,9 @@ export default function CourseDetailPage({ params }: PageProps) {
                     {t('continue') || 'Continue'} →
                   </Link>
                 </div>
-              )}
+             >
+          </div )}
             </div>
-          </div>
 
           {/* Lessons List */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
@@ -137,9 +117,8 @@ export default function CourseDetailPage({ params }: PageProps) {
             </h2>
             <div className="space-y-4">
               {course.lessons.map((lesson, index) => {
-                // Get translated lesson title if available
-                const lessonTranslations = courseTranslations?.lessons?.[lesson.slug] as { title?: string } | undefined;
-                const displayLessonTitle = locale === 'ne' && lessonTranslations?.title ? lessonTranslations.title : lesson.title;
+                // Get translated lesson title based on locale
+                const displayLessonTitle = lesson.title[locale] || lesson.title.en;
                 
                 return (
                 <Link
@@ -155,11 +134,6 @@ export default function CourseDetailPage({ params }: PageProps) {
                       <h3 className="font-semibold text-gray-900 dark:text-white">
                         {displayLessonTitle}
                       </h3>
-                      {lesson.description && (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                          {lesson.description}
-                        </p>
-                      )}
                     </div>
                     <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
