@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "roadmap": "Roadmap",
+    "quiz": "Quiz",
+    "glossary": "Glossary",
+    "cheatsheets": "Cheatsheets",
+    "resources": "Resources",
+    "progress": "Progress",
+    "about": "About"
+  },
+  "home": {
+    "heroTitle": "Master Programming from Scratch",
+    "heroSubtitle": "Your comprehensive guide to learning programming from absolute beginner to expert. Start your journey today.",
+    "getStarted": "Get Started",
+    "viewRoadmap": "View Roadmap",
+    "features": {
+      "structured": "Structured Learning",
+      "structuredDesc": "Follow our carefully designed curriculum from basics to advanced topics",
+      "interactive": "Interactive Content",
+      "interactiveDesc": "Learn with real code examples, quizzes, and hands-on exercises",
+      "free": "Completely Free",
+      "freeDesc": "No hidden fees. Learn at your own pace without any cost"
+    },
+    "popularCourses": "Popular Courses",
+    "whyLearn": "Why Learn Programming?",
+    "whyLearnItems": {
+      "career": "High-demand career opportunities",
+      "salary": "Competitive salaries",
+      "remote": "Remote work possibilities",
+      "creative": "Build your ideas into reality"
+    }
+  },
+  "courses": {
+    "title": "All Courses",
+    "description": "Start learning programming with our comprehensive courses",
+    "lessons": "lessons",
+    "startCourse": "Start Course",
+    "continueCourse": "Continue",
+    "completed": "Completed"
+  },
+  "roadmap": {
+    "title": "Learning Roadmap",
+    "description": "Your path from beginner to professional developer",
+    "phase": "Phase",
+    "startPhase": "Start this phase"
+  },
+  "lesson": {
+    "complete": "Mark as Complete",
+    "completed": "Completed",
+    "nextLesson": "Next Lesson",
+    "previousLesson": "Previous Lesson",
+    "quiz": "Take Quiz"
+  },
+  "quiz": {
+    "title": "Test Your Knowledge",
+    "start": "Start Quiz",
+    "next": "Next Question",
+    "finish": "Finish Quiz",
+    "score": "Your Score",
+    "tryAgain": "Try Again"
+  },
+  "progress": {
+    "title": "Your Progress",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started",
+    "reset": "Reset Progress"
+  },
+  "glossary": {
+    "title": "Programming Glossary",
+    "search": "Search terms..."
+  },
+  "footer": {
+    "description": "Your free guide to learning programming from beginner to expert.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "copyright": "© 2024 Programming Shots. All rights reserved."
+  }
+}
