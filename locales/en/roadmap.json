@@ -1,0 +1,23 @@
+{
+  "title": "Learning Roadmap",
+  "description": "Your complete path to becoming a programmer",
+  "startJourney": "Start Your Journey",
+  "phase": "Phase",
+  "topics": "Topics",
+  "estimatedTime": "Estimated Time",
+  "skills": "Skills",
+  "completed": "Completed",
+  "inProgress": "In Progress",
+  "locked": "Locked",
+  "prerequisites": "Prerequisites",
+  "resources": "Resources",
+  "viewPhase": "View Phase",
+  "continueJourney": "Continue Journey",
+  "hours": "hours",
+  "weeks": "weeks",
+  "months": "months",
+  "beginnerPath": "Beginner Path",
+  "intermediatePath": "Intermediate Path",
+  "advancedPath": "Advanced Path",
+  "selectPath": "Select Your Path"
+}

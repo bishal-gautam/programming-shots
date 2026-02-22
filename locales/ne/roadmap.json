@@ -1,0 +1,23 @@
+{
+  "title": "Learning Roadmap",
+  "description": "तपाईं एक प्रोग्रामर बन्ने सम्पूर्ण मार्ग",
+  "startJourney": "आफ्नो यात्रा सुरु गर्नुहोस्",
+  "phase": "चरण",
+  "topics": "विषयहरू",
+  "estimatedTime": "अनुमानित समय",
+  "skills": "सीपहरू",
+  "completed": "पूर्ण",
+  "inProgress": "जारी",
+  "locked": "लक",
+  "prerequisites": "पूर्वापेक्षाहरू",
+  "resources": "स्रोतहरू",
+  "viewPhase": "चरण हेर्नुहोस",
+  "continueJourney": "यात्रा जारी राख्नुहोस",
+  "hours": "घण्टा",
+  "weeks": "हप्ता",
+  "months": "महिना",
+  "beginnerPath": "सुरुआती मार्ग",
+  "intermediatePath": "मध्यवर्ती मार्ग",
+  "advancedPath": "उन्नत मार्ग",
+  "selectPath": "आफ्नो मार्ग चुन्नुहोस"
+}
