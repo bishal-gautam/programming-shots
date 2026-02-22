@@ -16,10 +16,15 @@ interface PageProps {
 
 export default function CourseDetailPage({ params }: PageProps) {
   const { locale, courseSlug } = use(params);
-  const { t } = useLanguage();
+  const { t, tcourses } = useLanguage();
   const [enrolled, setEnrolled] = useState(false);
   
   const course = courses.find((c) => c.slug === courseSlug);
+
+  // Get translated title and description if available
+  const courseTranslations = tcourses(courseSlug) as { title?: string; description?: string; lessons?: Record<string, { title: string }> } | undefined;
+  const displayTitle = locale === 'ne' && courseTranslations?.title ? courseTranslations.title : course?.title;
+  const displayDescription = locale === 'ne' && courseTranslations?.description ? courseTranslations.description : course?.description;
 
   if (!course) {
     return (
@@ -62,8 +67,7 @@ export default function CourseDetailPage({ params }: PageProps) {
             <div className="h-64 bg-gradient-to-br from-blue-500 to-purple-600 relative">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-center">
-                  <h1 className="text-4xl font-bold mb-2">{course.title}</h1>
-                  <p className="text-xl text-blue-100">{course.subtitle}</p>
+                  <h1 className="text-4xl font-bold mb-2">{displayTitle}</h1>
                 </div>
               </div>
             </div>
@@ -80,7 +84,7 @@ export default function CourseDetailPage({ params }: PageProps) {
               </div>
 
               <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">
-                {course.description}
+                {displayDescription}
               </p>
 
               {/* What You Will Learn */}
@@ -132,7 +136,12 @@ export default function CourseDetailPage({ params }: PageProps) {
               {t('lessons')}
             </h2>
             <div className="space-y-4">
-              {course.lessons.map((lesson, index) => (
+              {course.lessons.map((lesson, index) => {
+                // Get translated lesson title if available
+                const lessonTranslations = courseTranslations?.lessons?.[lesson.slug] as { title?: string } | undefined;
+                const displayLessonTitle = locale === 'ne' && lessonTranslations?.title ? lessonTranslations.title : lesson.title;
+                
+                return (
                 <Link
                   key={lesson.slug}
                   href={`/${locale}/courses/${courseSlug}/${lesson.slug}`}
@@ -144,7 +153,7 @@ export default function CourseDetailPage({ params }: PageProps) {
                     </span>
                     <div className="flex-grow">
                       <h3 className="font-semibold text-gray-900 dark:text-white">
-                        {lesson.title}
+                        {displayLessonTitle}
                       </h3>
                       {lesson.description && (
                         <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -157,7 +166,7 @@ export default function CourseDetailPage({ params }: PageProps) {
                     </svg>
                   </div>
                 </Link>
-              ))}
+              )})}
             </div>
           </div>
         </div>

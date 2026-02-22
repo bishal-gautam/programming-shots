@@ -16,11 +16,22 @@ interface PageProps {
 
 export default function LessonPage({ params }: PageProps) {
   const { locale, courseSlug, lessonSlug } = use(params);
-  const { t } = useLanguage();
+  const { t, tcourses } = useLanguage();
   
   const course = courses.find((c) => c.slug === courseSlug);
   const lessonIndex = course?.lessons.findIndex((l) => l.slug === lessonSlug);
   const lesson = course?.lessons[lessonIndex];
+
+  // Get translations
+  const courseTranslations = tcourses(courseSlug, lessonSlug) as {
+    title?: string;
+    content?: string;
+    codeExamples?: Record<string, { explanation?: string }>;
+    quiz?: Record<string, { question?: string; explanation?: string; options?: string[] }>;
+  } | undefined;
+
+  const displayTitle = locale === 'ne' && courseTranslations?.title ? courseTranslations.title : lesson?.title;
+  const displayContent = locale === 'ne' && courseTranslations?.content ? courseTranslations.content : lesson?.content;
 
   if (!course || !lesson) {
     return (
@@ -41,6 +52,27 @@ export default function LessonPage({ params }: PageProps) {
   const previousLesson = lessonIndex > 0 ? course.lessons[lessonIndex - 1] : null;
   const nextLesson = lessonIndex < course.lessons.length - 1 ? course.lessons[lessonIndex + 1] : null;
 
+  // Translate quiz questions if available
+  const getTranslatedQuiz = () => {
+    if (!lesson?.quiz || locale !== 'ne' || !courseTranslations?.quiz) {
+      return lesson?.quiz || [];
+    }
+    
+    return lesson.quiz.map((q) => {
+      const quizTrans = courseTranslations.quiz?.[q.id];
+      if (!quizTrans) return q;
+      
+      return {
+        ...q,
+        question: quizTrans.question || q.question,
+        explanation: quizTrans.explanation || q.explanation,
+        options: quizTrans.options || q.options,
+      };
+    });
+  };
+
+  const translatedQuiz = getTranslatedQuiz();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -50,16 +82,16 @@ export default function LessonPage({ params }: PageProps) {
           <Breadcrumb
             items={[
               { label: locale === 'ne' ? 'कोर्सहरू' : 'Courses', href: `/${locale}/courses` },
-              { label: course.title, href: `/${locale}/courses/${courseSlug}` },
-              { label: lesson.title },
+              { label: displayTitle as string, href: `/${locale}/courses/${courseSlug}` },
+              { label: displayTitle as string },
             ]}
           />
 
           <LessonViewer
-            title={lesson.title}
-            content={lesson.content}
-            code={lesson.code}
-            language={lesson.language || 'javascript'}
+            title={displayTitle as string}
+            content={displayContent as string}
+            code={lesson?.code}
+            language={lesson?.language || 'javascript'}
             lessonNumber={lessonIndex + 1}
             totalLessons={course.lessons.length}
             previousSlug={previousLesson?.slug}
@@ -67,10 +99,10 @@ export default function LessonPage({ params }: PageProps) {
           />
 
           {/* Quiz Section (if available) */}
-          {lesson.quiz && lesson.quiz.length > 0 && (
+          {translatedQuiz && translatedQuiz.length > 0 && (
             <div className="mt-8">
               <QuizBlock
-                questions={lesson.quiz}
+                questions={translatedQuiz}
                 title={locale === 'ne' ? 'अभ्यास प्रश्न' : 'Practice Quiz'}
               />
             </div>
