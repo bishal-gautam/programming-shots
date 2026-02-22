@@ -5,15 +5,14 @@ import { useLanguage } from '@/context/LanguageContext';
 import { courses } from '@/data/courses';
 import CourseCard from '@/components/ui/CourseCard';
 import SearchBar from '@/components/ui/SearchBar';
-import DifficultyBadge from '@/components/ui/DifficultyBadge';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export default function CoursesPage() {
   const { t, locale } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
-  const [sortBy, setSortBy] = useState<string>('popular');
+  const [selectedPhase, setSelectedPhase] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<string>('phase');
 
   const filteredCourses = useMemo(() => {
     let result = [...courses];
@@ -23,33 +22,33 @@ export default function CoursesPage() {
       const query = searchQuery.toLowerCase();
       result = result.filter(
         (course) =>
-          course.title.toLowerCase().includes(query) ||
-          course.description.toLowerCase().includes(query) ||
-          course.tags?.some((tag) => tag.toLowerCase().includes(query))
+          course.title[locale].toLowerCase().includes(query) ||
+          course.title.en.toLowerCase().includes(query) ||
+          course.description[locale].toLowerCase().includes(query) ||
+          course.description.en.toLowerCase().includes(query)
       );
     }
 
-    // Filter by difficulty
-    if (selectedDifficulty !== 'all') {
-      result = result.filter((course) => course.difficulty === selectedDifficulty);
+    // Filter by phase
+    if (selectedPhase !== 'all') {
+      const phaseNum = parseInt(selectedPhase);
+      result = result.filter((course) => course.phase === phaseNum);
     }
 
     // Sort
     switch (sortBy) {
-      case 'newest':
-        result.reverse();
+      case 'phase':
+        result.sort((a, b) => a.phase - b.phase);
         break;
       case 'alphabetic':
-        result.sort((a, b) => a.title.localeCompare(b.title));
+        result.sort((a, b) => a.title[locale].localeCompare(b.title[locale]));
         break;
-      case 'popular':
       default:
-        // Keep original order (assumed to be popular)
         break;
     }
 
     return result;
-  }, [searchQuery, selectedDifficulty, sortBy]);
+  }, [searchQuery, selectedPhase, sortBy, locale]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -81,44 +80,64 @@ export default function CoursesPage() {
             <div className="flex flex-wrap gap-4 justify-between items-center">
               <div className="flex gap-2 flex-wrap">
                 <button
-                  onClick={() => setSelectedDifficulty('all')}
+                  onClick={() => setSelectedPhase('all')}
                   className={`px-4 py-2 rounded-lg transition-colors ${
-                    selectedDifficulty === 'all'
+                    selectedPhase === 'all'
                       ? 'bg-blue-600 text-white'
                       : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
-                  {t('allLevels') || 'All Levels'}
+                  {locale === 'ne' ? 'सबै चरणहरू' : 'All Phases'}
                 </button>
                 <button
-                  onClick={() => setSelectedDifficulty('beginner')}
+                  onClick={() => setSelectedPhase('1')}
                   className={`px-4 py-2 rounded-lg transition-colors ${
-                    selectedDifficulty === 'beginner'
+                    selectedPhase === '1'
                       ? 'bg-green-600 text-white'
                       : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
-                  {t('beginner')}
+                  {locale === 'ne' ? 'चरण 1' : 'Phase 1'}
                 </button>
                 <button
-                  onClick={() => setSelectedDifficulty('intermediate')}
+                  onClick={() => setSelectedPhase('2')}
                   className={`px-4 py-2 rounded-lg transition-colors ${
-                    selectedDifficulty === 'intermediate'
+                    selectedPhase === '2'
                       ? 'bg-yellow-600 text-white'
                       : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
-                  {t('intermediate')}
+                  {locale === 'ne' ? 'चरण 2' : 'Phase 2'}
                 </button>
                 <button
-                  onClick={() => setSelectedDifficulty('advanced')}
+                  onClick={() => setSelectedPhase('3')}
                   className={`px-4 py-2 rounded-lg transition-colors ${
-                    selectedDifficulty === 'advanced'
+                    selectedPhase === '3'
+                      ? 'bg-orange-600 text-white'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  {locale === 'ne' ? 'चरण 3' : 'Phase 3'}
+                </button>
+                <button
+                  onClick={() => setSelectedPhase('4')}
+                  className={`px-4 py-2 rounded-lg transition-colors ${
+                    selectedPhase === '4'
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  {locale === 'ne' ? 'चरण 4' : 'Phase 4'}
+                </button>
+                <button
+                  onClick={() => setSelectedPhase('5')}
+                  className={`px-4 py-2 rounded-lg transition-colors ${
+                    selectedPhase === '5'
                       ? 'bg-red-600 text-white'
                       : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
-                  {t('advanced')}
+                  {locale === 'ne' ? 'चरण 5' : 'Phase 5'}
                 </button>
               </div>
 
@@ -127,9 +146,8 @@ export default function CoursesPage() {
                 onChange={(e) => setSortBy(e.target.value)}
                 className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="popular">{t('popular') || 'Popular'}</option>
-                <option value="newest">{t('newest') || 'Newest'}</option>
-                <option value="alphabetic">{t('alphabetic') || 'A-Z'}</option>
+                <option value="phase">{locale === 'ne' ? 'चरण अनुसार' : 'By Phase'}</option>
+                <option value="alphabetic">{locale === 'ne' ? 'वर्णमाला अनुसार' : 'A-Z'}</option>
               </select>
             </div>
           </div>
@@ -145,12 +163,12 @@ export default function CoursesPage() {
               {filteredCourses.map((course) => (
                 <CourseCard
                   key={course.id}
-                  title={course.title}
-                  description={course.description}
+                  title={course.title[locale] || course.title.en}
+                  description={course.description[locale] || course.description.en}
                   slug={course.slug}
                   lessons={course.lessons.length}
-                  duration={course.duration}
-                  difficulty={course.difficulty}
+                  duration={`${course.phase} ${locale === 'ne' ? 'चरण' : 'Phase'}`}
+                  difficulty="beginner"
                 />
               ))}
             </div>

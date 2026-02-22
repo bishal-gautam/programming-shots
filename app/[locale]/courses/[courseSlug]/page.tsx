@@ -21,6 +21,10 @@ export default function CourseDetailPage({ params }: PageProps) {
   
   const course = courses.find((c) => c.slug === courseSlug);
 
+  // Get translated title and description based on locale
+  const displayTitle = course?.title[locale] || course?.title.en;
+  const displayDescription = course?.description[locale] || course?.description.en;
+
   if (!course) {
     return (
       <div className="min-h-screen flex flex-col">
@@ -53,7 +57,7 @@ export default function CourseDetailPage({ params }: PageProps) {
           <Breadcrumb
             items={[
               { label: locale === 'ne' ? 'कोर्सहरू' : 'Courses', href: `/${locale}/courses` },
-              { label: course.title },
+              { label: displayTitle },
             ]}
           />
 
@@ -62,45 +66,25 @@ export default function CourseDetailPage({ params }: PageProps) {
             <div className="h-64 bg-gradient-to-br from-blue-500 to-purple-600 relative">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-center">
-                  <h1 className="text-4xl font-bold mb-2">{course.title}</h1>
-                  <p className="text-xl text-blue-100">{course.subtitle}</p>
+                  <h1 className="text-4xl font-bold mb-2">{displayTitle}</h1>
                 </div>
               </div>
             </div>
 
             <div className="p-8">
               <div className="flex flex-wrap items-center gap-4 mb-6">
-                <DifficultyBadge difficulty={course.difficulty} />
+                <DifficultyBadge difficulty="beginner" />
                 <span className="text-gray-600 dark:text-gray-300">
                   {course.lessons.length} {t('lessons')}
                 </span>
                 <span className="text-gray-600 dark:text-gray-300">
-                  {course.duration}
+                  {course.phase} {t('phase') || 'Phase'}
                 </span>
               </div>
 
               <p className="text-gray-700 dark:text-gray-300 text-lg mb-8">
-                {course.description}
+                {displayDescription}
               </p>
-
-              {/* What You Will Learn */}
-              {course.learningObjectives && (
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    {t('whatYouWillLearn') || 'What You Will Learn'}
-                  </h2>
-                  <ul className="grid md:grid-cols-2 gap-3">
-                    {course.learningObjectives.map((objective, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-700 dark:text-gray-300">{objective}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
 
               {/* Enroll Button */}
               {!enrolled ? (
@@ -132,7 +116,11 @@ export default function CourseDetailPage({ params }: PageProps) {
               {t('lessons')}
             </h2>
             <div className="space-y-4">
-              {course.lessons.map((lesson, index) => (
+              {course.lessons.map((lesson, index) => {
+                // Get translated lesson title based on locale
+                const displayLessonTitle = lesson.title[locale] || lesson.title.en;
+                
+                return (
                 <Link
                   key={lesson.slug}
                   href={`/${locale}/courses/${courseSlug}/${lesson.slug}`}
@@ -144,20 +132,15 @@ export default function CourseDetailPage({ params }: PageProps) {
                     </span>
                     <div className="flex-grow">
                       <h3 className="font-semibold text-gray-900 dark:text-white">
-                        {lesson.title}
+                        {displayLessonTitle}
                       </h3>
-                      {lesson.description && (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                          {lesson.description}
-                        </p>
-                      )}
                     </div>
                     <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
                 </Link>
-              ))}
+              )})}
             </div>
           </div>
         </div>
