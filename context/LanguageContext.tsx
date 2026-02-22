@@ -1,37 +1,30 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { courses, Course, Lesson } from '@/data/courses';
 import enCommon from '@/locales/en/common.json';
 import neCommon from '@/locales/ne/common.json';
-import enCourses from '@/locales/en/courses.json';
-import neCourses from '@/locales/ne/courses.json';
 import enRoadmap from '@/locales/en/roadmap.json';
 import neRoadmap from '@/locales/ne/roadmap.json';
 
 type Locale = 'en' | 'ne';
 
-interface Translations {
-  common: typeof enCommon;
-  courses: typeof enCourses;
-  roadmap: typeof enRoadmap;
-}
-
 interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string, fallback?: string) => string;
-  tcourses: (courseId: string, lessonId?: string, key?: string) => string | Record<string, unknown> | undefined;
+  getCourse: (slug: string) => Course | undefined;
+  getLesson: (courseSlug: string, lessonSlug: string) => Lesson | undefined;
+  getCourses: () => Course[];
 }
 
-const translations: Record<Locale, Translations> = {
+const translations: Record<Locale, { common: typeof enCommon; roadmap: typeof enRoadmap }> = {
   en: {
     common: enCommon,
-    courses: enCourses,
     roadmap: enRoadmap,
   },
   ne: {
     common: neCommon,
-    courses: neCourses,
     roadmap: neRoadmap,
   },
 };
@@ -78,48 +71,20 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return value || fallback || key;
   };
 
-  // Course translation function
-  const tcourses = (
-    courseId: string, 
-    lessonId?: string, 
-    key?: string
-  ): string | Record<string, unknown> | undefined => {
-    const coursesData = translations[locale].courses;
-    
-    // Get course translations
-    const courseTranslations = (coursesData as Record<string, unknown>)[courseId];
-    if (!courseTranslations || typeof courseTranslations !== 'object') {
-      return undefined;
-    }
-    
-    const courseObj = courseTranslations as Record<string, unknown>;
-    
-    // If lessonId is provided, get lesson translations
-    if (lessonId) {
-      const lessons = courseObj.lessons as Record<string, unknown> | undefined;
-      if (!lessons || typeof lessons !== 'object') {
-        return undefined;
-      }
-      
-      const lesson = lessons[lessonId] as Record<string, unknown> | undefined;
-      if (!lesson) {
-        return undefined;
-      }
-      
-      // If key is provided, get specific field
-      if (key && typeof lesson === 'object') {
-        return (lesson as Record<string, unknown>)[key] as string;
-      }
-      
-      return lesson;
-    }
-    
-    // If key is provided for course level
-    if (key && typeof courseObj === 'object') {
-      return courseObj[key] as string;
-    }
-    
-    return courseObj;
+  // Get course by slug
+  const getCourse = (slug: string): Course | undefined => {
+    return courses.find(course => course.slug === slug);
+  };
+
+  // Get lesson by slug
+  const getLesson = (courseSlug: string, lessonSlug: string): Lesson | undefined => {
+    const course = getCourse(courseSlug);
+    return course?.lessons.find(lesson => lesson.slug === lessonSlug);
+  };
+
+  // Get all courses
+  const getCourses = (): Course[] => {
+    return courses;
   };
 
   if (!mounted) {
@@ -127,7 +92,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t, tcourses }}>
+    <LanguageContext.Provider value={{ locale, setLocale, t, getCourse, getLesson, getCourses }}>
       {children}
     </LanguageContext.Provider>
   );

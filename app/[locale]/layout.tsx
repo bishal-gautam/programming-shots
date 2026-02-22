@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { ProgressProvider } from '@/context/ProgressContext';
-import './globals.css';
+import '@/styles/globals.css';
 
 export const metadata = {
   title: 'Programming Shots - Learn to Code',

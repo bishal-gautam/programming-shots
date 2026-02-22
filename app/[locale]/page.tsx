@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
-import { useTheme } from '@/context/ThemeContext';
 import CourseCard from '@/components/ui/CourseCard';
 import SearchBar from '@/components/ui/SearchBar';
 import { courses } from '@/data/courses';
@@ -10,11 +9,9 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export default function HomePage() {
-  const { t, locale } = useLanguage();
-  const { theme } = useTheme();
+  const { locale } = useLanguage();
 
   const featuredCourses = courses.slice(0, 3);
-  const allCourses = courses;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -139,12 +136,12 @@ export default function HomePage() {
             {featuredCourses.map((course) => (
               <CourseCard
                 key={course.id}
-                title={course.title}
-                description={course.description}
+                title={course.title[locale] || course.title.en}
+                description={course.description[locale] || course.description.en}
                 slug={course.slug}
                 lessons={course.lessons.length}
-                duration={course.duration}
-                difficulty={course.difficulty}
+                duration={`${course.phase} ${locale === 'ne' ? 'चरण' : 'Phase'}`}
+                difficulty="beginner"
               />
             ))}
           </div>

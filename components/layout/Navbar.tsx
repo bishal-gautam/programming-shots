@@ -43,10 +43,10 @@ import { useLanguage } from '@/context/LanguageContext';
 const drawerWidth = 240;
 
 interface NavbarProps {
-  onMenuClick: () => void;
+  onMenuClick?: () => void;
 }
 
-export default function Navbar({ onMenuClick }: NavbarProps) {
+export default function Navbar({ onMenuClick = () => {} }: NavbarProps) {
   const t = useTranslations('nav');
   const theme = useTheme();
   const { mode, toggleTheme } = useAppTheme();

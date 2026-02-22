@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface Question {
-  id: number;
+  id: string;
   question: string;
   options: string[];
   correctAnswer: number;
@@ -66,23 +66,25 @@ export default function QuizBlock({ questions, title, onComplete }: QuizBlockPro
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
         <h2 className="text-2xl font-bold text-center mb-4 text-gray-900 dark:text-white">
-          Quiz Complete!
+          {locale === 'ne' ? 'क्विज पूर्ण!' : 'Quiz Complete!'}
         </h2>
         <div className="text-center mb-6">
           <div className="text-5xl font-bold mb-2 text-blue-600">
             {percentage}%
           </div>
           <p className="text-gray-600 dark:text-gray-300">
-            You got {score} out of {questions.length} questions correct
+            {locale === 'ne' 
+              ? `तपाईंले ${questions.length} मध्ये ${score} प्रश्नहरू सही गर्नुभयो`
+              : `You got ${score} out of ${questions.length} questions correct`}
           </p>
         </div>
         {percentage >= 70 ? (
           <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 p-4 rounded-lg text-center mb-4">
-            🎉 Great job! You passed!
+            🎉 {locale === 'ne' ? 'शाबाश! तपाईं उत्तीर्ण हुनुभयो!' : 'Great job! You passed!'}
           </div>
         ) : (
           <div className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 p-4 rounded-lg text-center mb-4">
-            📚 Keep learning! Review the material and try again.
+            📚 {locale === 'ne' ? 'सिक्न जारी राख्नुहोस्! सामग्री समीक्षा गर्नुहोस् र पुनः प्रयास गर्नुहोस्।' : 'Keep learning! Review the material and try again.'}
           </div>
         )}
         <div className="text-center">
@@ -90,7 +92,7 @@ export default function QuizBlock({ questions, title, onComplete }: QuizBlockPro
             onClick={restartQuiz}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
-            Try Again
+            {locale === 'ne' ? 'पुनः प्रयास गर्नुहोस्' : 'Try Again'}
           </button>
         </div>
       </div>
@@ -103,7 +105,7 @@ export default function QuizBlock({ questions, title, onComplete }: QuizBlockPro
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
       <div className="mb-4">
         <span className="text-sm text-gray-500 dark:text-gray-400">
-          Question {currentQuestion + 1} of {questions.length}
+          {locale === 'ne' ? `प्रश्न ${currentQuestion + 1} / ${questions.length}` : `Question ${currentQuestion + 1} of ${questions.length}`}
         </span>
         {title && (
           <h2 className="text-xl font-semibold mt-2 text-gray-900 dark:text-white">
@@ -154,7 +156,7 @@ export default function QuizBlock({ questions, title, onComplete }: QuizBlockPro
       {showExplanation && question.explanation && (
         <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
           <p className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-1">
-            Explanation:
+            {locale === 'ne' ? 'व्याख्या:' : 'Explanation:'}
           </p>
           <p className="text-sm text-blue-700 dark:text-blue-300">
             {question.explanation}
@@ -169,14 +171,16 @@ export default function QuizBlock({ questions, title, onComplete }: QuizBlockPro
             disabled={selectedAnswer === null}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Check Answer
+            {locale === 'ne' ? 'उत्तर जाँच्नुहोस्' : 'Check Answer'}
           </button>
         ) : (
           <button
             onClick={handleNextQuestion}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
-            {currentQuestion < questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
+            {currentQuestion < questions.length - 1 
+              ? (locale === 'ne' ? 'अर्को प्रश्न' : 'Next Question') 
+              : (locale === 'ne' ? 'क्विज समाप्त' : 'Finish Quiz')}
           </button>
         )}
       </div>
