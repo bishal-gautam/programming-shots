@@ -106,9 +106,9 @@ export default function CourseDetailPage({ params }: PageProps) {
                     {t('continue') || 'Continue'} →
                   </Link>
                 </div>
-             >
-          </div )}
+              )}
             </div>
+          </div>
 
           {/* Lessons List */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
