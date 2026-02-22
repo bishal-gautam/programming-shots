@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 249, 250, 251;
+  --background-end-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 17, 24, 39;
+  --background-end-rgb: 31, 41, 55;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Code syntax highlighting */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.5em;
+  background: #1e1e1e;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+  background: #1e1e1e;
+}
+
+/* Token colors */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6272a4;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff79c6;
+}
+
+.token.boolean,
+.token.number {
+  color: #bd93f9;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #50fa7b;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #f1fa8c;
+}
+
+.token.keyword {
+  color: #8be9fd;
+}
+
+.token.regex,
+.token.important {
+  color: #ffb86c;
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Prose styling for lesson content */
+.prose h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold mb-3 mt-6;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mb-2 mt-4;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose ul li {
+  @apply list-disc;
+}
+
+.prose ol li {
+  @apply list-decimal;
+}
+
+.prose code:not(pre code) {
+  @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply mb-4;
+}
+
+.prose a {
+  @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-blue-500 pl-4 italic my-4;
+}
+
+.dark .prose {
+  color: #e5e7eb;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4 {
+  color: #f9fafb;
+}
+
+.dark .prose a {
+  color: #60a5fa;
+}
