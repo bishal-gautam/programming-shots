@@ -1642,6 +1642,394 @@ git log --all --oneline --graph`,
         ]
       }
     ]
+  },
+  // Phase 6: JavaScript
+  {
+    id: 'javascript-basics',
+    title: { en: 'JavaScript Basics', ne: 'जाभास्क्रिप्टको आधारभूत कुराहरू' },
+    slug: 'javascript-basics',
+    description: { en: 'Learn JavaScript - the programming language of the web. Add interactivity to your websites.', ne: 'जाभास्क्रिप्ट सिक्नुहोस् - वेबको प्रोग्रामिंग भाषा। आफ्नो वेबसाइटहरूमा अन्तरक्रियात्मकता थप्नुहोस्।' },
+    phase: 6,
+    icon: '🟨',
+    color: '#f7df1e',
+    lessons: [
+      {
+        id: 'js-intro',
+        slug: 'introduction-to-javascript',
+        title: { 
+          en: 'Introduction to JavaScript', 
+          ne: 'जाभास्क्रिप्टको परिचय' 
+        },
+        content: {
+          en: `# Introduction to JavaScript
+
+JavaScript is the programming language of the web. It makes websites interactive and dynamic. Every website that does more than just display static content uses JavaScript.
+
+## Why Learn JavaScript?
+
+- **Universal**: Runs in every web browser
+- **Versatile**: Can be used for web, mobile apps, server-side, and more
+- **In-Demand**: One of the most sought-after programming skills
+- **Easy to Start**: No special software needed - just a browser
+
+## Your First JavaScript
+
+JavaScript can be added directly in HTML using the <script> tag. Let's start with a simple example:
+
+JavaScript is executed by the browser's JavaScript engine.`,
+          ne: `# जाभास्क्रिप्टको परिचय
+
+जाभास्क्रिप्ट वेबको प्रोग्रामिंग भाषा हो। यसले वेबसाइटहरूलाई अन्तरक्रियात्मक र गतिशील बनाउँछ। जुन वेबसाइटहरूले केवल स्थिर सामग्री मात्र प्रदर्शन गर्छन् तिनीहरूले जाभास्क्रिप्ट प्रयोग गर्छन्।
+
+## जाभास्क्रिप्ट किन सिक्नुहोस्?
+
+- **सार्वभौमिक**: प्रत्येक वेब ब्राउजरमा चल्छ
+- **बहुमुखी**: वेब, मोबाइल एप्स, सर्भर-साइड, र अरू धेरैको लागि प्रयोग गर्न सकिन्छ
+- **मागमा**: सबैभन्दा खोजेको प्रोग्रामिंग सीपहरूमध्ये एक
+- **सजिलै सुरु गर्ने**: कुनै विशेष सफ्टवेयर आवश्यक छैन - केवल ब्राउजर
+
+## तपाईंको पहिलो जाभास्क्रिप्ट
+
+जाभास्क्रिप्टलाई HTML मा सीधै <script> ट्याग प्रयोग गरेर थप्न सकिन्छ। सरल उदाहरणबाट सुरु गरौं:
+
+जाभास्क्रिप्ट ब्राउजरको जाभास्क्रिप्ट इन्जिनद्वारा कार्यान्वयन गरिन्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'html',
+            code: `<!-- Add JavaScript to HTML -->
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>My First JavaScript</h1>
+  <button onclick="alert('Hello!')">Click Me</button>
+  <script>
+    console.log("JavaScript is running!");
+  </script>
+</body>
+</html>`,
+            explanation: { 
+              en: 'JavaScript can be embedded in HTML using the <script> tag. The onclick attribute runs JavaScript when clicked.', 
+              ne: 'जाभास्क्रिप्टलाई HTML मा <script> ट्याग प्रयोग गरेर एम्बेड गर्न सकिन्छ। onclick विशेषता क्लिक गर्दा जाभास्क्रिप्ट चलाउँछ।'
+            }
+          },
+          {
+            language: 'javascript',
+            code: `// Variables in JavaScript
+let name = "John";
+const age = 25;
+var isStudent = true;
+
+console.log("Name:", name);
+console.log("Age:", age);
+
+// Simple calculation
+let a = 10, b = 5;
+console.log("Sum:", a + b);`,
+            explanation: { 
+              en: 'let and const are modern ways to declare variables. var is older. const cannot be reassigned.', 
+              ne: 'let र const भेरिएबल घोषणा गर्ने आधुनिक तरिकाहरू हुन्। var पुरानो हो। const लाई पुन: असाइन गर्न सकिँदैन।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'js-intro-q1',
+            question: { 
+              en: 'Which HTML tag is used to add JavaScript to a webpage?', 
+              ne: 'वेबपेजमा जाभास्क्रिप्ट थप्न कुन HTML ट्याग प्रयोग गरिन्छ?' 
+            },
+            options: { 
+              en: ['<script>', '<js>', '<javascript>', '<code>'], 
+              ne: ['<script>', '<js>', '<javascript>', '<code>'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'The <script> tag is used to embed JavaScript in HTML documents.', 
+              ne: 'HTML कागजातहरूमा जाभास्क्रिप्ट एम्बेड गर्न <script> ट्याग प्रयोग गरिन्छ।'
+            }
+          },
+          {
+            id: 'js-intro-q2',
+            question: { 
+              en: 'Which keyword declares a variable that cannot be reassigned?', 
+              ne: 'कुन कीवर्डले पुन: असाइन गर्न नसकिने भेरिएबल घोषणा गर्छ?' 
+            },
+            options: { 
+              en: ['var', 'let', 'const', 'static'], 
+              ne: ['var', 'let', 'const', 'static'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'const declares a constant - its value cannot be changed after initialization.', 
+              ne: 'const ले constant घोषणा गर्छ - यसको मान प्रारंभिककरण पछि परिवर्तन गर्न सकिँदैन।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'js-variables',
+        slug: 'variables-and-data-types',
+        title: { 
+          en: 'Variables and Data Types', 
+          ne: 'भेरिएबल र डेटा प्रकारहरू' 
+        },
+        content: {
+          en: `# Variables and Data Types
+
+Variables are containers for storing data values. JavaScript has several data types that determine what kind of data a variable can hold.
+
+## Variable Declarations
+
+- **let**: Block-scoped, can be reassigned
+- **const**: Block-scoped, cannot be reassigned
+- **var**: Function-scoped, older syntax (avoid in modern code)
+
+## Primitive Data Types
+
+- **String**: Text enclosed in quotes ("hello" or 'hello')
+- **Number**: Both integers and decimals (42, 3.14)
+- **Boolean**: true or false
+- **Undefined**: Variable declared but not assigned
+- **Null**: Intentional absence of value`,
+          ne: `# भेरिएबल र डेटा प्रकारहरू
+
+भेरिएबलहरू डेटा मानहरू भण्डारण गर्ने कन्टेनरहरू हुन्। जाभास्क्रिप्टमा केही डेटा प्रकारहरू छन् जसले निर्धारण गर्छ कि भेरिएबलले कुन प्रकारको डेटा राख्न सक्छ।
+
+## भेरिएबल घोषणाहरू
+
+- **let**: ब्लक-स्कोप्ड, पुन: असाइन गर्न सकिन्छ
+- **const**: ब्लक-स्कोप्ड, पुन: असाइन गर्न सकिँदैन
+- **var**: फंक्शन-स्कोप्ड, पुरानो सिन्ट्याक्स (आधुनिक कोडमा रोक्नुहोस्)
+
+## आदिम डेटा प्रकारहरू
+
+- **String**: उद्धरणमा राखिएको पाठ ("hello" वा 'hello')
+- **Number**: दुवै पूर्णांक र दशमलव (42, 3.14)
+- **Boolean**: true वा false
+- **Undefined**: भेरिएबल घोषित तर असाइन नगरिएको
+- **Null**: मानको जानकारी अनुपस्थिति`
+        },
+        codeExamples: [
+          {
+            language: 'javascript',
+            code: `// String
+let name = "Ram";
+let greeting = 'Hello';
+
+// Number
+let age = 25;
+let price = 19.99;
+
+// Boolean
+let isActive = true;
+let hasPermission = false;
+
+// Undefined
+let notAssigned;
+console.log(notAssigned); // undefined
+
+// Null
+let empty = null;`,
+            explanation: { 
+              en: 'JavaScript automatically determines the data type. You can check the type using typeof.', 
+              ne: 'जाभास्क्रिप्टले स्वचालित रूपमा डेटा प्रकार निर्धारण गर्छ। तपाईं typeof प्रयोग गरेर प्रकार जाँच गर्न सक्नुहुन्छ।'
+            }
+          },
+          {
+            language: 'javascript',
+            code: `// Type checking
+let text = "Hello";
+let num = 42;
+let isTrue = true;
+
+console.log(typeof text);  // "string"
+console.log(typeof num);    // "number"
+console.log(typeof isTrue); // "boolean"
+
+// String methods
+let message = "Hello World";
+console.log(message.length);        // 11
+console.log(message.toUpperCase()); // "HELLO WORLD"
+console.log(message.includes("World")); // true`,
+            explanation: { 
+              en: 'Use typeof to check variable types. Strings have built-in methods for manipulation.', 
+              ne: 'भेरिएबल प्रकारहरू जाँच्न typeof प्रयोग गर्नुहोस्। स्ट्रिङहरूमा हेरफेरको लागि बिल्ट-इन विधिहरू छन्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'js-var-q1',
+            question: { 
+              en: 'What is the result of typeof 42?', 
+              ne: 'typeof 42 को परिणाम के हो?' 
+            },
+            options: { 
+              en: ['"integer"', '"number"', '"float"', '"numeric"'], 
+              ne: ['"integer"', '"number"', '"float"', '"numeric"'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'JavaScript has only one number type - "number" - for both integers and decimals.', 
+              ne: 'जाभास्क्रिप्टमा एउटा मात्र संख्या प्रकार छ - "number" - दुवै पूर्णांक र दशमलवको लागि।'
+            }
+          },
+          {
+            id: 'js-var-q2',
+            question: { 
+              en: 'What does undefined mean?', 
+              ne: 'undefined को अर्थ के हो?' 
+            },
+            options: { 
+              en: ['An empty value', 'A variable declared but not assigned', 'An error', 'A zero value'], 
+              ne: ['खाली मान', 'घोषित तर असाइन नगरिएको भेरिएबल', 'एरर', 'शून्य मान'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'undefined means a variable has been declared but no value has been assigned yet.', 
+              ne: 'undefined ले भनाउँछ कि भेरिएबल घोषित भएको छ तर अझै कुनै मान असाइन गरिएको छैन।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'js-functions',
+        slug: 'functions-and-events',
+        title: { 
+          en: 'Functions and Events', 
+          ne: 'फंक्शन र इभेन्टहरू' 
+        },
+        content: {
+          en: `# Functions and Events
+
+Functions are reusable blocks of code that perform a specific task. Events are actions that happen in the browser that JavaScript can respond to.
+
+## Creating Functions
+
+There are several ways to create functions:
+- Function Declaration
+- Function Expression
+- Arrow Functions
+
+## Event Handling
+
+JavaScript can respond to user actions through event listeners:
+- click
+- mouseover
+- keypress
+- submit
+- load`,
+          ne: `# फंक्शन र इभेन्टहरू
+
+फंक्शनहरू निश्चित कार्य गर्ने पुन: प्रयोग योग्य कोड ब्लकहरू हुन्। इभेन्टहरू ब्राउजरमा हुने कार्यहरू हुन् जसको जाभास्क्रिप्टले प्रतिक्रिया दिन सक्छ।
+
+## फंक्शनहरू सिर्जना गर्ने
+
+फंक्शनहरू सिर्जना गर्ने धेरै तरिकाहरू छन्:
+- फंक्शन डिक्लेरेशन
+- फंक्शन एक्सप्रेशन
+- एरो फंक्शन
+
+## इभेन्ट ह्यान्डलिंग
+
+जाभास्क्रिप्ट इभेन्ट लिसनरहरू मार्फत प्रयोगकर्ता कार्यहरूको प्रतिक्रिया दिन सक्छ:
+- click
+- mouseover
+- keypress
+- submit
+- load`
+        },
+        codeExamples: [
+          {
+            language: 'javascript',
+            code: `// Function Declaration
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+// Arrow Function
+const add = (a, b) => a + b;
+
+// Function with default parameter
+function multiply(a, b = 1) {
+  return a * b;
+}
+
+// Using the functions
+console.log(greet("Ram"));    // "Hello, Ram!"
+console.log(add(5, 3));       // 8
+console.log(multiply(4));     // 4`,
+            explanation: { 
+              en: 'Functions can be declared in multiple ways. Arrow functions are concise and modern.', 
+              ne: 'फंक्शनहरू धेरै तरिकाले घोषित गर्न सकिन्छ। एरो फंक्सनहरू संक्षिप्त र आधुनिक छन्।'
+            }
+          },
+          {
+            language: 'javascript',
+            code: `// Event Listener Example
+const button = document.getElementById("myButton");
+
+button.addEventListener("click", function() {
+  alert("Button clicked!");
+});
+
+// Arrow function version
+button.addEventListener("mouseover", () => {
+  console.log("Mouse over button");
+});
+
+// Multiple events on same element
+document.addEventListener("keydown", (event) => {
+  console.log("Key pressed:", event.key);
+});
+
+// Page load event
+window.addEventListener("load", () => {
+  console.log("Page loaded!");
+});`,
+            explanation: { 
+              en: 'addEventListener attaches event handlers to elements. The first argument is the event type.', 
+              ne: 'addEventListener ले तत्वहरूमा इभेन्ट ह्यान्डलरहरू जोड्छ। पहिलो argument इभेन्ट प्रकार हो।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'js-func-q1',
+            question: { 
+              en: 'Which is the correct syntax for an arrow function?', 
+              ne: 'एरो फंक्सनको लागि कुन सिन्ट्याक्स सही हो?' 
+            },
+            options: { 
+              en: ['function => (a, b) { return a + b }', '(a, b) => a + b', '=> (a, b) a + b', 'function (a, b) -> a + b'], 
+              ne: ['function => (a, b) { return a + b }', '(a, b) => a + b', '=> (a, b) a + b', 'function (a, b) -> a + b'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Arrow functions use => syntax. For single expressions, you can omit curly braces and return.', 
+              ne: 'एरो फंक्सनहरूले => सिन्ट्याक्स प्रयोग गर्छन्। एकल एक्सप्रेशनको लागि, तपाईं curly braces र return हटाउन सक्नुहुन्छ।'
+            }
+          },
+          {
+            id: 'js-func-q2',
+            question: { 
+              en: 'What method is used to handle click events on an element?', 
+              ne: 'तत्वमा click इभेन्ट ह्यान्डल गर्न कुन मेथड प्रयोग गरिन्छ?' 
+            },
+            options: { 
+              en: ['onClick()', 'addEventListener()', 'handleEvent()', 'bindClick()'], 
+              ne: ['onClick()', 'addEventListener()', 'handleEvent()', 'bindClick()'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'addEventListener is the standard method to attach event handlers to DOM elements.', 
+              ne: 'addEventListener DOM तत्वहरूमा इभेन्ट ह्यान्डलरहरू जोड्ने मानक मेथड हो।'
+            }
+          }
+        ]
+      }
+    ]
   }
 ];
 
