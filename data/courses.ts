@@ -380,6 +380,1193 @@ print(y <= 10) # True`,
             }
           }
         ]
+      },
+      {
+        id: 'python-conditionals',
+        slug: 'conditionals-and-control-flow',
+        title: { 
+          en: 'Conditionals and Control Flow', 
+          ne: 'कन्डिशनल र कन्ट्रोल फ्लो' 
+        },
+        content: {
+          en: `# Conditionals and Control Flow
+
+Control flow determines the order in which statements are executed. In Python, we use if, elif, and else statements.
+
+## If Statements
+
+The if statement executes a block of code only if a condition is True.
+
+## Elif and Else
+
+- **elif**: Short for "else if" - check additional conditions
+- **else**: Executes when none of the above conditions are True
+
+## Logical Operators
+
+Combine multiple conditions:
+- **and**: Both conditions must be True
+- **or**: At least one condition must be True
+- **not**: Inverts the condition`,
+          ne: `# कन्डिशनल र कन्ट्रोल फ्लो
+
+कन्ट्रोल फ्लोले निर्धारण गर्छ कि कथनहरू कुन क्रममा कार्यान्वयन गरिन्छन्। पाइथनमा, हामी if, elif, र else कथनहरू प्रयोग गर्छौं।
+
+## If कथनहरू
+
+if कथनले कोडको एउटा ब्लक कार्यान्वयन गर्छ केवल यदि सर्त True हो।
+
+## Elif र Else
+
+- **elif**: "else if" को छोटो रूप - अतिरिक्त सर्तहरू जाँच्नुहोस्
+- **else**: कार्यान्वयन हुन्छ जब माथिका कुनै पनि सर्तहरू True हुँदैनन्
+
+## लॉजिकल अपरेटरहरू
+
+धेरै सर्तहरू संयोजन गर्नुहोस्:
+- **and**: दुवै सर्तहरू True हुनुपर्छ
+- **or**: कम्तीमा एउटा सर्त True हुनुपर्छ
+- **not**: सर्तलाई उलट्छ`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Simple if
+age = 18
+if age >= 18:
+    print("You are an adult")
+
+# If-else
+temperature = 25
+if temperature > 30:
+    print("Hot")
+else:
+    print("Nice weather")
+
+# If-elif-else
+score = 85
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+print(f"Grade: {grade}")`,
+            explanation: { 
+              en: 'Python uses indentation to define code blocks. Each if/elif/else block must be properly indented.', 
+              ne: 'पाइथनले कोड ब्लकहरू परिभाषित गर्न इन्डेन्टेशन प्रयोग गर्छ। प्रत्येक if/elif/else ब्लक समान रूपमा इन्डेन्टेड हुनुपर्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Logical operators
+age = 25
+has_license = True
+
+# and - both must be true
+if age >= 18 and has_license:
+    print("Can drive")
+
+# or - at least one must be true
+day = "Saturday"
+if day == "Saturday" or day == "Sunday":
+    print("Weekend!")
+
+# not - inverts condition
+is raining = False
+if not is_raining:
+    print("Go outside!")`,
+            explanation: { 
+              en: 'Logical operators combine multiple conditions for more complex decision making.', 
+              ne: 'लॉजिकल अपरेटरहरू अझ जटिल निर्णय लिनको लागि धेरै सर्तहरू संयोजन गर्छन्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'What is the output of: x = 5; print("Big" if x > 10 else "Small")', 
+              ne: 'को परिणाम के हो: x = 5; print("Big" if x > 10 else "Small")' 
+            },
+            options: { 
+              en: ['Big', 'Small', 'Error', 'None'], 
+              ne: ['Big', 'Small', 'Error', 'None'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Ternary expression evaluates to "Small" because x > 10 is False.', 
+              ne: 'टर्नरी एक्सप्रेशनले "Small" मूल्यांकन गर्छ किनभने x > 10 False हो।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'Which operator makes both conditions need to be true?', 
+              ne: 'कुन अपरेटरले दुवै सर्तहरू True हुनु आवश्यक बनाउँछ?' 
+            },
+            options: { 
+              en: ['or', 'and', 'not', 'both'], 
+              ne: ['or', 'and', 'not', 'both'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'The "and" operator requires both conditions to be True.', 
+              ne: '"and" अपरेटरले दुवै सर्तहरू True हुनु आवश्यक छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'python-loops',
+        slug: 'loops-in-python',
+        title: { 
+          en: 'Loops in Python', 
+          ne: 'पाइथनमा लुपहरू' 
+        },
+        content: {
+          en: `# Loops in Python
+
+Loops allow you to execute a block of code multiple times. Python has two main types of loops: for and while.
+
+## For Loop
+
+Used to iterate over sequences (lists, strings, ranges, etc.)
+
+## While Loop
+
+Repeats as long as a condition is True
+
+## Loop Control
+
+- **break**: Exit the loop immediately
+- **continue**: Skip to the next iteration
+- **else**: Runs when loop completes normally
+
+## List Comprehension
+
+A concise way to create lists`,
+          ne: `# पाइथनमा लुपहरू
+
+लुपहरूले तपाईंलाई कोडको एउटा ब्लक धेरै पटक कार्यान्वयन गर्न दिन्छ। पाइथनमा दुई मुख्य प्रकारका लुपहरू छन्: for र while।
+
+## For लुप
+
+क्रमहरूमा दोहोर्याउन प्रयोग गरिन्छ (लिस्ट, स्ट्रिङ, रेन्ज, आदि)
+
+## While लुप
+
+जबसम्म सर्त True हो दोहोर्याउँछ
+
+## लुप कन्ट्रोल
+
+- **break**: तुरूंत लुपबाट बाहिर निस्कनुहोस्
+- **continue**: अर्को इटरेशनमा जानुहोस्
+- **else**: लुप सामान्य रूपमा पूरा भएपछि चल्छ
+
+## लिस्ट कम्प्रिहेन्सन
+
+लिस्टहरू सिर्जना गर्ने संक्षिप्त तरिका`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# For loop with range
+for i in range(5):
+    print(i)  # 0,1,2,3,4
+
+# For loop with list
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+
+# For loop with string
+for char in "Python":
+    print(char)`,
+            explanation: { 
+              en: 'range(5) generates 0 to 4. The for loop iterates over each element in the sequence.', 
+              ne: 'range(5) ले 0 देखि 4 उत्पन्न गर्छ। for लुप क्रमको प्रत्येक तत्वमा दोहोर्याउँछ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# While loop
+count = 0
+while count < 3:
+    print(f"Count: {count}")
+    count += 1
+
+# Break and continue
+for i in range(10):
+    if i == 3:
+        continue  # Skip 3
+    if i == 7:
+        break     # Stop at 7
+    print(i)`,
+            explanation: { 
+              en: 'continue skips the current iteration, break exits the loop entirely.', 
+              ne: 'continue ले हालको इटरेशन बिराउँछ, break ले लुपबाट पूर्णता बाहिर निस्कन्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# List comprehension
+squares = [x**2 for x in range(5)]
+# [0, 1, 4, 9, 16]
+
+# With condition
+evens = [x for x in range(10) if x % 2 == 0]
+# [0, 2, 4, 6, 8]
+
+# Nested
+pairs = [(x, y) for x in [1,2] for y in [3,4]]`,
+            explanation: { 
+              en: 'List comprehension provides a concise way to create lists based on existing sequences.', 
+              ne: 'लिस्ट कम्प्रिहेन्सनले अस्तित्व क्रमहरूको आधारमा लिस्टहरू सिर्जना गर्ने संक्षिप्त तरिका प्रदान गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'How many times will "Hello" be printed? for i in range(3): print("Hello")', 
+              ne: 'कति पटक "Hello" प्रिन्ट हुनेछ? for i in range(3): print("Hello")' 
+            },
+            options: { 
+              en: ['2', '3', '4', 'Infinite'], 
+              ne: ['2', '3', '4', 'अनलिमिटेड'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'range(3) produces 0, 1, 2 - three values, so the loop runs three times.', 
+              ne: 'range(3) ले 0, 1, 2 उत्पन्न गर्छ - तीन मानहरू, त्यसैले लुप तीन पटक चल्छ।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'What does range(1, 10, 2) generate?', 
+              ne: 'range(1, 10, 2) ले के उत्पन्न गर्छ?' 
+            },
+            options: { 
+              en: ['1 to 10', '1, 3, 5, 7, 9', '1 to 9', '0, 2, 4, 6, 8'], 
+              ne: ['1 देखि 10', '1, 3, 5, 7, 9', '1 देखि 9', '0, 2, 4, 6, 8'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'range(start, stop, step) generates numbers from start to stop-1, incrementing by step.', 
+              ne: 'range(start, stop, step) ले start देखि stop-1 सम्मका संख्याहरू उत्पन्न गर्छ, step ले बढाउँदै।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'python-functions',
+        slug: 'functions-in-python',
+        title: { 
+          en: 'Functions in Python', 
+          ne: 'पाइथनमा फंक्सनहरू' 
+        },
+        content: {
+          en: `# Functions in Python
+
+Functions are reusable blocks of code that perform a specific task. They help organize code and avoid repetition.
+
+## Defining Functions
+
+Use the def keyword followed by function name and parameters.
+
+## Parameters and Arguments
+
+- **Parameters**: Variables in the function definition
+- **Arguments**: Actual values passed to the function
+
+## Return Values
+
+Functions can return values using the return statement.
+
+## Lambda Functions
+
+Anonymous functions for simple operations.`,
+          ne: `# पाइथनमा फंक्सनहरू
+
+फंक्सनहरू निश्चित कार्य गर्ने पुन: प्रयोज्य कोड ब्लकहरू हुन्। तिनीहरूले कोड व्यवस्थित गर्न र दोहोराबाट बच्न मद्दत गर्छन्।
+
+## फंक्सनहरू परिभाषित गर्नुहोस्
+
+def कीवर्ड प्रयोग गर्नुहोस् त्यसपछि फंक्सन नाम र प्यारामिटरहरू।
+
+## प्यारामिटर र आर्गुमेन्टहरू
+
+- **प्यारामिटरहरू**: फंक्सन परिभाषामा भेरिएबलहरू
+- **आर्गुमेन्टहरू**: फंक्सनलाई पास गरिएका वास्तविक मानहरू
+
+## रिटर्न मानहरू
+
+फंक्सनहरूले return कथन प्रयोग गरेर मानहरू फर्काउन सक्छन्।
+
+## लाम्ब्डा फं्क्सनहरू
+
+सरल अपरेसनहरूको लागि अनाम फंक्सनहरू।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Basic function
+def greet(name):
+    return f"Hello, {name}!"
+
+message = greet("Ram")
+print(message)
+
+# Function with default parameter
+def greet(greeting, name="World"):
+    return f"{greeting}, {name}!"
+
+print(greet("Hi"))
+print(greet("Hi", "Ram"))`,
+            explanation: { 
+              en: 'Functions can have default parameter values. If not provided, defaults are used.', 
+              ne: 'फंक्सनहरूसँग पूर्वनिर्धारित प्यारामिटर मानहरू हुन सक्छन्। नदिएमा, पूर्वनिर्धारित प्रयोग गरिन्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Return multiple values
+def get_stats(numbers):
+    total = sum(numbers)
+    average = total / len(numbers)
+    return total, average
+
+total, avg = get_stats([10, 20, 30])
+print(f"Total: {total}, Average: {avg}")
+
+# Lambda function
+square = lambda x: x ** 2
+print(square(5))  # 25
+
+# Lambda with multiple arguments
+add = lambda a, b: a + b
+print(add(3, 4))  # 7`,
+            explanation: { 
+              en: 'Lambda functions are anonymous functions defined in a single line. Great for simple operations.', 
+              ne: 'लाम्ब्डा फंक्सनहरू एक रेखामा परिभाषित अनाम फंक्सनहरू हुन्। सरल अपरेसनहरूको लागि राम्रो।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# *args and **kwargs
+def flexible(*args, **kwargs):
+    print("Args:", args)
+    print("Kwargs:", kwargs)
+
+flexible(1, 2, 3, name="Ram", age=25)
+
+# Docstring
+def calculate_area(width, height):
+    \"\"\"Calculate the area of a rectangle.
+    
+    Args:
+        width: The width of the rectangle
+        height: The height of the rectangle
+    
+    Returns:
+        The area of the rectangle
+    \"\"\"
+    return width * height`,
+            explanation: { 
+              en: '*args accepts variable positional arguments, **kwargs accepts keyword arguments. Docstrings document functions.', 
+              ne: '*args ले परिवर्तनीय पोजिशनल आर्गुमेन्टहरू स्वीकार्छ, **kwargs ले कीवर्ड आर्गुमेन्टहरू स्वीकार्छ। Docstrings ले फंक्सनहरू कागजात बनाउँछ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'What is the output of: add = lambda x, y: x + y; print(add(2, 3))', 
+              ne: 'को परिणाम के हो: add = lambda x, y: x + y; print(add(2, 3))' 
+            },
+            options: { 
+              en: ['x + y', '5', '2, 3', 'Error'], 
+              ne: ['x + y', '5', '2, 3', 'Error'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Lambda functions can take multiple arguments and return a value like regular functions.', 
+              ne: 'लाम्ब्डा फंक्सनहरूले धेरै आर्गुमेन्टहरू लिन सक्छन् र नियमित फंक्सनहरू जस्तै मान फर्काउन सक्छन्।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'Which keyword is used to define a function?', 
+              ne: 'फंक्सन परिभाषित गर्न कुन कीवर्ड प्रयोग गरिन्छ?' 
+            },
+            options: { 
+              en: ['function', 'def', 'func', 'define'], 
+              ne: ['function', 'def', 'func', 'define'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'The "def" keyword is used to define functions in Python.', 
+              ne: 'पाइथनमा फंक्सनहरू परिभाषित गर्न "def" कीवर्ड प्रयोग गरिन्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'python-strings',
+        slug: 'strings-in-python',
+        title: { 
+          en: 'Strings in Python', 
+          ne: 'पाइथनमा स्ट्रिङहरू' 
+        },
+        content: {
+          en: `# Strings in Python
+
+Strings are used to store text data. In Python, strings are immutable sequences of characters.
+
+## Creating Strings
+
+Strings can be created using single quotes, double quotes, or triple quotes for multi-line strings.
+
+## String Methods
+
+Python provides many built-in methods for string manipulation.
+
+## String Formatting
+
+Python offers several ways to format strings: f-strings, format(), and % formatting.`,
+          ne: `# पाइथनमा स्ट्रिङहरू
+
+स्ट्रिङहरू पाठ डेटा भण्डारण गर्न प्रयोग गरिन्छन्। पाइथनमा, स्ट्रिङहरू अपरिवर्तनीय क्यारेक्टरहरूको क्रम हुन्।
+
+## स्ट्रिङहरू सिर्जना गर्नुहोस्
+
+स्ट्रिङहरू एकल उद्धरण, डबल उद्धरण, वा बहु-लाइन स्ट्रिङहरूको लागि ट्रिपल उद्धरण प्रयोग गरेर सिर्जना गर्न सकिन्छ।
+
+## स्ट्रिङ विधिहरू
+
+पाइथनले स्ट्रिङ हेरफेटको लागि धेरै बिल्ट-इन विधिहरू प्रदान गर्छ।
+
+## स्ट्रिङ फरम्याटिङ
+
+पाइथनले स्ट्रिङहरू फरम्याट गर्ने धेरै तरिकाहरू प्रदान गर्छ: f-strings, format(), र % फरम्याटिङ।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Creating strings
+single = 'Hello'
+double = "Hello"
+multi_line = """This is a
+multi-line string"""
+
+# String indexing
+text = "Python"
+print(text[0])    # P
+print(text[-1])    # n
+print(text[0:3])   # Pyt
+
+# String methods
+message = "Hello World"
+print(message.upper())        # HELLO WORLD
+print(message.lower())        # hello world
+print(message.split())        # ['Hello', 'World']
+print(message.replace("World", "Python"))  # Hello Python`,
+            explanation: { 
+              en: 'Strings are indexed starting from 0. Negative indices count from the end.', 
+              ne: 'स्ट्रिङहरू 0 बाट इन्डेक्स हुन्छन्। नकारात्मक इन्डेक्सहरू अन्त्यबाट गणना गर्छन्।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# F-strings (recommended)
+name = "Ram"
+age = 25
+print(f"My name is {name} and I am {age} years old")
+
+# Format method
+print("Hello, {}".format(name))
+print("{0} is {1} years old".format(name, age))
+
+# f-strings with expressions
+price = 100
+tax = 0.1
+print(f"Total: {price + price * tax}")
+
+# String slicing
+text = "Python Programming"
+print(text[0:6])    # Python
+print(text[7:])    # Programming
+print(text[::2])   # Pto rgamn`,
+            explanation: { 
+              en: 'F-strings are the most readable and recommended way to format strings in Python.', 
+              ne: 'F-strings पाइथनमा स्ट्रिङहरू फरम्याट गर्ने सबैभन्दा पठनीय र सिफारिस गरिएको तरिका हो।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'What is the output of "Python"[0:3]?', 
+              ne: '"Python"[0:3] को आउटपुट के हो?' 
+            },
+            options: { 
+              en: ['Pyt', 'Pyth', 'yth', 'Python'], 
+              ne: ['Pyt', 'Pyth', 'yth', 'Python'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'Slicing [0:3] returns characters from index 0 up to (but not including) index 3.', 
+              ne: 'Slicing [0:3] ले इन्डेक्स 0 बाट (तर इन्डेक्स 3 समावेश नगरी) क्यारेक्टरहरू फर्काउँछ।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'Which method converts a string to uppercase?', 
+              ne: 'कुन विधिले स्ट्रिङलाई अपरकेसमा रूपांतरण गर्छ?' 
+            },
+            options: { 
+              en: ['uppercase()', 'to_upper()', 'upper()', 'capitalize()'], 
+              ne: ['uppercase()', 'to_upper()', 'upper()', 'capitalize()'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'The upper() method converts all characters to uppercase.', 
+              ne: 'upper() विधिले सबै क्यारेक्टरहरूलाई अपरकेसमा रूपांतरण गर्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'python-lists',
+        slug: 'lists-in-python',
+        title: { 
+          en: 'Lists in Python', 
+          ne: 'पाइथनमा लिस्टहरू' 
+        },
+        content: {
+          en: `# Lists in Python
+
+Lists are one of the most versatile data structures in Python. They can store multiple items of any type in a single variable.
+
+## Creating Lists
+
+Lists are created using square brackets with items separated by commas.
+
+## List Operations
+
+Python provides many built-in methods to manipulate lists.
+
+## List Comprehension
+
+A concise way to create new lists based on existing sequences.`,
+          ne: `# पाइथनमा लिस्टहरू
+
+लिस्टहरू पाइथनमा सबैभन्दा बहुमुखी डेटा संरचनाहरू मध्ये एक हुन्। तिनीहरूले एउटै भेरिएबलमा कुनै पनि प्रकारका धेरै आइटमहरू भण्डारण गर्न सक्छन्।
+
+## लिस्टहरू सिर्जना गर्नुहोस्
+
+लिस्टहरू वर्ग कोष्ठकहरू प्रयोग गरेर सिर्जना गरिन्छन् जहाँ आइटमहरू अल्पविरामले छुट्याइएका हुन्छन्।
+
+## लिस्ट अपरेसनहरू
+
+पाइथनले लिस्टहरू ह्यान्डल गर्न धेरै बिल्ट-इन विधिहरू प्रदान गर्छ।
+
+## लिस्ट कम्प्रिहेन्सन
+
+अस्तित्व क्रमहरूको आधारमा नयाँ लिस्टहरू सिर्जना गर्ने संक्षिप्त तरिका।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Creating lists
+numbers = [1, 2, 3, 4, 5]
+mixed = [1, "hello", 3.14, True]
+empty = []
+
+# Accessing elements
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])     # apple
+print(fruits[-1])    # cherry
+
+# Modifying lists
+fruits.append("orange")
+fruits.insert(1, "mango")
+fruits.remove("banana")
+popped = fruits.pop()
+
+print(fruits)  # ['apple', 'mango', 'cherry']`,
+            explanation: { 
+              en: 'Lists are mutable - you can change their content after creation.', 
+              ne: 'लिस्टहरू परिवर्तनीय हुन् - तपाईं सिर्जना पछि तिनीहरूको सामग्री परिवर्तन गर्न सक्नुहुन्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# List slicing
+numbers = [0, 1, 2, 3, 4, 5]
+print(numbers[1:4])    # [1, 2, 3]
+print(numbers[:3])     # [0, 1, 2]
+print(numbers[3:])     # [3, 4, 5]
+print(numbers[::2])    # [0, 2, 4]
+
+# List comprehension
+squares = [x**2 for x in range(5)]
+print(squares)  # [0, 1, 4, 9, 16]
+
+# With condition
+evens = [x for x in range(10) if x % 2 == 0]
+print(evens)  # [0, 2, 4, 6, 8]
+
+# Nested list
+matrix = [[1, 2], [3, 4]]
+print(matrix[1][0])  # 3`,
+            explanation: { 
+              en: 'List comprehension provides a compact way to filter and transform lists.', 
+              ne: 'लिस्ट कम्प्रिहेन्सनले लिस्टहरू फिल्टर र रूपांतरण गर्ने संक्षिप्त तरिका प्रदान गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'What is the output of [1, 2, 3].append([4, 5])?', 
+              ne: '[1, 2, 3].append([4, 5]) को आउटपुट के हो?' 
+            },
+            options: { 
+              en: ['[1, 2, 3, 4, 5]', '[1, 2, 3, [4, 5]]', 'Error', '[4, 5, 1, 2, 3]'], 
+              ne: ['[1, 2, 3, 4, 5]', '[1, 2, 3, [4, 5]]', 'Error', '[4, 5, 1, 2, 3]'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'append() adds the entire object as a single element. Use extend() to add each element.', 
+              ne: 'append() ले सम्पूर्ण वस्तुलाई एउटा तत्वको रूपमा थप्छ। प्रत्येक तत्व थप्न extend() प्रयोग गर्नुहोस्।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'How do you create a list of squares for numbers 0-4?', 
+              ne: 'संख्याहरू 0-4 को लागि वर्गहरूको लिस्ट कसरी बनाउने?' 
+            },
+            options: { 
+              en: ['[x**2 for x in range(5)]', '[x^2 for x in 0:4]', 'squares(5)', 'for x in 5: squares.append(x**2)'], 
+              ne: ['[x**2 for x in range(5)]', '[x^2 for x in 0:4]', 'squares(5)', 'for x in 5: squares.append(x**2)'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'List comprehension with range(5) generates [0,1,2,3,4], then squares each.', 
+              ne: 'range(5) सँग लिस्ट कम्प्रिहेन्सनले [0,1,2,3,4] उत्पन्न गर्छ, त्यसपछि प्रत्येकको वर्ग गर्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'python-dictionaries',
+        slug: 'dictionaries-in-python',
+        title: { 
+          en: 'Dictionaries in Python', 
+          ne: 'पाइथनमा डिक्शनरीहरू' 
+        },
+        content: {
+          en: `# Dictionaries in Python
+
+Dictionaries are unordered collections of key-value pairs. They provide fast lookup by key.
+
+## Creating Dictionaries
+
+Dictionaries are created using curly braces with key: value pairs.
+
+## Accessing Values
+
+You can access values using their keys.
+
+## Dictionary Methods
+
+Python provides many methods for working with dictionaries.`,
+          ne: `# पाइथनमा डिक्शनरीहरू
+
+डिक्शनरीहरू कुज-मान जोडीहरूको अव्यवस्थित संग्रह हुन्। तिनीहरूले कुजद्वारा छिटो खोजी प्रदान गर्छन्।
+
+## डिक्शनरीहरू सिर्जना गर्नुहोस्
+
+डिक्शनरीहरू कर्ली ब्रेसिजमा कुज: मान जोडीहरू प्रयोग गरेर सिर्जना गरिन्छन्।
+
+## मानहरूमा पहुँच
+
+तपाईं आफ्नो कुजहरू प्रयोग गरेर मानहरूमा पहुँच सक्नुहुन्छ।
+
+## डिक्शनरी विधिहरू
+
+पाइथनले डिक्शनरीहरूसँग काम गर्न धेरै विधिहरू प्रदान गर्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Creating dictionaries
+person = {
+    "name": "Ram",
+    "age": 25,
+    "city": "Kathmandu"
+}
+
+# Accessing values
+print(person["name"])      # Ram
+print(person.get("age"))   # 25
+print(person.get("job", "Not specified"))  # Not specified
+
+# Adding/modifying
+person["job"] = "Developer"
+person["age"] = 26
+
+# Delete
+del person["city"]
+
+print(person)  # {'name': 'Ram', 'age': 26, 'job': 'Developer'}`,
+            explanation: { 
+              en: 'Dictionary keys must be unique and immutable (strings, numbers, tuples).', 
+              ne: 'डिक्शनरी कुजहरू अद्वितीय र अपरिवर्तनीय (strings, numbers, tuples) हुनुपर्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Dictionary methods
+student = {"name": "Ram", "age": 20, "grade": "A"}
+
+# Get all keys/values/items
+print(student.keys())    # dict_keys(['name', 'age', 'grade'])
+print(student.values())  # dict_values(['Ram', 20, 'A'])
+print(student.items())   # dict_items([('name', 'Ram'), ...])
+
+# Loop through dictionary
+for key, value in student.items():
+    print(f"{key}: {value}")
+
+# Dictionary comprehension
+squares = {x: x**2 for x in range(5)}
+print(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}`,
+            explanation: { 
+              en: 'Use items() to loop through key-value pairs together.', 
+              ne: 'कुज-मान जोडीहरू एकसाथ दोहोर्याउन items() प्रयोग गर्नुहोस्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'What does dict.get("key", "default") return if key does not exist?', 
+              ne: 'यदि key अस्तित्वमा छैन भने dict.get("key", "default") के फर्काउँछ?' 
+            },
+            options: { 
+              en: ['None', '"default"', 'Error', 'False'], 
+              ne: ['None', '"default"', 'Error', 'False'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'get() returns the default value if the key is not found.', 
+              ne: 'get() ले यदि key नभेटिएमा पूर्वनिर्धारित मान फर्काउँछ।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'Which method returns all key-value pairs as tuples?', 
+              ne: 'कुन विधिले सबै कुज-मान जोडीहरू tuples को रूपमा फर्काउँछ?' 
+            },
+            options: { 
+              en: ['keys()', 'values()', 'items()', 'pairs()'], 
+              ne: ['keys()', 'values()', 'items()', 'pairs()'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'items() returns key-value pairs as tuples in a list-like view.', 
+              ne: 'items() ले कुज-मान जोडीहरूलाई list-जस्तो दृश्यमा tuples को रूपमा फर्काउँछ।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Sets
+      {
+        id: 'python-sets',
+        slug: 'sets-in-python',
+        title: { 
+          en: 'Sets in Python', 
+          ne: 'पाइथनमा सेटहरू' 
+        },
+        content: {
+          en: `# Sets in Python
+
+Sets are unordered collections of unique elements. They are useful when you need to store unique values and perform set operations.
+
+## Creating Sets
+
+Sets are created using curly braces or the set() function.
+
+## Set Operations
+
+Python supports mathematical set operations like union, intersection, and difference.`,
+          ne: `# पाइथनमा सेटहरू
+
+सेटहरू अद्वितीय तत्वहरूको अव्यवस्थित संग्रह हुन्। तिनीहरू उपयोगी हुन् जब तपाईंलाई अद्वितीय मानहरू भण्डारण गर्न र सेट सञ्चालनहरू गर्न आवश्यक हुन्छ।
+
+## सेटहरू सिर्जना गर्नुहोस्
+
+सेटहरू कर्ली ब्रेसिज वा set() प्रकार्य प्रयोग गरेर सिर्जना गरिन्छन्।
+
+## सेट सञ्चालनहरू
+
+पाइथनले यूनियन, इन्टरसेक्सन, र डिफरेन्स जस्ता गणितीय सेट सञ्चालनहरूलाई समर्थन गर्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Creating sets
+fruits = {"apple", "banana", "cherry"}
+numbers = set([1, 2, 3, 2, 1])  # Removes duplicates
+empty_set = set()
+
+# Adding/removing elements
+fruits.add("orange")
+fruits.remove("banana")  # Raises error if not found
+fruits.discard("mango")  # No error if not found
+
+print(fruits)  # {'apple', 'cherry', 'orange'}
+print(numbers)  # {1, 2, 3}`,
+            explanation: { 
+              en: 'Sets automatically remove duplicates. remove() raises KeyError if element doesn\'t exist, discard() does not.', 
+              ne: 'सेटहरूले स्वचालित रूपमा डुप्लिकेटहरू हटाउँछन्। remove() ले यदि तत्व अस्तित्वमा छैन भने KeyError उठाउँछ, discard() ले गर्दैन।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Set operations
+set1 = {1, 2, 3, 4}
+set2 = {3, 4, 5, 6}
+
+# Union - all elements
+print(set1 | set2)        # {1, 2, 3, 4, 5, 6}
+print(set1.union(set2))   # {1, 2, 3, 4, 5, 6}
+
+# Intersection - common elements
+print(set1 & set2)        # {3, 4}
+print(set1.intersection(set2))  # {3, 4}
+
+# Difference - elements in set1 but not in set2
+print(set1 - set2)        # {1, 2}
+print(set1.difference(set2))    # {1, 2}
+
+# Symmetric difference - elements in either but not both
+print(set1 ^ set2)        # {1, 2, 5, 6}`,
+            explanation: { 
+              en: 'Use | for union, & for intersection, - for difference, and ^ for symmetric difference.', 
+              ne: 'यूनियनको लागि |, इन्टरसेक्सनको लागि &, डिफरेन्सको लागि -, र symmetric difference को लागि ^ प्रयोग गर्नुहोस्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-set-q1',
+            question: { 
+              en: 'What happens when you add a duplicate to a set?', 
+              ne: 'जब तपाईं सेटमा डुप्लिकेट थप्नुहुन्छ के हुन्छ?' 
+            },
+            options: { 
+              en: ['It adds twice', 'It raises an error', 'It is ignored', 'It replaces the original'], 
+              ne: ['यो दुई पटक थपिन्छ', 'यो एरोर उठाउँछ', 'यो बेवास्ता गरिन्छ', 'यो मूल लाई प्रतिस्थापन गर्छ'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'Sets only store unique elements, so duplicates are silently ignored.', 
+              ne: 'सेटहरूले मात्र अद्वितीय तत्वहरू भण्डारण गर्छन्, त्यसैले डुप्लिकेटहरू मौन रूपमा बेवास्ता गरिन्छन्।'
+            }
+          },
+          {
+            id: 'py-set-q2',
+            question: { 
+              en: 'Which operator gives you elements in either set but not in both?', 
+              ne: 'कुन अपरेटरले तपाईंलाई कुनै सेटमा भए तर दुवैमा नभएका तत्वहरू दिन्छ?' 
+            },
+            options: { 
+              en: ['|', '&', '-', '^'], 
+              ne: ['|', '&', '-', '^'] 
+            },
+            correctAnswer: 3,
+            explanation: { 
+              en: '^ (caret) is the symmetric difference operator - elements in either but not both sets.', 
+              ne: '^ (caret) symmetric difference अपरेटर हो - कुनै सेटमा भए तर दुवैमा नभएका तत्वहरू।'
+            }
+          }
+        ]
+      },
+      // New Lesson: File I/O
+      {
+        id: 'python-file-io',
+        slug: 'file-io-in-python',
+        title: { 
+          en: 'File I/O in Python', 
+          ne: 'पाइथनमा फाइल I/O' 
+        },
+        content: {
+          en: `# File I/O in Python
+
+Python provides easy ways to read from and write to files. This is essential for data persistence and processing.
+
+## Opening Files
+
+Use the open() function to open files. Always close files or use context managers.
+
+## Reading Files
+
+You can read entire files, lines, or specific amounts of data.
+
+## Writing Files
+
+Use 'w' mode to write (overwrites) or 'a' mode to append.`,
+          ne: `# पाइथनमा फाइल I/O
+
+पाइथनले फाइलहरूबाट पढ्न र फाइलहरूमा लेख्न सजिलो तरिकाहरू प्रदान गर्छ। यो डेटा दृढता र प्रशोधनको लागि आवश्यक छ।
+
+## फाइलहरू खोल्नुहोस्
+
+फाइलहरू खोल्न open() प्रकार्य प्रयोग गर्नुहोस्। सधैँ फाइलहरू बन्द गर्नुहोस् वा context managers प्रयोग गर्नुहोस्।
+
+## फाइलहरू पढ्नुहोस्
+
+तपाईं सम्पूर्ण फाइलहरू, लाइनहरू, वा डेटाको विशिष्ट मात्रा पढ्न सक्नुहुन्छ।
+
+## फाइलहरू लेख्नुहोस्
+
+लेख्नको लागि 'w' मोड (अधिलेखन) वा थप्नको लागि 'a' मोड प्रयोग गर्नुहोस्।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Reading a file
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# Reading line by line
+with open("example.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+
+# Reading all lines into list
+with open("example.txt", "r") as file:
+    lines = file.readlines()`,
+            explanation: { 
+              en: 'Using "with" ensures the file is properly closed even if errors occur.', 
+              ne: '"with" प्रयोग गर्नाले फाइल ठीक से बन्द हुन्छ भनेर सुनिश्चित गर्छ त्रुटिहरू भए पनि।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Writing to a file
+with open("output.txt", "w") as file:
+    file.write("Hello, World!\\n")
+    file.write("Second line\\n")
+
+# Appending to a file
+with open("output.txt", "a") as file:
+    file.write("Appended line\\n")
+
+# Writing multiple lines
+lines = ["Line 1\\n", "Line 2\\n", "Line 3\\n"]
+with open("output.txt", "w") as file:
+    file.writelines(lines)
+
+# Reading and writing simultaneously
+with open("input.txt", "r") as infile:
+    with open("output.txt", "w") as outfile:
+        for line in infile:
+            outfile.write(line.upper())`,
+            explanation: { 
+              en: '"w" mode overwrites the file, "a" mode appends to the end.', 
+              ne: '"w" मोडले फाइल अधिलेखन गर्छ, "a" मोडले अन्त्यमा थप्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-io-q1',
+            question: { 
+              en: 'Which mode should you use to append to a file?', 
+              ne: 'फाइलमा थप्नको लागि कुन मोड प्रयोग गर्नुहुन्छ?' 
+            },
+            options: { 
+              en: ['"r"', '"w"', '"a"', '"x"'], 
+              ne: ['"r"', '"w"', '"a"', '"x"'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: '"a" mode opens the file for appending, creating it if it doesn\'t exist.', 
+              ne: '"a" मोडले फाइल थप्नको लागि खोल्छ, यदि अस्तित्वमा छैन भने सिर्जना गर्छ।'
+            }
+          },
+          {
+            id: 'py-io-q2',
+            question: { 
+              en: 'Why is using "with" recommended for file operations?', 
+              ne: 'फाइल सञ्चालनहरूको लागि "with" प्रयोग गर्न किन सिफारिस गरिन्छ?' 
+            },
+            options: { 
+              en: ['It makes code faster', 'It ensures the file is closed properly', 'It prevents reading errors', 'It allows writing'], 
+              ne: ['यो कोडलाई छिटो बनाउँछ', 'यो फाइल ठीक से बन्द हुन्छ भनेर सुनिश्चित गर्छ', 'यो पढ्ने त्रुटिहरू रोक्छ', 'यो लेख्न अनुमति दिन्छ'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'The "with" statement automatically closes the file when done, even if errors occur.', 
+              ne: '"with" कथनले स्वचालित रूपमा फाइल बन्द गर्छ जब समाप्त हुन्छ, त्रुटिहरू भए पनि।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Error Handling
+      {
+        id: 'python-error-handling',
+        slug: 'error-handling-in-python',
+        title: { 
+          en: 'Error Handling in Python', 
+          ne: 'पाइथनमा त्रुटि ह्यान्डलिंग' 
+        },
+        content: {
+          en: `# Error Handling in Python
+
+Python uses try...except blocks to handle errors gracefully. This prevents your program from crashing.
+
+## Types of Errors
+
+- SyntaxError: Code is not valid Python
+- TypeError: Wrong data type operation
+- ValueError: Right type but wrong value
+- FileNotFoundError: File doesn\'t exist
+
+## Raising Exceptions
+
+You can raise your own exceptions using the raise keyword.`,
+          ne: `# पाइथनमा त्रुटि ह्यान्डलिंग
+
+पाइथनले try...except ब्लकहरू प्रयोग गरेर त्रुटिहरू सञ्चालन गर्छ। यसले तपाईंको प्रोग्राम क्र्यास हुनबाट रोक्छ।
+
+## त्रुटिहरूको प्रकारहरू
+
+- SyntaxError: कोड वैध पाइथन होइन
+- TypeError: गलत डेटा प्रकार सञ्चालन
+- ValueError: सही प्रकार तर गलत मान
+- FileNotFoundError: फाइल अस्तित्वमा छैन
+
+## अपवादहरू उठाउनुहोस्
+
+तपाईं raise कीवर्ड प्रयोग गरेर आफ्नै अपवादहरू उठााउन सक्नुहुन्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Basic try...except
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+
+# Multiple except blocks
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Invalid input - not a number")
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+# Catch all exceptions
+try:
+    risky_operation()
+except Exception as e:
+    print(f"Error: {e}")`,
+            explanation: { 
+              en: 'Handle specific exceptions first, then general ones. The Exception as e syntax lets you access the error message.', 
+              ne: 'पहिले विशिष्ट अपवादहरू ह्यान्डल गर्नुहोस्, त्यसपछि सामान्य। Exception as e सिन्ट्याक्सले तपाईंलाई त्रुटि सन्देश पहुँच गर्न दिन्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Raising exceptions
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Divisor cannot be zero")
+    return a / b
+
+try:
+    result = divide(10, 0)
+except ValueError as e:
+    print(e)  # "Divisor cannot be zero"
+
+# Finally block
+try:
+    file = open("data.txt", "r")
+    content = file.read()
+except FileNotFoundError:
+    print("File not found")
+finally:
+    # This always runs
+    print("Operation complete")
+
+# Custom exception class
+class InvalidAgeError(Exception):
+    pass
+
+def set_age(age):
+    if age < 0:
+        raise InvalidAgeError("Age cannot be negative")`,
+            explanation: { 
+              en: 'The finally block always executes, useful for cleanup. Custom exceptions help validate input.', 
+              ne: 'finally ब्लक सधैँ कार्यान्वयन हुन्छ, cleanup को लागि उपयोगी। कस्टम अपवादहरूले इनपुट मान्यता गर्न मद्दत गर्छन्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-err-q1',
+            question: { 
+              en: 'What happens if an exception is not caught by any except block?', 
+              ne: 'यदि कुनै except ब्लकद्वारा अपवाद समातिएन भने के हुन्छ?' 
+            },
+            options: { 
+              en: ['Program continues', 'Program crashes', 'Returns None', 'Prints error'], 
+              ne: ['प्रोग्राम जारी रहन्छ', 'प्रोग्राम क्र्यास हुन्छ', 'None फर्काउँछ', 'त्रुटि प्रिन्ट गर्छ'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Unhandled exceptions cause the program to crash. Always catch potential exceptions.', 
+              ne: 'ह्यान्डल नगरिएका अपवादहरूले प्रोग्राम क्र्यास हुन्छ। सधैँ सम्भावित अपवादहरू समात्नुहोस्।'
+            }
+          },
+          {
+            id: 'py-err-q2',
+            question: { 
+              en: 'When does the finally block execute?', 
+              ne: 'finally ब्लक कार्यान्वयन हुन्छ?' 
+            },
+            options: { 
+              en: ['Only on success', 'Only on error', 'Always', 'Never'], 
+              ne: ['केवल सफलतामा', 'केवल त्रुटिमा', 'सधैँ', 'कहिल्यै पनि'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'The finally block always executes, regardless of whether an exception occurred.', 
+              ne: 'finally ब्लक सधैँ कार्यान्वयन हुन्छ, अपवाद भएको नभएको पर्वाह नगरी।'
+            }
+          }
+        ]
       }
     ]
   },
@@ -706,6 +1893,136 @@ int main() {
             explanation: { 
               en: 'The for loop is ideal when you know the number of iterations beforehand.', 
               ne: 'for लूप आदर्श हो जब तपाईं इटरेशनको सँख्या पहिले नै जान्नुहुन्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'c-arrays',
+        slug: 'arrays-and-pointers-in-c',
+        title: { 
+          en: 'Arrays and Pointers in C', 
+          ne: 'C मा एरे र पोइन्टरहरू' 
+        },
+        content: {
+          en: `# Arrays and Pointers in C
+
+Arrays and pointers are fundamental concepts in C that work closely together.
+
+## Arrays
+
+An array is a collection of elements of the same type stored in contiguous memory.
+
+## Pointers
+
+A pointer is a variable that stores the memory address of another variable.
+
+## Relationship Between Arrays and Pointers
+
+In C, the name of an array is a pointer to the first element.`,
+          ne: `# C मा एरे र पोइन्टरहरू
+
+C मा एरे र पोइन्टरहरू मूलभूत अवधारणाहरू हुन् जुन एकसँग नजिक काम गर्छन्।
+
+## एरेहरू
+
+एरे एउटै प्रकारका तत्वहरूको संग्रह हो जुन सन्निकट मेमोरीमा भण्डारण गरिन्छ।
+
+## पोइन्टरहरू
+
+पोइन्टर एउटा भेरिएबल हो जुन अर्को भेरिएबलको मेमोरी ठेगाना भण्डारण गर्छ।
+
+## एरे र पोइन्टरहरू बीचको सम्बन्ध
+
+C मा, एरेको नाम पहिलो तत्वतर्फ इंगित गर्ने पोइन्टर हो।`
+        },
+        codeExamples: [
+          {
+            language: 'c',
+            code: `#include <stdio.h>
+
+int main() {
+    // Array declaration
+    int numbers[5] = {1, 2, 3, 4, 5};
+    
+    // Accessing elements
+    printf("First: %d\\n", numbers[0]);
+    printf("Third: %d\\n", numbers[2]);
+    
+    // Array and pointer relationship
+    printf("Pointer: %p\\n", numbers);
+    printf("First element: %d\\n", *numbers);
+    
+    // Loop through array
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", numbers[i]);
+    }
+    
+    return 0;
+}`,
+            explanation: { 
+              en: 'Array name "numbers" acts as a pointer to the first element. Use *numbers to dereference.', 
+              ne: 'एरे नाम "numbers" ले पहिलो तत्वतर्फ पोइन्टरको रूपमा काम गर्छ। डिरिफरेन्सको लागि *numbers प्रयोग गर्नुहोस्।'
+            }
+          },
+          {
+            language: 'c',
+            code: `#include <stdio.h>
+
+int main() {
+    int num = 42;
+    int *ptr;
+    
+    // Store address in pointer
+    ptr = &num;
+    
+    printf("Value of num: %d\\n", num);
+    printf("Address of num: %p\\n", &num);
+    printf("Value through pointer: %d\\n", *ptr);
+    
+    // Modify value through pointer
+    *ptr = 100;
+    printf("New value of num: %d\\n", num);
+    
+    return 0;
+}`,
+            explanation: { 
+              en: '& gives the address of a variable. * dereferences a pointer to get the value.', 
+              ne: '& ले भेरिएबलको ठेगाना दिन्छ। * ले पोइन्टरलाई डिरिफरेन्स गरेर मान प्राप्त गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'What does &num return?', 
+              ne: '&num के फर्काउँछ?' 
+            },
+            options: { 
+              en: ['The value of num', 'The address of num', 'A pointer to num', 'The type of num'], 
+              ne: ['num को मान', 'num को ठेगाना', 'num मा पोइन्टर', 'num को प्रकार'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: '& (address-of operator) returns the memory address of a variable.', 
+              ne: '& (ठेगाना-अफ अपरेटर) ले भेरिएबलको मेमोरी ठेगाना फर्काउँछ।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'What is *ptr when ptr is a pointer?', 
+              ne: 'ptr पोइन्टर हो भने *ptr के हो?' 
+            },
+            options: { 
+              en: ['The address stored in ptr', 'The value at the address ptr points to', 'A new pointer', 'An error'], 
+              ne: ['ptr मा भण्डारित ठेगाना', 'ptr ले इंगित गर्ने ठेगानामा रहेको मान', 'नयाँ पोइन्टर', 'एरर'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: '* (dereference operator) accesses the value stored at the address the pointer contains.', 
+              ne: '* (डिरिफरेन्स अप ले पोइन्टरमा ररेटर)हेको ठेगानामा भण्डारित मानमा पहुँच प्राप्त गर्छ।'
             }
           }
         ]
@@ -1244,6 +2561,130 @@ h1 {
             explanation: { 
               en: 'External CSS allows you to style all pages from one file.', 
               ne: 'External CSS ले तपाईंलाई एउटा फाइलबाट सबै पृष्ठहरू स्टाइल गर्न अनुमति दिन्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'css-flexbox',
+        slug: 'css-flexbox-layout',
+        title: { 
+          en: 'CSS Flexbox Layout', 
+          ne: 'CSS Flexbox लेआउट' 
+        },
+        content: {
+          en: `# CSS Flexbox Layout
+
+Flexbox is a one-dimensional layout method for arranging items in rows or columns.
+
+## Why Use Flexbox?
+
+- Easy alignment of items
+- Flexible sizing
+- Reorder items visually
+- Handle spacing automatically
+
+## Key Properties
+
+- display: flex
+- justify-content
+- align-items
+- flex-direction
+- flex-wrap`,
+          ne: `# CSS Flexbox लेआउट
+
+Flexbox वस्तुहरूलाई पंक्ति वा स्तंभहरूमा व्यवस्थित गर्ने एक-आयामी लेआउट विधि हो।
+
+## Flexbox किन प्रयोग गर्ने?
+
+- वस्तुहरूको सजिलो अलाइनमेंट
+- लचिलो आकार
+- वस्तुहरूलाई दृश्यात्मक रूपमा पुन: क्रम
+- स्वचालित रूपमा स्पेसिङ ह्यान्डल गर्नुहोस्
+
+## मुख्य गुणहरू
+
+- display: flex
+- justify-content
+- align-items
+- flex-direction
+- flex-wrap`
+        },
+        codeExamples: [
+          {
+            language: 'css',
+            code: `/* Basic Flexbox */
+.container {
+  display: flex;
+  justify-content: center;  /* horizontal */
+  align-items: center;      /* vertical */
+  gap: 20px;
+}
+
+/* Flex direction */
+.row { flex-direction: row; }
+.column { flex-direction: column; }
+
+/* Wrap */
+.wrap { flex-wrap: wrap; }`,
+            explanation: { 
+              en: 'display: flex enables flexbox. justify-content handles horizontal alignment.', 
+              ne: 'display: flex ले flexbox सक्षम पार्छ। justify-content ले क्षैतिज अलाइनमेंट ह्यान्डल गर्छ।'
+            }
+          },
+          {
+            language: 'css',
+            code: `/* Flex item properties */
+.item {
+  flex-grow: 1;    /* grow to fill space */
+  flex-shrink: 0; /* don't shrink */
+  flex-basis: 200px; /* initial size */
+  
+  /* Short-hand */
+  flex: 1 0 200px;
+}
+
+/* Alignment */
+.start { align-self: flex-start; }
+.center { align-self: center; }
+.end { align-self: flex-end; }`,
+            explanation: { 
+              en: 'flex-grow controls how items expand, flex-shrink controls how they shrink.', 
+              ne: 'flex-grow ले कसरी वस्तुहरू विस्तार हुन्छ नियन्त्रण गर्छ, flex-shrink ले कसरी तिनीहरू सङ्कुचित हुन्छन् नियन्त्रण गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'q1',
+            question: { 
+              en: 'Which property centers items horizontally in flexbox?', 
+              ne: 'कुन गुणले flexbox मा वस्तुहरू क्षैतिज रूपमा केन्द्रित गर्छ?' 
+            },
+            options: { 
+              en: ['align-items', 'justify-content', 'text-align', 'center'], 
+              ne: ['align-items', 'justify-content', 'text-align', 'center'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'justify-content aligns items along the main axis (horizontally for row direction).', 
+              ne: 'justify-content ले मुख्य अक्ष (पंक्ति दिशाको लागि क्षैतिज) बाट वस्तुहरू अलाइन गर्छ।'
+            }
+          },
+          {
+            id: 'q2',
+            question: { 
+              en: 'How do you make flex items wrap to new lines?', 
+              ne: 'तपाईं flex वस्तुहरूलाई नयाँ लाइनहरूमा कसरी र्याप गर्नुहुन्छ?' 
+            },
+            options: { 
+              en: ['flex-wrap: wrap', 'flex-direction: wrap', 'display: block', 'wrap: true'], 
+              ne: ['flex-wrap: wrap', 'flex-direction: wrap', 'display: block', 'wrap: true'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'flex-wrap: wrap allows items to flow onto multiple lines.', 
+              ne: 'flex-wrap: wrap ले वस्तुहरूलाई धेरै लाइनहरूमा बग्न अनुमति दिन्छ।'
             }
           }
         ]
@@ -2025,6 +3466,436 @@ window.addEventListener("load", () => {
             explanation: { 
               en: 'addEventListener is the standard method to attach event handlers to DOM elements.', 
               ne: 'addEventListener DOM तत्वहरूमा इभेन्ट ह्यान्डलरहरू जोड्ने मानक मेथड हो।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Arrays
+      {
+        id: 'js-arrays',
+        slug: 'arrays-in-javascript',
+        title: { 
+          en: 'Arrays in JavaScript', 
+          ne: 'जाभास्क्रिप्टमा एरेहरू' 
+        },
+        content: {
+          en: `# Arrays in JavaScript
+
+Arrays are used to store multiple values in a single variable. They are one of the most commonly used data structures in JavaScript.
+
+## Creating Arrays
+
+You can create arrays using square brackets [] or the Array constructor.
+
+## Array Methods
+
+JavaScript provides many built-in methods to work with arrays:
+- push() - Add element to end
+- pop() - Remove element from end
+- shift() - Remove element from start
+- unshift() - Add element to start
+- map() - Transform each element
+- filter() - Filter elements
+- reduce() - Reduce to single value`,
+          ne: `# जाभास्क्रिप्टमा एरेहरू
+
+एरेहरू एउटा भेरिएबलमा धेरै मानहरू भण्डारण गर्न प्रयोग गरिन्छ। तिनीहरू जाभास्क्रिप्टमा सबैभन्दा धेरै प्रयोग गरिने डेटा संरचनाहरू मध्ये एक हुन्।
+
+## एरेहरू सिर्जना गर्नुहोस्
+
+तपाईं वर्गाकार ब्राकेट [] वा Array कन्स्ट्रक्टर प्रयोग गरेर एरेहरू सिर्जना गर्न सक्नुहुन्छ।
+
+## एरे मेथडहरू
+
+जाभास्क्रिप्टले एरेहरूसँग काम गर्न धेरै बिल्ट-इन मेथडहरू प्रदान गर्छ:
+- push() - अन्त्यमा तत्व थप्नुहोस्
+- pop() - अन्त्यबाट तत्व हटाउनुहोस्
+- shift() - सुरुआतबाट तत्व हटाउनुहोस्
+- unshift() - सुरुआतमा तत्व थप्नुहोस्
+- map() - प्रत्येक तत्व रूपांतरण गर्नुहोस्
+- filter() - तत्वहरू फिल्टर गर्नुहोस्
+- reduce() - एउटा मानमा घटाउनुहोस्`
+        },
+        codeExamples: [
+          {
+            language: 'javascript',
+            code: `// Creating arrays
+let fruits = ["apple", "banana", "orange"];
+let numbers = new Array(1, 2, 3, 4, 5);
+let mixed = [1, "hello", true, null];
+
+// Accessing elements (0-indexed)
+console.log(fruits[0]);  // "apple"
+console.log(fruits.length);  // 3
+
+// Modifying arrays
+fruits.push("mango");      // Add to end
+fruits.pop();              // Remove from end
+fruits.unshift("grape");   // Add to start
+fruits.shift();            // Remove from start
+
+console.log(fruits);`,
+            explanation: { 
+              en: 'Arrays are zero-indexed, meaning the first element is at index 0. Use push/pop for end and shift/unshift for start.', 
+              ne: 'एरेहरू शून्य-अनुक्रमित छन्, यसको अर्थ पहिलो तत्व अनुक्रमणिका 0 मा हुन्छ। अन्त्यको लागि push/pop र सुरुआतको लागि shift/unshift प्रयोग गर्नुहोस्।'
+            }
+          },
+          {
+            language: 'javascript',
+            code: `let numbers = [1, 2, 3, 4, 5];
+
+// map - transform each element
+let doubled = numbers.map(n => n * 2);
+console.log(doubled);  // [2, 4, 6, 8, 10]
+
+// filter - keep matching elements
+let evens = numbers.filter(n => n % 2 === 0);
+console.log(evens);  // [2, 4]
+
+// reduce - combine to single value
+let sum = numbers.reduce((acc, n) => acc + n, 0);
+console.log(sum);  // 15
+
+// find - get first matching element
+let found = numbers.find(n => n > 3);
+console.log(found);  // 4
+
+// includes - check if element exists
+console.log(numbers.includes(3));  // true`,
+            explanation: { 
+              en: 'map, filter, and reduce are powerful array methods. They don\'t modify the original array.', 
+              ne: 'map, filter, र reduce शक्तिशाली एरे मेथडहरू हुन्। तिनीहरूले मूल एरे परिमार्जन गर्दैनन्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'js-arr-q1',
+            question: { 
+              en: 'What method adds an element to the end of an array?', 
+              ne: 'कुन मेथडले एरेको अन्त्यमा तत्व थप्छ?' 
+            },
+            options: { 
+              en: ['push()', 'pop()', 'shift()', 'unshift()'], 
+              ne: ['push()', 'pop()', 'shift()', 'unshift()'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'push() adds elements to the end of an array.', 
+              ne: 'push() ले एरेको अन्त्यमा तत्वहरू थप्छ।'
+            }
+          },
+          {
+            id: 'js-arr-q2',
+            question: { 
+              en: 'What does the map() method do?', 
+              ne: 'map() मेथडले के गर्छ?' 
+            },
+            options: { 
+              en: ['Removes elements', 'Transforms each element', 'Sorts the array', 'Searches for element'], 
+              ne: ['तत्वहरू हटाउँछ', 'प्रत्येक तत्व रूपांतरण गर्छ', 'एरे क्रमबद्ध गर्छ', 'तत्व खोज्छ'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'map() creates a new array by transforming each element using the provided function.', 
+              ne: 'map() ले प्रदान गरिएको प्रकार्य प्रयोग गरेर प्रत्येक तत्व रूपांतरण गरेर नयाँ एरे सिर्जना गर्छ।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Objects
+      {
+        id: 'js-objects',
+        slug: 'objects-in-javascript',
+        title: { 
+          en: 'Objects in JavaScript', 
+          ne: 'जाभास्क्रिप्टमा अब्जेक्टहरू' 
+        },
+        content: {
+          en: `# Objects in JavaScript
+
+Objects are collections of key-value pairs. They are used to represent real-world entities with properties and behaviors.
+
+## Creating Objects
+
+You can create objects using curly braces {} with key-value pairs.
+
+## Object Methods
+
+Objects can have methods - functions that belong to the object.
+
+## Destructuring
+
+Destructuring allows you to extract values from objects into distinct variables.`,
+          ne: `# जाभास्क्रिप्टमा अब्जेक्टहरू
+
+अब्जेक्टहरू कुञ्जी-मान जोडीहरूको संग्रह हुन्। तिनीहरू प्रॉपर्टी र व्यवहारहरू सहित वास्तविक संसारका इकाईहरू प्रतिनिधित्व गर्न प्रयोग गरिन्छ।
+
+## अब्जेक्टहरू सिर्जना गर्नुहोस्
+
+तपाईं कुञ्जी-मान जोडीहरूसहित कर्ली ब्राकेट {} प्रयोग गरेर अब्जेक्टहरू सिर्जना गर्न सक्नुहुन्छ।
+
+## अब्जेक्ट मेथडहरू
+
+अब्जेक्टहरूसँग मेथडहरू हुन सक्छन् - अब्जेक्टसँग सम्बन्धित प्रकार्यहरू।
+
+## डिस्ट्रक्चरिंग
+
+डिस्ट्रक्चरिंगले तपाईंलाई अब्जेक्टहरूबाट मानहरू छुट्टै भेरिएबलहरूमा निकाल्न अनुमति दिन्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'javascript',
+            code: `// Creating an object
+let person = {
+  name: "Ram",
+  age: 25,
+  city: "Kathmandu",
+  isStudent: true
+};
+
+// Accessing properties
+console.log(person.name);      // "Ram"
+console.log(person["age"]);   // 25
+
+// Modifying object
+person.email = "ram@example.com";
+person.age = 26;
+
+// Adding methods
+let calculator = {
+  a: 10,
+  b: 5,
+  add: function() {
+    return this.a + this.b;
+  },
+  subtract() {
+    return this.a - this.b;
+  }
+};
+
+console.log(calculator.add());      // 15
+console.log(calculator.subtract()); // 5`,
+            explanation: { 
+              en: 'Objects store key-value pairs. Access values using dot notation (obj.key) or bracket notation (obj["key"]).', 
+              ne: 'अब्जेक्टहरूले कुञ्जी-मान जोडीहरू भण्डारण गर्छन्। डट नोटेशन (obj.key) वा ब्राकेट नोटेशन (obj["key"]) प्रयोग गरेर मानहरू पहुँच गर्नुहोस्।'
+            }
+          },
+          {
+            language: 'javascript',
+            code: `// Destructuring
+let user = { name: "Sita", age: 22, country: "Nepal" };
+
+// Extract to variables
+let { name, age } = user;
+console.log(name);  // "Sita"
+console.log(age);   // 22
+
+// With default values
+let { status = "active" } = user;
+console.log(status);  // "active"
+
+// Spread operator
+let updatedUser = { ...user, age: 23, city: "Pokhara" };
+console.log(updatedUser);
+// { name: "Sita", age: 23, country: "Nepal", city: "Pokhara" }
+
+// Object methods
+console.log(Object.keys(user));   // ["name", "age", "country"]
+console.log(Object.values(user)); // ["Sita", 22, "Nepal"]`,
+            explanation: { 
+              en: 'Destructuring makes code cleaner by extracting values into variables. Spread operator (...) creates a copy with modifications.', 
+              ne: 'डिस्ट्रक्चरिंगले भेरिएबलहरूमा मानहरू निकालेर कोड सफा बनाउँछ। स्प्रेड अपरेटर (...) परिमार्जनहरूसहित प्रति सिर्जना गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'js-obj-q1',
+            question: { 
+              en: 'How do you access the "name" property of an object person?', 
+              ne: 'तपाईं अब्जेक्ट person को "name" प्रॉपर्टी कसरी पहुँच गर्नुहुन्छ?' 
+            },
+            options: { 
+              en: ['person["name"]', 'person->name', 'person.name', 'Both A and C'], 
+              ne: ['person["name"]', 'person->name', 'person.name', 'A र C दुवै'] 
+            },
+            correctAnswer: 3,
+            explanation: { 
+              en: 'Both dot notation (person.name) and bracket notation (person["name"]) can access object properties.', 
+              ne: 'डट नोटेशन (person.name) र ब्राकेट नोटेशन (person["name"]) दुवैले अब्जेक्ट प्रॉपर्टीहरू पहुँच गर्न सक्छन्।'
+            }
+          },
+          {
+            id: 'js-obj-q2',
+            question: { 
+              en: 'What does the spread operator (...) do?', 
+              ne: 'स्प्रेड अपरेटर (...) ले के गर्छ?' 
+            },
+            options: { 
+              en: ['Deletes properties', 'Creates a copy with modifications', 'Combines arrays', 'Converts to string'], 
+              ne: ['प्रॉपर्टीहरू हटाउँछ', 'परिमार्जनहरूसहित प्रति सिर्जना गर्छ', 'एरेहरू संयोजन गर्छ', 'स्ट्रिङमा रूपांतरण गर्छ'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'The spread operator creates a shallow copy of an object and can add or overwrite properties.', 
+              ne: 'स्प्रेड अपरेटरले अब्जेक्टको उथले प्रति सिर्जना गर्छ र प्रॉपर्टीहरू थप्न वा अधिलेखन गर्न सक्छ।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Control Flow
+      {
+        id: 'js-controlflow',
+        slug: 'control-flow-in-javascript',
+        title: { 
+          en: 'Control Flow in JavaScript', 
+          ne: 'जाभास्क्रिप्टमा कन्ट्रोल फ्लो' 
+        },
+        content: {
+          en: `# Control Flow in JavaScript
+
+Control flow determines the order in which statements are executed. JavaScript provides several structures to control the flow of your program.
+
+## Conditional Statements
+
+- if...else - Execute code based on conditions
+- switch - Multiple condition checking
+
+## Loops
+
+- for - Loop with counter
+- while - Loop while condition is true
+- do...while - Execute at least once
+- for...of - Loop through iterables
+
+## Error Handling
+
+- try...catch - Handle errors gracefully
+- throw - Create custom errors`,
+          ne: `# जाभास्क्रिप्टमा कन्ट्रोल फ्लो
+
+कन्ट्रोल फ्लोले कथनहरू कुन क्रममा कार्यान्वयन हुन्छन् निर्धारण गर्छ। जाभास्क्रिप्टले तपाईंको प्रोग्रामको प्रवाह नियन्त्रण गर्ने धेरै संरचनाहरू प्रदान गर्छ।
+
+## कन्डिशनल कथनहरू
+
+- if...else - सर्तहरूको आधारमा कोड कार्यान्वयन गर्नुहोस्
+- switch - धेरै सर्त जाँच
+
+## लूपहरू
+
+- for - काउन्टरसँग लूप
+- while - सत्य हुँदा लूप
+- do...while - कम्तिमा एकपटक कार्यान्वयन गर्नुहोस्
+- for...of - इटरेबलहरूमार्फत लूप
+
+## त्रुटि ह्यान्डलिंग
+
+- try...catch - त्रुटिहरू सञ्चालन गर्नुहोस्
+- throw - कस्टम त्रुटिहरू सिर्जना गर्नुहोस्`
+        },
+        codeExamples: [
+          {
+            language: 'javascript',
+            code: `// if...else statement
+let score = 85;
+
+if (score >= 90) {
+  console.log("Grade: A");
+} else if (score >= 80) {
+  console.log("Grade: B");
+} else if (score >= 70) {
+  console.log("Grade: C");
+} else {
+  console.log("Grade: F");
+}
+
+// switch statement
+let day = 2;
+switch (day) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  default:
+    console.log("Other day");
+}`,
+            explanation: { 
+              en: 'if...else checks conditions in order. switch is useful for multiple discrete values.', 
+              ne: 'if...else ले क्रममा सर्तहरू जाँच गर्छ। switch धेरै discrete मानहरूको लागि उपयोगी हो।'
+            }
+          },
+          {
+            language: 'javascript',
+            code: `// for loop
+for (let i = 1; i <= 5; i++) {
+  console.log("Count:", i);
+}
+
+// while loop
+let count = 0;
+while (count < 3) {
+  console.log("While:", count);
+  count++;
+}
+
+// for...of (arrays)
+let fruits = ["apple", "banana", "mango"];
+for (let fruit of fruits) {
+  console.log("Fruit:", fruit);
+}
+
+// try...catch
+try {
+  let result = riskyFunction();
+  console.log(result);
+} catch (error) {
+  console.log("Error:", error.message);
+} finally {
+  console.log("Always runs");
+}`,
+            explanation: { 
+              en: 'for is best for known iteration count, while for unknown. for...of iterates over values. try...catch handles errors.', 
+              ne: 'for ज्ञात iteration count को लागि र while अज्ञातको लागि उत्तम हो। for...of मानहरूमार्फत iterate गर्छ। try...catch ले त्रुटिहरू ह्यान्डल गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'js-cf-q1',
+            question: { 
+              en: 'Which loop is best when you don\'t know how many times to iterate?', 
+              ne: 'तपाईंलाई कति पटक iterate गर्ने थाहा नहुँदा कुन लूप उत्तम हो?' 
+            },
+            options: { 
+              en: ['for loop', 'while loop', 'for...of loop', 'forEach loop'], 
+              ne: ['for लूप', 'while लूप', 'for...of लूप', 'forEach लूप'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'while loop continues as long as the condition is true, making it suitable for unknown iteration counts.', 
+              ne: 'while लूप सर्त सत्य हुँदासम्य जारी रहन्छ, जसले यसलाई अज्ञात iteration गणनाको लागि उपयुक्त बनाउँछ।'
+            }
+          },
+          {
+            id: 'js-cf-q2',
+            question: { 
+              en: 'What does the finally block do in try...catch?', 
+              ne: 'try...catch मा finally ब्लकले के गर्छ?' 
+            },
+            options: { 
+              en: ['Runs only if there\'s an error', 'Runs only if there\'s no error', 'Always runs regardless of error', 'Skips error handling'], 
+              ne: ['त्रुटि भएमा 만 मात्र चल्छ', 'त्रुटि नभएमा मात्र चल्छ', 'त्रुटिको पर्वाह नगरी सधैँ चल्छ', 'त्रुटि ह्यान्डलिंग छोड्छ'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'The finally block always executes, regardless of whether an error occurred or not.', 
+              ne: 'finally ब्लक सधैँ कार्यान्वयन हुन्छ, त्रुटि भएको नभएको पर्वाह नगरी।'
             }
           }
         ]

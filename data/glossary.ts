@@ -195,5 +195,209 @@ export const glossary: GlossaryTerm[] = [
     definition: 'A system that records changes to files over time.',
     definitionNe: 'समयसँगै फाइलहरूमा परिवर्तनहरू रेकर्ड गर्ने प्रणाली।',
     category: 'Tools'
+  },
+  // JavaScript Terms
+  {
+    term: 'DOM',
+    termNe: 'DOM',
+    definition: 'Document Object Model - a programming interface for web documents that represents the page structure.',
+    definitionNe: 'Document Object Model - वेब कागजातहरूको लागि प्रोग्रामिंग इन्टरफेस जसले पृष्ठ संरचनालाई प्रस्तुत गर्छ।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Event Listener',
+    termNe: 'इभेन्ट लिसनर',
+    definition: 'A function that waits for an event to occur and then executes code in response.',
+    definitionNe: 'एक फंक्सन जसले इभेन्ट हुने प्रतीक्षा गर्छ र त्यसपछि प्रतिक्रियामा कोड कार्यान्वयन गर्छ।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Promise',
+    termNe: 'प्रोमिस',
+    definition: 'An object representing the eventual completion or failure of an asynchronous operation.',
+    definitionNe: 'असिंक्रोनस अपरेसनको अन्तिम पूर्णता वा असफलतालाई प्रस्तुत गर्ने एक वस्तु।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Arrow Function',
+    termNe: 'एरो फंक्सन',
+    definition: 'A concise syntax for writing function expressions using the => symbol.',
+    definitionNe: '=> प्रतीक प्रयोग गरेर फंक्सन एक्सप्रेशन लेख्ने संक्षिप्त सिन्ट्याक्स।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Template Literal',
+    termNe: 'टेम्पलेट लिटरल',
+    definition: 'A way to embed expressions in strings using backticks (`) and ${} for interpolation.',
+    definitionNe: 'बैकटिक्स (`) र ${} प्रयोग गरेर स्ट्रिङहरूमा एक्सप्रेशनहरू एम्बेड गर्ने तरिका।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Destructuring',
+    termNe: 'डिस्ट्रक्चरिंग',
+    definition: 'A JavaScript expression that makes it possible to unpack values from arrays or properties from objects.',
+    definitionNe: 'एक जाभास्क्रिप्ट एक्सप्रेशन जसले एरेहरूबाट मानहरू वा वस्तुहरूबाट प्रोपर्टीहरू अनप्याक गर्न सम्भव बनाउँछ।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Closure',
+    termNe: 'क्लोजर',
+    definition: 'A function that has access to variables from its outer (enclosing) scope even after the outer function has returned.',
+    definitionNe: 'एक फंक्सन जसले बाहिरी फंक्सन फर्केपछि पनि आफ्नो बाहिरी स्कोपको भेरिएबलहरूमा पहुँच राख्छ।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Hoisting',
+    termNe: 'होइस्टिंग',
+    definition: 'JavaScript behavior where variable and function declarations are moved to the top of their scope.',
+    definitionNe: 'जाभास्क्रिप्ट व्यवहार जहाँ भेरिएबल र फंक्सन घोषणाहरू तिनीहरूको स्कोपको शीर्षमा सारिन्छन्।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Spread Operator',
+    termNe: 'स्प्रेड अपरेटर',
+    definition: 'The ... syntax that expands an iterable into individual elements.',
+    definitionNe: '... सिन्ट्याक्स जसले इटरेबललाई व्यक्तिगत तत्वहरूमा विस्तार गर्छ।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Callback',
+    termNe: 'कलब्याक',
+    definition: 'A function passed as an argument to another function that is executed after an operation completes.',
+    definitionNe: 'अर्को फंक्सनमा पास गरिएको फंक्सन जसलाई अपरेसन पूरा भएपछि कार्यान्वयन गरिन्छ।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'JSON',
+    termNe: 'JSON',
+    definition: 'JavaScript Object Notation - a lightweight format for storing and transmitting data.',
+    definitionNe: 'डेटा भण्डारण र प्रसारणको लागि हल्का ढाँचा।',
+    category: 'Data'
+  },
+  {
+    term: 'API',
+    termNe: 'API',
+    definition: 'Application Programming Interface - a set of rules that allows one software to interact with another.',
+    definitionNe: 'एक नियमहरूको सेट जसले एउटा सफ्टवेयरलाई अर्कोसँग अन्तरक्रिया गर्न अनुमति दिन्छ।',
+    category: 'Web'
+  },
+  {
+    term: 'Fetch API',
+    termNe: 'Fetch API',
+    definition: 'A modern JavaScript API for making HTTP requests to servers.',
+    definitionNe: 'सर्भरहरूलाई HTTP अनुरोधहरू गर्ने आधुनिक जाभास्क्रिप्ट API।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Async/Await',
+    termNe: 'Async/Await',
+    definition: 'Modern syntax for handling asynchronous operations using promises in a cleaner way.',
+    definitionNe: 'प्रोमिसहरू प्रयोग गरेर असिंक्रोनस अपरेसनहरू ह्यान्डल गर्ने आधुनिक सिन्ट्याक्स।',
+    category: 'JavaScript'
+  },
+  {
+    term: 'Recursion',
+    termNe: 'रिकर्सन',
+    definition: 'A programming technique where a function calls itself to solve a problem.',
+    definitionNe: 'एक प्रोग्रामिंग प्रविधि जहाँ फंक्सनले समस्या समाधान गर्न आफैलाई कल गर्छ।',
+    category: 'Programming'
+  },
+  {
+    term: 'Stack',
+    termNe: 'स्ट्याक',
+    definition: 'A linear data structure that follows LIFO (Last In First Out) principle.',
+    definitionNe: 'LIFO (Last In First Out) सिद्धांत पालना गर्ने रैखिक डेटा संरचना।',
+    category: 'Data Structures'
+  },
+  {
+    term: 'Queue',
+    termNe: 'क्यू',
+    definition: 'A linear data structure that follows FIFO (First In First Out) principle.',
+    definitionNe: 'FIFO (First In First Out) सिद्धांत पालना गर्ने रैखिक डेटा संरचना।',
+    category: 'Data Structures'
+  },
+  {
+    term: 'Hash Table',
+    termNe: 'ह्यास टेबल',
+    definition: 'A data structure that maps keys to values and provides fast lookup using a hash function.',
+    definitionNe: 'कुञ्जीहरूलाई मानहरूमा मैप गर्ने र ह्यास प्रकार्य प्रयोग गरेर छिटो खोजी प्रदान गर्ने डेटा संरचना।',
+    category: 'Data Structures'
+  },
+  {
+    term: 'Docker',
+    termNe: 'Docker',
+    definition: 'A platform for developing, shipping, and running applications in containers.',
+    definitionNe: 'कन्टेनरहरूमा अनुप्रयोगहरू विकास, शिपिङ, र चलाउने प्लेटफर्म।',
+    category: 'DevOps'
+  },
+  {
+    term: 'Kubernetes',
+    termNe: 'Kubernetes',
+    definition: 'An open-source container orchestration platform for automating deployment and scaling.',
+    definitionNe: 'स्वचालित deployment र scaling को लागि खुला-स्रोत कन्टेनर अर्केस्ट्रेशन प्लेटफर्म।',
+    category: 'DevOps'
+  },
+  {
+    term: 'REST API',
+    termNe: 'REST API',
+    definition: 'An architectural style for designing networked applications using HTTP methods.',
+    definitionNe: 'HTTP विधिहरू प्रयोग गरेर नेटवर्क अनुप्रयोगहरू डिजाइन गर्ने वास्तुकला शैली।',
+    category: 'Web'
+  },
+  {
+    term: 'CRUD',
+    termNe: 'CRUD',
+    definition: 'Create, Read, Update, Delete - the four basic operations of persistent storage.',
+    definitionNe: 'सिर्जना, पढ्नुहोस्, अपडेट, डिलीट - दीर्घकालीन भण्डारणका चारवटा आधारभूत सञ्चालनहरू।',
+    category: 'Database'
+  },
+  {
+    term: 'SQL',
+    termNe: 'SQL',
+    definition: 'Structured Query Language - a language for managing relational databases.',
+    definitionNe: 'संरचित क्वेरी भाषा - रिलेशनल डेटाबेसहरू प्रबन्धन गर्ने भाषा।',
+    category: 'Database'
+  },
+  {
+    term: 'NoSQL',
+    termNe: 'NoSQL',
+    definition: 'Non-relational databases that provide flexible schemas and horizontal scaling.',
+    definitionNe: 'लचिलो स्किमा र क्षैतिज स्केलिंग प्रदान गर्ने गैर-रिलेशनल डेटाबेसहरू।',
+    category: 'Database'
+  },
+  {
+    term: 'Machine Learning',
+    termNe: 'मेशिन लर्निङ',
+    definition: 'A subset of AI that enables systems to learn and improve from experience.',
+    definitionNe: 'अनुभवबाट सिक्न र सुधार्न सक्षम बनाउने AI को उपसमूह।',
+    category: 'AI'
+  },
+  {
+    term: 'Neural Network',
+    termNe: 'न्यूरल नेटवर्क',
+    definition: 'A computing system inspired by biological neural networks for pattern recognition.',
+    definitionNe: 'पैटर्न पहिचानको लागि जैविक न्यूरल नेटवर्कहरूबाट प्रेरित कम्प्युटिङ प्रणाली।',
+    category: 'AI'
+  },
+  {
+    term: 'Encryption',
+    termNe: 'इन्क्रिप्सन',
+    definition: 'The process of converting data into a coded format to prevent unauthorized access.',
+    definitionNe: 'अनधिकृत पहुँच रोक्न डेटालाई कोडेड ढाँचामा रूपांतरण गर्ने प्रक्रिया।',
+    category: 'Security'
+  },
+  {
+    term: 'Agile',
+    termNe: 'एजाइल',
+    definition: 'A project management methodology emphasizing iterative development and collaboration.',
+    definitionNe: 'दोहोरिने विकास र सहयोगमा जोड दिने परियोजना व्यवस्थापन पद्धति।',
+    category: 'Methodology'
+  },
+  {
+    term: 'Scrum',
+    termNe: 'स्क्रम',
+    definition: 'An Agile framework for managing complex software development projects.',
+    definitionNe: 'जटिल सफ्टवेयर विकास परियोजनाहरू व्यवस्थापनको लागि एजाइल फ्रेमवर्क।',
+    category: 'Methodology'
   }
 ];

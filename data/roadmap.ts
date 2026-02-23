@@ -74,15 +74,15 @@ export const roadmap: RoadmapPhase[] = [
   },
   {
     id: 6,
-    title: 'Data Structures & Algorithms',
-    titleNe: 'डेटा संरचना र एल्गोरिदम',
-    description: 'Master DSA - essential for coding interviews and efficient programming.',
-    descriptionNe: 'DSA मा महारत हासिल गर्नुहोस् - कोडिङ इन्टरव्यू र दक्ष प्रोग्रामिङको लागि आवश्यक।',
-    icon: '🧮',
-    color: '#6c5ce7',
-    courses: [],
-    duration: '8-12 weeks',
-    durationNe: '८-१२ हप्ता'
+    title: 'JavaScript Programming',
+    titleNe: 'JavaScript प्रोग्रामिङ',
+    description: 'Learn JavaScript - the programming language of the web. Add interactivity to your websites.',
+    descriptionNe: 'JavaScript सिक्नुहोस् - वेबको प्रोग्रामिंग भाषा। आफ्नो वेबसाइटहरूमा अन्तरक्रियात्मकता थप्नुहोस्।',
+    icon: '🟨',
+    color: '#f7df1e',
+    courses: ['javascript-basics'],
+    duration: '6-8 weeks',
+    durationNe: '६-८ हप्ता'
   },
   {
     id: 7,
