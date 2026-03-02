@@ -3901,6 +3901,1157 @@ try {
         ]
       }
     ]
+  },
+  // Phase 7: Data Structures & Algorithms
+  {
+    id: 'dsa-fundamentals',
+    title: { en: 'Data Structures & Algorithms', ne: 'डेटा संरचना र एल्गोरिदम' },
+    slug: 'dsa-fundamentals',
+    description: { en: 'Master DSA for Big Tech interviews. Arrays, Trees, Graphs, DP, and more.', ne: 'बिग टेक इन्टरभ्यूको लागि DSA मास्टर गर्नुहोस्। एरे, ट्री, ग्राफ, DP, र अरू।' },
+    phase: 7,
+    icon: '🧮',
+    color: '#1a1a2e',
+    lessons: [
+      {
+        id: 'dsa-arrays',
+        slug: 'arrays-and-strings',
+        title: { en: 'Arrays & Strings', ne: 'एरे र स्ट्रिङ' },
+        content: {
+          en: `# Arrays & Strings
+
+Arrays and strings are the most fundamental data structures. Master these before moving to complex topics.
+
+## Arrays
+
+An array stores elements in contiguous memory. Access by index is O(1).
+
+### Common Operations:
+- Access: O(1)
+- Search: O(n)
+- Insert/Delete at end: O(1)
+- Insert/Delete at beginning: O(n)
+
+### Key Patterns:
+
+**Prefix Sum**: Useful for range queries.
+\`\`\`
+prefix[i] = sum of arr[0] to arr[i]
+rangeSum(l,r) = prefix[r] - prefix[l-1]
+\`\`\`
+
+**Two Pointers**: For sorted arrays.
+- One at start, one at end
+- Move based on comparison
+
+### LeetCode Problems:
+- Two Sum (Easy)
+- Maximum Subarray (Kadane's)
+- Product of Array Except Self`,
+          ne: `# एरे र स्ट्रिङ
+
+एरे र स्ट्रिङ सबैभन्दा मूलभूत डेटा संरचना हुन्। जटिल विषयहरूमा जानु अघि यीमा महारत हासिल गर्नुहोस्।
+
+## एरे
+
+एरेले तत्वहरू लगातार मेमोरीमा भण्डारण गर्छ। इन्डेक्सद्वारा पहुँच O(1) हो।
+
+### सामान्य सञ्चालन:
+- पहुँच: O(1)
+- खोज: O(n)
+- अन्त्यमा घुसाउनु/हटाउनु: O(1)
+- सुरुमा घुसाउनु/हटाउनु: O(n)
+
+### प्रमुख प्याटर्न:
+
+**प्रिफिक्स सम**: दायरा प्रश्नहरूको लागि उपयोगी।
+\`\`\`
+prefix[i] = arr[0] देखि arr[i] को योग
+rangeSum(l,r) = prefix[r] - prefix[l-1]
+\`\`\`
+
+**टू पोइन्टर्स**: क्रमबद्ध एरेहरूको लागि।
+- एउटा सुरुमा, एउटा अन्त्यमा
+- तुलनाको आधारमा सार्नुहोस्`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Two Sum - O(n) time, O(n) space
+def twoSum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+
+# Test
+print(twoSum([2,7,11,15], 9))  # [0,1]`,
+            explanation: { en: 'Use a hash map to store seen numbers. For each number, check if (target - num) exists.', ne: 'देखिएका नम्बरहरू भण्डारण गर्न हैश म्याप प्रयोग गर्नुहोस्। प्रत्येक नम्बरको लागि, (target - num) छ कि छैन जाँच्नुहोस्।' }
+          },
+          {
+            language: 'javascript',
+            code: `// Maximum Subarray - Kadane's Algorithm
+function maxSubArray(nums) {
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+  
+  for (let i = 1; i < nums.length; i++) {
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    maxSum = Math.max(maxSum, currentSum);
+  }
+  return maxSum;
+}
+
+// Test
+console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])); // 6`,
+            explanation: { en: 'If current sum becomes negative, start fresh from current element.', ne: 'यदि हालको योग नकारात्मक भयो, हालको तत्वबाट नयाँ सुरु गर्नुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-arr-q1',
+            question: { en: 'What is the time complexity of accessing an element in an array by index?', ne: 'इन्डेक्स द्वारा एरेको एलिमेन्ट पहुँच गर्ने समय जटिलता के हो?' },
+            options: { en: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'], ne: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'] },
+            correctAnswer: 0,
+            explanation: { en: 'Array access by index is O(1) because elements are stored in contiguous memory.', ne: 'इन्डेक्स द्वारा एरे पहुँच O(1) हो किनभने तत्वहरू लगातार मेमोरीमा भण्डारण हुन्छन्।' }
+          },
+          {
+            id: 'dsa-arr-q2',
+            question: { en: 'Which algorithm is used to find the maximum subarray sum in O(n) time?', ne: 'अधिकतम सबअरे योग O(n) समयमा पत्ता लगाउन कुन एल्गोरिदम प्रयोग हुन्छ?' },
+            options: { en: ['Quick Sort', 'Kadane\'s Algorithm', 'Binary Search', 'DFS'], ne: ['क्विक सर्ट', 'कडेनको एल्गोरिदम', 'बाइनरी सर्च', 'DFS'] },
+            correctAnswer: 1,
+            explanation: { en: 'Kadane\'s algorithm finds max subarray in O(n) by tracking current sum and max sum.', ne: 'कडेनको एल्गोरिदम हालको योग र अधिकतम योग ट्र्याक गरेर O(n) मा अधिकतम सबअरे पत्ता लगाउँछ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-linked-lists',
+        slug: 'linked-lists',
+        title: { en: 'Linked Lists', ne: 'लिंक्ड लिष्ट' },
+        content: {
+          en: `# Linked Lists
+
+A linked list is a linear data structure where elements are stored in nodes, each pointing to the next.
+
+## Types:
+- **Singly Linked List**: Each node points to next
+- **Doubly Linked List**: Each node points to both next and previous
+
+## Complexity:
+- Access: O(n)
+- Search: O(n)
+- Insert/Delete at beginning: O(1)
+- Insert/Delete at end: O(n) (O(1) with tail pointer)
+
+## Key Techniques:
+1. **Fast & Slow Pointers**: Find middle, detect cycle
+2. **Dummy Node**: Simplifies edge cases
+3. **Reversal**: In-place reversal technique`,
+          ne: `# लिंक्ड लिष्ट
+
+लिंक्ड लिष्ट एक रैखिक डेटा संरचना हो जहाँ तत्वहरू नोडहरूमा भण्डारण हुन्छन्, प्रत्येकले अर्कोलाई औंल्याउँछ।
+
+## प्रकार:
+- **सिंगली लिंक्ड लिष्ट**: प्रत्येक नोडले अर्कोलाई औंल्याउँछ
+- **डबली लिंक्ड लिष्ट**: प्रत्येक नोडले अर्को र अघिल्लो दुवैलाई औंल्याउँछ
+
+## जटिलता:
+- पहुँच: O(n)
+- खोज: O(n)
+- सुरुमा घुसाउनु/हटाउनु: O(1)
+- अन्त्यमा घुसाउनु/हटाउनु: O(n) (टेल पोइन्टरसँग O(1))
+
+## प्रमुख तकनीकहरू:
+1. **फास्ट र स्लो पोइन्टर**: मध्य भाग पत्ता लगाउनु, चक्र पत्ता लगाउनु
+2. **डमी नोड**: एज केसहरू सरल बनाउँछ
+3. **रिभर्सल**: इन-प्लेस रिभर्सल तकनीक`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Reverse Linked List
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverseList(head):
+    prev = None
+    current = head
+    
+    while current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    
+    return prev`,
+            explanation: { en: 'Use three pointers: prev, current, next. Reverse each link one by one.', ne: 'तीन पोइन्टर प्रयोग गर्नुहोस्: prev, current, next। प्रत्येक लिंक एक एक गरेर उल्टाउनुहोस्।' }
+          },
+          {
+            language: 'javascript',
+            code: `// Detect Cycle in Linked List
+function hasCycle(head) {
+  let slow = head;
+  let fast = head;
+  
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    
+    if (slow === fast) return true;
+  }
+  return false;
+}`,
+            explanation: { en: 'If there\'s a cycle, fast pointer will eventually meet slow pointer.', ne: 'यदि चक्र छ भने, फास्ट पोइन्टर अन्ततः स्लो पोइन्टरसँग भेटिनेछ।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-ll-q1',
+            question: { en: 'What is the time complexity of inserting at the beginning of a singly linked list?', ne: 'सिंगली लिंक्ड लिष्टको सुरुमा घुसाउने समय जटिलता के हो?' },
+            options: { en: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'], ne: ['O(1)', 'O(n)', 'O(log n)', 'O(n²)'] },
+            correctAnswer: 0,
+            explanation: { en: 'Inserting at the beginning is O(1) - just update the head pointer.', ne: 'सुरुमा घुसाउनु O(1) हो - केवल हेड पोइन्टर अपडेट गर्नुहोस्।' }
+          },
+          {
+            id: 'dsa-ll-q2',
+            question: { en: 'Which technique is used to find the middle of a linked list in one pass?', ne: 'एक पासमा लिंक्ड लिष्टको मध्य भाग पत्ता लगाउन कुन तकनीक प्रयोग हुन्छ?' },
+            options: { en: ['Hash Table', 'Fast & Slow Pointers', 'Stack', 'Recursion'], ne: ['ह्यास टेबल', 'फास्ट र स्लो पोइन्टर', 'स्ट्याक', 'रिकर्सन'] },
+            correctAnswer: 1,
+            explanation: { en: 'Fast pointer moves 2 steps, slow moves 1 step. When fast reaches end, slow is at middle.', ne: 'फास्ट पोइन्टर 2 स्टेप सार्छ, स्लो 1 स्टेप। जब फास्ट अन्त्यमा पुग्छ, स्लो मध्यमा हुन्छ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-stacks',
+        slug: 'stacks-queues',
+        title: { en: 'Stacks & Queues', ne: 'स्ट्याक र क्यू' },
+        content: {
+          en: `# Stacks & Queues
+
+## Stack (LIFO - Last In First Out)
+- push(), pop(), peek()
+- Time: O(1) for all operations
+- Used in: DFS, expression evaluation, parentheses matching
+
+## Queue (FIFO - First In First Out)
+- enqueue(), dequeue(), peek()
+- Time: O(1) for all operations
+- Used in: BFS, level order traversal
+
+## Monotonic Stack
+Special pattern for problems like "next greater element".
+Maintains elements in increasing or decreasing order.`,
+          ne: `# स्ट्याक र क्यू
+
+## स्ट्याक (LIFO - Last In First Out)
+- push(), pop(), peek()
+- समय: सबै सञ्चालनको लागि O(1)
+- प्रयोग: DFS, expression evaluation, parentheses matching
+
+## क्यू (FIFO - First In First Out)
+- enqueue(), dequeue(), peek()
+- समय: सबै सञ्चालनको लागि O(1)
+- प्रयोग: BFS, level order traversal
+
+## मोनोटोनिक स्ट्याक
+"next greater element" जस्ता समस्याहरूको लागि विशेष प्याटर।
+तत्वहरू बढ्दो वा घट्दो क्रममा राख्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Valid Parentheses
+def isValid(s):
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in mapping:
+            if not stack or stack.pop() != mapping[char]:
+                return False
+        else:
+            stack.append(char)
+    
+    return len(stack) == 0`,
+            explanation: { en: 'Use stack to track opening brackets. Close must match most recent open.', ne: 'खोल्ने ब्र्याकेट ट्र्याक गर्न स्ट्याक प्रयोग गर्नुहोस्। बन्द हाल्को खुला सँग मेल हुनुपर्छ।' }
+          },
+          {
+            language: 'javascript',
+            code: `// BFS using Queue
+function bfs(root) {
+  if (!root) return [];
+  
+  const result = [];
+  const queue = [root];
+  
+  while (queue.length > 0) {
+    const levelSize = queue.length;
+    const currentLevel = [];
+    
+    for (let i = 0; i < levelSize; i++) {
+      const node = queue.shift();
+      currentLevel.push(node.val);
+      
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    result.push(currentLevel);
+  }
+  return result;
+}`,
+            explanation: { en: 'Process level by level using queue. Add children to queue for next level.', ne: 'क्यू प्रयोग गरेर लेभल द्वारा प्रक्रिया गर्नुहोस्। अर्को लेभलको लागि क्यूमा बच्चाहरू थप्नुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-stack-q1',
+            question: { en: 'What data structure does BFS (Breadth-First Search) use?', ne: 'BFS (Breadth-First Search) ले कुन डेटा संरचना प्रयोग गर्छ?' },
+            options: { en: ['Stack', 'Queue', 'Heap', 'Tree'], ne: ['स्ट्याक', 'क्यू', 'हिप', 'ट्री'] },
+            correctAnswer: 1,
+            explanation: { en: 'BFS uses Queue to process nodes level by level.', ne: 'BFS ले लेभल द्वारा नोडहरू प्रक्रिया गर्न Queue प्रयोग गर्छ।' }
+          },
+          {
+            id: 'dsa-stack-q2',
+            question: { en: 'Which data structure is ideal for checking balanced parentheses?', ne: 'संतुलित parentheses जाँच गर्न कुन डेटा संरचना उपयुक्त छ?' },
+            options: { en: ['Queue', 'Stack', 'Array', 'Linked List'], ne: ['क्यू', 'स्ट्याक', 'एरे', 'लिंक्ड लिष्ट'] },
+            correctAnswer: 1,
+            explanation: { en: 'Stack is perfect - push opening brackets, pop and match when closing.', ne: 'स्ट्याक उपयुक्त छ - खुला ब्र्याकेट घुसाउनुहोस्, बन्द हुँदा मिलाएर हटाउनुहोस्।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-trees',
+        slug: 'trees',
+        title: { en: 'Trees', ne: 'ट्री' },
+        content: {
+          en: `# Trees
+
+A tree is a hierarchical structure with nodes connected by edges. Binary trees have at most 2 children.
+
+## Traversals:
+1. **Inorder**: Left → Root → Right
+2. **Preorder**: Root → Left → Right
+3. **Postorder**: Left → Right → Root
+4. **Level Order**: BFS level by level
+
+## Binary Search Tree (BST):
+- Left subtree < Root < Right subtree
+- Search: O(log n) average
+
+## Common Problems:
+- Invert binary tree
+- Validate BST
+- Lowest Common Ancestor
+- Diameter of tree`,
+          ne: `# ट्री
+
+ट्री एउटा पदानुक्रमित संरचना हो जहाँ नोडहरू एजहरूद्वारा जोडिएका हुन्छन्। बाइनरी ट्रीहरूमा अधिकतम 2 बच्चाहरू हुन्छन्।
+
+## ट्राभर्सल:
+1. **इनअर्डर**: बायाँ → रूट → दायाँ
+2. **प्रीअर्डर**: रूट → बायाँ → दायाँ
+3. **पोस्टअर्डर**: बायाँ → दायाँ → रूट
+4. **लेभल अर्डर**: BFS लेभल द्वारा
+
+## बाइनरी सर्च ट्री (BST):
+- बायाँ सबट्री < रूट < दायाँ सबट्री
+- खोज: औसत O(log n)
+
+## सामान्य समस्याहरू:
+- बाइनरी ट्री उल्टाउनु
+- BST मान्यता
+- सबैभन्दा तलको सामान्य पूर्वज`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Inorder Traversal (Recursive)
+def inorder(root):
+    return inorder(root.left) + [root.val] + inorder(root.right) if root else []
+
+# Level Order Traversal
+from collections import deque
+
+def levelOrder(root):
+    if not root: return []
+    result = []
+    queue = deque([root])
+    
+    while queue:
+        level = []
+        for _ in range(len(queue)):
+            node = queue.popleft()
+            level.append(node.val)
+            if node.left: queue.append(node.left)
+            if node.right: queue.append(node.right)
+        result.append(level)
+    
+    return result`,
+            explanation: { en: 'Inorder gives sorted order for BST. Level order uses queue for BFS.', ne: 'इनअर्डर BST को लागि क्रमबद्ध क्रम दिन्छ। लेभल अर्डर BFS को लागि क्यू प्रयोग गर्छ।' }
+          },
+          {
+            language: 'javascript',
+            code: `// Validate BST
+function isValidBST(root, min = null, max = null) {
+  if (!root) return true;
+  
+  if (min !== null && root.val <= min) return false;
+  if (max !== null && root.val >= max) return false;
+  
+  return isValidBST(root.left, min, root.val) &&
+         isValidBST(root.right, root.val, max);
+}`,
+            explanation: { en: 'Track min/max bounds for each subtree. Left must be < current < right.', ne: 'प्रत्येक सबट्रीको लागि min/max सीमा ट्र्याक गर्नुहोस्। बायाँ < हालको < दायाँ हुनुपर्छ।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-tree-q1',
+            question: { en: 'Which traversal gives nodes in sorted order for a BST?', ne: 'कुन ट्राभर्सलले BST को लागि नोडहरू क्रमबद्ध क्रममा दिन्छ?' },
+            options: { en: ['Preorder', 'Postorder', 'Inorder', 'Level Order'], ne: ['प्रीअर्डर', 'पोस्टअर्डर', 'इनअर्डर', 'लेभल अर्डर'] },
+            correctAnswer: 2,
+            explanation: { en: 'Inorder traversal visits left, then root, then right - giving sorted order in BST.', ne: 'इनअर्डर ट्राभर्सलले बायाँ, त्यसपछि रूट, त्यसपछि दायाँ भ्रमण गर्छ - BST मा क्रमबद्ध क्रम दिन्छ।' }
+          },
+          {
+            id: 'dsa-tree-q2',
+            question: { en: 'What is the time complexity of search in a balanced BST?', ne: 'संतुलित BST मा खोजको समय जटिलता के हो?' },
+            options: { en: ['O(n)', 'O(log n)', 'O(1)', 'O(n log n)'], ne: ['O(n)', 'O(log n)', 'O(1)', 'O(n log n)'] },
+            correctAnswer: 1,
+            explanation: { en: 'Search in balanced BST is O(log n) as we eliminate half each step.', ne: 'संतुलित BST मा खोज O(log n) हो किनभने प्रत्येक चरणमा आधा हटाउँछौं।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-graphs',
+        slug: 'graphs',
+        title: { en: 'Graphs', ne: 'ग्राफ' },
+        content: {
+          en: `# Graphs
+
+Graphs consist of vertices (nodes) and edges connecting them.
+
+## Representations:
+1. **Adjacency List**: Map<Vertex, List<Vertex>>
+2. **Adjacency Matrix**: 2D array
+
+## Traversal:
+- **DFS**: Stack or recursion - O(V + E)
+- **BFS**: Queue - O(V + E)
+
+## Key Algorithms:
+1. **Dijkstra**: Shortest path with weights (non-negative)
+2. **Union-Find**: Cycle detection, connected components
+3. **Topological Sort**: DAG ordering`,
+          ne: `# ग्राफ
+
+ग्राफमा भर्टेक्स (नोड) र तिनीहरूलाई जोड्ने एजहरू हुन्छन्।
+
+## प्रतिनिधित्व:
+1. **एडजेसेंसी लिष्ट**: Map<Vertex, List<Vertex>>
+2. **एडजेसेंसी म्याट्रिक्स**: 2D एरे
+
+## ट्राभर्सल:
+- **DFS**: स्ट्याक वा रिकर्सन - O(V + E)
+- **BFS**: क्यू - O(V + E)
+
+## प्रमुख एल्गोरिदम:
+1. **डिज्क्स्ट्रा**: भारको साथ सबैभन्दा छोटो बाटो (गैर-नकारात्मक)
+2. **यूनियन-फाइन्ड**: चक्र पत्ता लगाउनु, जोडिएका कम्पोनेन्ट्स
+3. **टोपोलोजिकल सर्ट**: DAG क्रम`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# DFS Traversal
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    
+    visited.add(start)
+    print(start, end=' ')
+    
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
+
+# Graph as adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+dfs(graph, 'A')`,
+            explanation: { en: 'DFS uses recursion/stack to explore as far as possible before backtracking.', ne: 'DFS ले ब्याकट्र्याकिङ अघि जति सक्दो टाढा अन्वेषण गर्न रिकर्सन/स्ट्याक प्रयोग गर्छ।' }
+          },
+          {
+            language: 'javascript',
+            code: `// BFS Shortest Path
+function bfsShortestPath(graph, start, end) {
+  const queue = [[start]];
+  const visited = new Set([start]);
+  
+  while (queue.length > 0) {
+    const path = queue.shift();
+    const node = path[path.length - 1];
+    
+    if (node === end) return path;
+    
+    for (const neighbor of graph[node] || []) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.push([...path, neighbor]);
+      }
+    }
+  }
+  return -1;
+}`,
+            explanation: { en: 'BFS finds shortest path in unweighted graph by exploring level by level.', ne: 'BFS ले लेभल द्वारा अन्वेषण गरेर अनवेटेड ग्राफमा सबैभन्दा छोटो बाटो पत्ता लगाउँछ।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-graph-q1',
+            question: { en: 'What data structure is used in BFS traversal?', ne: 'BFS ट्राभर्सलमा कुन डेटा संरचना प्रयोग हुन्छ?' },
+            options: { en: ['Stack', 'Queue', 'Heap', 'Tree'], ne: ['स्ट्याक', 'क्यू', 'हिप', 'ट्री'] },
+            correctAnswer: 1,
+            explanation: { en: 'BFS uses Queue to explore level by level.', ne: 'BFS ले लेभल द्वारा अन्वेषण गर्न Queue प्रयोग गर्छ।' }
+          },
+          {
+            id: 'dsa-graph-q2',
+            question: { en: 'Which algorithm finds shortest path with non-negative weights?', ne: 'गैर-नकारात्मक भारको साथ सबैभन्दा छोटो बाटो कुन एल्गोरिदमले पत्ता लगाउछ?' },
+            options: { en: ['DFS', 'BFS', 'Dijkstra', 'Bellman-Ford'], ne: ['DFS', 'BFS', 'डिज्क्स्ट्रा', 'बेलमन-फोर्ड'] },
+            correctAnswer: 2,
+            explanation: { en: 'Dijkstra finds shortest path with non-negative weights in O((V+E)logV).', ne: 'डिज्क्स्ट्रा O((V+E)logV) मा गैर-नकारात्मक भारको साथ सबैभन्दा छोटो बाटो पत्ता लगाउँछ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-hashing',
+        slug: 'hash-tables',
+        title: { en: 'Hash Tables', ne: 'ह्यास टेबल' },
+        content: {
+          en: `# Hash Tables
+
+Hash tables store key-value pairs with O(1) average access.
+
+## Complexity:
+- Insert: O(1) average
+- Delete: O(1) average
+- Search: O(1) average
+
+## Collision Handling:
+1. **Chaining**: Linked list at each bucket
+2. **Open Addressing**: Linear/Quadratic probing
+
+## Common Patterns:
+- Two Sum
+- Subarray sum equals k
+- Longest substring without repeat`,
+          ne: `# ह्यास टेबल
+
+ह्यास टेबलले O(1) औसत पहुँचसहित कि-भ्याल्यू जोडीहरू भण्डारण गर्छ।
+
+## जटिलता:
+- घुसाउनु: O(1) औसत
+- हटाउनु: O(1) औसत
+- खोज: O(1) औसत
+
+## टक्कर ह्यान्डलिंग:
+1. **चेनिंग**: प्रत्येक बकेटमा लिंक्ड लिष्ट
+2. **ओपन एड्रेसिंग**: लिनियर/क्वाड्रेटिक प्रोबिंग`
+
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Longest Substring Without Repeating
+def lengthOfLongestSubstring(s):
+    char_set = set()
+    left = 0
+    max_length = 0
+    
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+print(lengthOfLongestSubstring("abcabcbb"))  # 3`,
+            explanation: { en: 'Use sliding window with set. Expand right, shrink left when duplicate found.', ne: 'सेटसँग स्लाइडिङ विंडो प्रयोग गर्नुहोस्। डुप्लिकेट भएमा दायाँ विस्तार गर्नुहोस्, बायाँ साँगोल्नुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-hash-q1',
+            question: { en: 'What is the average time complexity for hash table search?', ne: 'ह्यास टेबल खोजको औसत समय जटिलता के हो?' },
+            options: { en: ['O(n)', 'O(log n)', 'O(1)', 'O(n log n)'], ne: ['O(n)', 'O(log n)', 'O(1)', 'O(n log n)'] },
+            correctAnswer: 2,
+            explanation: { en: 'Hash tables provide O(1) average search using hash function.', ne: 'ह्यास टेबलले ह्यास फंक्शन प्रयोग गरेर O(1) औसत खोज प्रदान गर्छ।' }
+          },
+          {
+            id: 'dsa-hash-q2',
+            question: { en: 'What technique handles collisions in hash tables by using linked lists?', ne: 'ह्यास टेबलमा कुन तकनीकले लिंक्ड लिष्ट प्रयोग गरेर टक्कर ह्यान्डल गर्छ?' },
+            options: { en: ['Probing', 'Chaining', 'Resizing', 'Bucketing'], ne: ['प्रोबिंग', 'चेनिंग', 'रिसाइजिंग', 'बकेटिंग'] },
+            correctAnswer: 1,
+            explanation: { en: 'Chaining handles collisions by storing multiple items in a linked list at each bucket.', ne: 'चेनिंगले प्रत्येक बकेटमा लिंक्ड लिष्टमा धेरै आइटम भण्डारण गरेर टक्कर ह्यान्डल गर्छ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-sorting',
+        slug: 'sorting-algorithms',
+        title: { en: 'Sorting Algorithms', ne: 'सर्टिंग एल्गोरिदम' },
+        content: {
+          en: `# Sorting Algorithms
+
+## Comparison Sorting:
+- **Merge Sort**: O(n log n), stable, divide & conquer
+- **Quick Sort**: O(n log n) avg, unstable, in-place
+- **Heap Sort**: O(n log n), unstable, uses heap
+
+## Non-comparison:
+- **Counting Sort**: O(n + k), for integers
+- **Radix Sort**: O(nk), digit by digit
+
+## When to Use:
+- General: Quick Sort or Merge Sort
+- Nearly sorted: Insertion Sort
+- Integers with limited range: Counting Sort`,
+          ne: `# सर्टिंग एल्गोरिदम
+
+## तुलना सर्टिंग:
+- **मर्ज सर्ट**: O(n log n), स्थिर, divide & conquer
+- **क्विक सर्ट**: O(n log n) औसत, अस्थिर, इन-प्लेस
+- **हिप सर्ट**: O(n log n), अस्थिर, हिप प्रयोग गरेर
+
+## गैर-तुलना:
+- **काउंटिंग सर्ट**: O(n + k), इन्टिजरको लागि
+- **रेडिक्स सर्ट**: O(nk), अंक दर अंक`
+
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Merge Sort
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    
+    return merge(left, right)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result`,
+            explanation: { en: 'Divide array in half, sort recursively, then merge sorted halves.', ne: 'एरेलाई आधामा विभाजन गर्नुहोस्, रिकर्सिभली सर्ट गर्नुहोस्, त्यसपछि सर्टेड आधाहरू मर्ज गर्नुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-sort-q1',
+            question: { en: 'What is the time complexity of Merge Sort?', ne: 'मर्ज सर्टको समय जटिलता के हो?' },
+            options: { en: ['O(n)', 'O(n log n)', 'O(log n)', 'O(n²)'], ne: ['O(n)', 'O(n log n)', 'O(log n)', 'O(n²)'] },
+            correctAnswer: 1,
+            explanation: { en: 'Merge Sort is O(n log n) - divides in log n levels, merges at each level.', ne: 'मर्ज सर्ट O(n log n) हो - log n स्तरहरूमा विभाजन गर्छ, प्रत्येक स्तरमा मर्ज गर्छ।' }
+          },
+          {
+            id: 'dsa-sort-q2',
+            question: { en: 'Which sorting algorithm is stable?', ne: 'कुन सर्टिंग एल्गोरिदम स्थिर (stable) हो?' },
+            options: { en: ['Quick Sort', 'Heap Sort', 'Merge Sort', 'Selection Sort'], ne: ['क्विक सर्ट', 'हिप सर्ट', 'मर्ज सर्ट', 'सेलेक्शन सर्ट'] },
+            correctAnswer: 2,
+            explanation: { en: 'Merge Sort maintains relative order of equal elements - it is stable.', ne: 'मर्ज सर्टले बराबर तत्वहरूको सापेक्ष क्रम कायम राख्छ - यो स्थिर हो।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-binary-search',
+        slug: 'binary-search',
+        title: { en: 'Binary Search', ne: 'बाइनरी सर्च' },
+        content: {
+          en: `# Binary Search
+
+Binary search finds element in O(log n) time on sorted arrays.
+
+## Standard Binary Search:
+\`\`\`
+while left <= right:
+    mid = (left + right) // 2
+    if arr[mid] == target: return mid
+    elif arr[mid] < target: left = mid + 1
+    else: right = mid - 1
+\`\`\`
+
+## Variants:
+1. **Left Boundary**: Find first occurrence
+2. **Right Boundary**: Find last occurrence
+3. **Search in rotated array
+
+## Common Problems:
+- Search in rotated sorted array
+- Find peak element
+- Search insert position`,
+          ne: `# बाइनरी सर्च
+
+बाइनरी सर्चले क्रमबद्ध एरेमा O(log n) समयमा तत्व पत्ता लगाउँछ।
+
+## मानक बाइनरी सर्च:
+\`\`\`
+while left <= right:
+    mid = (left + right) // 2
+    if arr[mid] == target: return mid
+    elif arr[mid] < target: left = mid + 1
+    else: right = mid - 1
+\`\`\`
+
+## भेरियन्ट:
+1. **बायाँ बाउन्ड्री**: पहिलो घटना पत्ता लगाउनु
+2. **दायाँ बाउन्ड्री**: अन्तिम घटना पत्ता लगाउनु
+3. **रोटेटेड एरेमा खोज`
+
+        },
+        codeExamples: [
+          {
+            language: 'javascript',
+            code: `// Search in Rotated Sorted Array
+function search(nums, target) {
+  let left = 0, right = nums.length - 1;
+  
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    
+    // Left half is sorted
+    if (nums[left] <= nums[mid]) {
+      if (target >= nums[left] && target < nums[mid]) {
+        right = mid - 1;
+      } else {
+        left = mid + 1;
+      }
+    } 
+    // Right half is sorted
+    else {
+      if (target > nums[mid] && target <= nums[right]) {
+        left = mid + 1;
+      } else {
+        right = mid - 1;
+      }
+    }
+  }
+  return -1;
+}`,
+            explanation: { en: 'Determine which half is sorted, then check if target lies in that range.', ne: 'कुन आधा सर्टेड छ निर्धारण गर्नुहोस्, त्यसपछि तार्केट त्यस दायरामा छ कि छैन जाँच्नुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-bs-q1',
+            question: { en: 'What is the time complexity of binary search?', ne: 'बाइनरी सर्चको समय जटिलता के हो?' },
+            options: { en: ['O(n)', 'O(log n)', 'O(1)', 'O(n log n)'], ne: ['O(n)', 'O(log n)', 'O(1)', 'O(n log n)'] },
+            correctAnswer: 1,
+            explanation: { en: 'Binary search halves the search space each iteration - O(log n).', ne: 'बाइनरी सर्चले प्रत्येक इटरेशनमा खोज स्पेस आधा घटाउँछ - O(log n)।' }
+          },
+          {
+            id: 'dsa-bs-q2',
+            question: { en: 'What prerequisite must be met for binary search to work?', ne: 'बाइनरी सर्च काम गर्नको लागि कुन पूर्व-शर्त पूरा हुनुपर्छ?' },
+            options: { en: ['Array must be unsorted', 'Array must be sorted', 'Array must have unique elements', 'Array must be empty'], ne: ['एरे अनसर्टेड हुनुपर्छ', 'एरे सर्टेड हुनुपर्छ', 'एरेमा अद्वितीय तत्वहरू हुनुपर्छ', 'एरे खाली हुनुपर्छ'] },
+            correctAnswer: 1,
+            explanation: { en: 'Binary search requires a sorted array to work correctly.', ne: 'बाइनरी सर्चले सही काम गर्नको लागि सर्टेड एरे चाहिन्छ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-recursion',
+        slug: 'recursion-backtracking',
+        title: { en: 'Recursion & Backtracking', ne: 'रिकर्सन र ब्याकट्र्याकिंग' },
+        content: {
+          en: `# Recursion & Backtracking
+
+## Recursion
+Function that calls itself. Must have:
+- Base case (stop condition)
+- Recursive case (call itself)
+
+## Backtracking
+DFS + undo changes. Used for:
+- Generate all permutations/subsets
+- Solve puzzles (N-Queens, Sudoku)
+- Path finding
+
+## Common Patterns:
+1. **Subsets**: Include/exclude each element
+2. **Permutations**: Swap and recurse
+3. **Combinations**: Choose k from n`,
+          ne: `# रिकर्सन र ब्याकट्र्याकिंग
+
+## रिकर्सन
+आफैंले कल गर्ने फंकशन। हुनुपर्छ:
+- बेस केस (रोक्ने सर्त)
+- रिकर्सिभ केस (आफैंले कल गर्ने)
+
+## ब्याकट्र्याकिंग
+DFS + परिवर्तन undo गर्नु। प्रयोग:
+- सबै permutations/subsets उत्पन्न गर्नु
+- पजल समाधान (N-Queens, Sudoku)
+- बाटो खोज्नु`
+
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Generate all subsets (Power Set)
+def subsets(nums):
+    result = []
+    
+    def backtrack(index, current):
+        result.append(current[:])
+        
+        for i in range(index, len(nums)):
+            current.append(nums[i])
+            backtrack(i + 1, current)
+            current.pop()
+    
+    backtrack(0, [])
+    return result
+
+# Or using iteration
+def subsets_iter(nums):
+    result = [[]]
+    for num in nums:
+        result += [subset + [num] for subset in result]
+    return result`,
+            explanation: { en: 'At each element, choose to include or exclude. Build all combinations.', ne: 'प्रत्येक तत्वमा, समावेश गर्ने वा नगर्ने छान्नुहोस्। सबै संयोजनहरू बनाउनुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-rec-q1',
+            question: { en: 'What are the two essential parts of any recursive function?', ne: 'कुनै पनि रिकर्सिभ फंकशनका दुई आवश्यक भागहरू के हुन्?' },
+            options: { en: ['Loop and condition', 'Base case and recursive case', 'Input and output', 'Variable and function'], ne: ['लूप र कन्डिसन', 'बेस केस र रिकर्सिभ केस', 'इनपुट र आउटपुट', 'भेरिएबल र फंकशन'] },
+            correctAnswer: 1,
+            explanation: { en: 'Every recursive function needs base case (stop) and recursive case (call itself).', ne: 'प्रत्येक रिकर्सिभ फंकशनलाई बेस केस (रोक्ने) र रिकर्सिभ केस (आफैंले कल गर्ने) चाहिन्छ।' }
+          },
+          {
+            id: 'dsa-rec-q2',
+            question: { en: 'Which technique is used to explore all possibilities and undo choices?', ne: 'सबै सम्भावनाहरू अन्वेषण गर्न र छनोट undo गर्न कुन तकनीक प्रयोग हुन्छ?' },
+            options: { en: ['Iteration', 'Backtracking', 'Memoization', 'Dynamic Programming'], ne: ['इटरेशन', 'ब्याकट्र्याकिंग', 'मेमोइजेशन', 'डायनामिक प्रोग्रामिंग'] },
+            correctAnswer: 1,
+            explanation: { en: 'Backtracking explores all paths and undoes changes to try other possibilities.', ne: 'ब्याकट्र्याकिंगले सबै बाटोहरू अन्वेषण गर्छ र अरू सम्भावनाहरू प्रयास गर्न परिवर्तनहरू undo गर्छ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-dp',
+        slug: 'dynamic-programming',
+        title: { en: 'Dynamic Programming', ne: 'डायनामिक प्रोग्रामिंग' },
+        content: {
+          en: `# Dynamic Programming
+
+DP optimizes recursion by storing computed results.
+
+## Approaches:
+1. **Top-Down (Memoization)**: Recursion + cache
+2. **Bottom-Up (Tabulation)**: Build table iteratively
+
+## When to Use:
+- Optimal substructure
+- Overlapping subproblems
+
+## Classic Problems:
+1. **Fibonacci**: Can be O(n) with DP
+2. **Knapsack**: 0/1 or unbounded
+3. **LCS**: Longest Common Subsequence
+4. **LIS**: Longest Increasing Subsequence
+5. **Edit Distance**
+6. **Coin Change**`,
+          ne: `# डायनामिक प्रोग्रामिंग
+
+DP ले कम्प्युटेड परिणामहरू भण्डारण गरेर रिकर्सन अप्टिमाइज गर्छ।
+
+## अप्रोच:
+1. **टप-डाउन (मेमोइजेशन)**: रिकर्सन + क्यास
+2. **बटम-अप (ट्याबुलेशन)**: टेबल इटरेशनली बनाउनु
+
+## कहिले प्रयोग गर्ने:
+- अप्टिमल सबस्ट्रक्चर
+- ओभरल्यापिंग सबप्रोब्लम्स`
+
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Fibonacci - Three Ways
+# 1. Naive Recursion - O(2^n)
+def fib_rec(n):
+    if n <= 1: return n
+    return fib_rec(n-1) + fib_rec(n-2)
+
+# 2. Top-Down (Memoization) - O(n)
+def fib_memo(n, memo={}):
+    if n in memo: return memo[n]
+    if n <= 1: return n
+    memo[n] = fib_memo(n-1) + fib_memo(n-2)
+    return memo[n]
+
+# 3. Bottom-Up (Tabulation) - O(n)
+def fib_tab(n):
+    if n <= 1: return n
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i-1] + dp[i-2]
+    return dp[n]
+
+# 4. Space Optimized - O(1)
+def fib_optimized(n):
+    if n <= 1: return n
+    prev, curr = 0, 1
+    for _ in range(2, n + 1):
+        prev, curr = curr, prev + curr
+    return curr`,
+            explanation: { en: 'DP eliminates redundant calculations. Use memo or tabulation.', ne: 'DP ले अनावश्यक गणनाहरू हटाउछ। मेमो वा ट्याबुलेशन प्रयोग गर्नुहोस्।' }
+          },
+          {
+            language: 'javascript',
+            code: `// Coin Change - Minimum coins
+function coinChange(coins, amount) {
+  const dp = new Array(amount + 1).fill(Infinity);
+  dp[0] = 0;
+  
+  for (let i = 1; i <= amount; i++) {
+    for (const coin of coins) {
+      if (coin <= i) {
+        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+      }
+    }
+  }
+  
+  return dp[amount] === Infinity ? -1 : dp[amount];
+}`,
+            explanation: { en: 'Build solution bottom-up. For each amount, try all coins.', ne: 'समाधान बटम-अप बनाउनुहोस्। प्रत्येक राशिको लागि, सबै सिक्के प्रयास गर्नुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-dp-q1',
+            question: { en: 'What are the two key properties for a problem to be solvable by DP?', ne: 'DP द्वारा समाधान योग्य समस्याको लागि दुई प्रमुख गुणहरू के हुन्?' },
+            options: { en: ['Linear and sorted', 'Optimal substructure and overlapping subproblems', 'Sequential and random', 'Static and dynamic'], ne: ['रैखिक र क्रमबद्ध', 'अप्टिमल सबस्ट्रक्चर र ओभरल्यापिंग सबप्रोब्लम्स', 'क्रमिक र यादृच्छिक', 'स्टेटिक र डायनामिक'] },
+            correctAnswer: 1,
+            explanation: { en: 'DP works when problem has optimal substructure and overlapping subproblems.', ne: 'DP तब काम गर्छ जब समस्यामा अप्टिमल सबस्ट्रक्चर र ओभरल्यापिंग सबप्रोब्लम्स हुन्छ।' }
+          },
+          {
+            id: 'dsa-dp-q2',
+            question: { en: 'Which approach builds DP table iteratively from smallest subproblems?', ne: 'कुन अप्रोचले सबैभन्दा सानो सबप्रोब्लम्सबाट इटरेशनली DP टेबल बनाउछ?' },
+            options: { en: ['Memoization', 'Tabulation', 'Recursion', 'Brute Force'], ne: ['मेमोइजेशन', 'ट्याबुलेशन', 'रिकर्सन', 'ब्रुट फोर्स'] },
+            correctAnswer: 1,
+            explanation: { en: 'Tabulation (bottom-up) builds table iteratively from base cases up.', ne: 'ट्याबुलेशन (बटम-अप) ले बेस केसबाट माथि टेबल इटरेशनली बनाउँछ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-two-pointers',
+        slug: 'two-pointers',
+        title: { en: 'Two Pointers', ne: 'टू पोइन्टर्स' },
+        content: {
+          en: `# Two Pointers
+
+Two pointers technique uses O(1) extra space by processing array from both ends.
+
+## Patterns:
+1. **Opposite Direction**: Start from both ends, move towards center
+2. **Same Direction**: Sliding window, maintain window
+
+## Classic Problems:
+- **Container With Most Water**: Opposite pointers
+- **3Sum**: Sort + two pointers
+- **Trapping Rain Water**: Two pointers from ends
+- **Remove Duplicates**: In-place`,
+          ne: `# टू पोइन्टर्स
+
+टू पोइन्टर्स तकनीकले दुवै छेउबाट प्रक्रिया गरेर O(1) अतिरिक्त स्पेस प्रयोग गर्छ।
+
+## प्याटर्न:
+1. **उपलब्ध दिशा**: दुवै छेउबाट सुरु, केंद्रतर्फ सार्नुहोस्
+2. **एकै दिशा**: स्लाइडिङ विंडो, विंडो कायम राख्नुहोस्`
+
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Container With Most Water
+def maxArea(height):
+    left = 0
+    right = len(height) - 1
+    max_area = 0
+    
+    while left < right:
+        width = right - left
+        h = min(height[left], height[right])
+        max_area = max(max_area, width * h)
+        
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+    
+    return max_area
+
+# 3Sum - Find all unique triplets
+def threeSum(nums):
+    nums.sort()
+    result = []
+    
+    for i in range(len(nums) - 2):
+        if i > 0 and nums[i] == nums[i-1]:
+            continue
+        
+        left, right = i + 1, len(nums) - 1
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            if total < 0:
+                left += 1
+            elif total > 0:
+                right -= 1
+            else:
+                result.append([nums[i], nums[left], nums[right]])
+                while left < right and nums[left] == nums[left+1]:
+                    left += 1
+                while left < right and nums[right] == nums[right-1]:
+                    right -= 1
+                left += 1
+                right -= 1
+    
+    return result`,
+            explanation: { en: 'For container: move pointer with smaller height. For 3Sum: fix one, use two pointers for rest.', ne: 'कन्टेनरको लागि: सानो height को पोइन्टर सार्नुहोस्। 3Sum को लागि: एउटा फिक्स गर्नुहोस्, बाँकीको लागि टू पोइन्टर्स।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-tp-q1',
+            question: { en: 'What is the time complexity of two-pointer technique?', ne: 'टू पोइन्टर्स तकनीकको समय जटिलता के हो?' },
+            options: { en: ['O(n²)', 'O(n log n)', 'O(n)', 'O(1)'], ne: ['O(n²)', 'O(n log n)', 'O(n)', 'O(1)'] },
+            correctAnswer: 2,
+            explanation: { en: 'Two pointers typically give O(n) as each pointer moves at most n times.', ne: 'टू पोइन्टर्स सामान्यतः O(n) दिन्छ किनभने प्रत्येक पोइन्टर अधिकतम n पटक सार्छ।' }
+          },
+          {
+            id: 'dsa-tp-q2',
+            question: { en: 'Which problem uses opposite-direction two pointers?', ne: 'कुन समस्याले उपलब्ध-दिशा टू पोइन्टर्स प्रयोग गर्छ?' },
+            options: { en: ['Maximum subarray', 'Container with most water', '3Sum', 'Remove duplicates from sorted array'], ne: ['अधिकतम सबअरे', 'धेरै पानी भएको कन्टेनर', '3Sum', 'क्रमबद्ध एरेबाट डुप्लिकेट हटाउनु'] },
+            correctAnswer: 1,
+            explanation: { en: 'Container with most water uses pointers from opposite ends moving toward center.', ne: 'धेरै पानी भएको कन्टेनरले विपरीत छेउबाट पोइन्टर्स प्रयोग गर्छ।' }
+          }
+        ]
+      },
+      {
+        id: 'dsa-sliding-window',
+        slug: 'sliding-window',
+        title: { en: 'Sliding Window', ne: 'स्लाइडिङ विंडो' },
+        content: {
+          en: `# Sliding Window
+
+Sliding window reduces nested loops to single pass.
+
+## Types:
+1. **Fixed Window**: Same size k
+2. **Dynamic Window**: Variable size
+
+## When to Use:
+- Subarray/substring problems
+- Longest/shortest something
+- Count something
+
+## Common Problems:
+- Maximum sum of k consecutive elements
+- Longest substring without k repeating
+- Minimum window substring`,
+          ne: `# स्लाइडिङ विंडो
+
+स्लाइडिङ विंडोले नेस्टेड लूपलाई एकल पासमा घटाउँछ।
+
+## प्रकार:
+1. **फिक्स्ड विंडो**: Same size k
+2. **डायनामिक विंडो**: Variable size
+
+## कहिले प्रयोग गर्ने:
+- सबअरे/सबस्ट्रिंग समस्याहरू
+- सबैभन्दा लामो/छोटो कुनै कुरा
+- कुनै कुरा गन्ने`
+
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Maximum sum of k consecutive elements
+def maxSumSubarray(arr, k):
+    window_sum = sum(arr[:k])
+    max_sum = window_sum
+    
+    for i in range(k, len(arr)):
+        window_sum += arr[i] - arr[i-k]
+        max_sum = max(max_sum, window_sum)
+    
+    return max_sum
+
+# Longest substring without repeating
+def lengthOfLongestSubstring(s):
+    char_index = {}
+    max_length = 0
+    left = 0
+    
+    for right in range(len(s)):
+        if s[right] in char_index and char_index[s[right]] >= left:
+            left = char_index[s[right]] + 1
+        
+        char_index[s[right]] = right
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length`,
+            explanation: { en: 'Slide window by adding new element and removing old. Track max.', ne: 'नयाँ थपेर र पुरानो हटाएर विंडो सार्नुहोस्। अधिकतम ट्र्याक गर्नुहोस्।' }
+          }
+        ],
+        quiz: [
+          {
+            id: 'dsa-sw-q1',
+            question: { en: 'What is the time complexity of sliding window technique?', ne: 'स्लाइडिङ विंडो तकनीकको समय जटिलता के हो?' },
+            options: { en: ['O(n²)', 'O(n log n)', 'O(n)', 'O(k)'], ne: ['O(n²)', 'O(n log n)', 'O(n)', 'O(k)'] },
+            correctAnswer: 2,
+            explanation: { en: 'Sliding window processes each element at most twice - O(n).', ne: 'स्लाइडिङ विंडोले प्रत्येक तत्व अधिकतम दुई पटक प्रक्रिया गर्छ - O(n)।' }
+          },
+          {
+            id: 'dsa-sw-q2',
+            question: { en: 'Which technique is best for "minimum window substring" problem?', ne: '"minimum window substring" समस्याको लागि कुन तकनीक उत्तम छ?' },
+            options: { en: ['Two Pointers', 'Sliding Window', 'Hash Table only', 'Binary Search'], ne: ['टू पोइन्टर्स', 'स्लाइडिङ विंडो', 'ह्यास टेबल मात्र', 'बाइनरी सर्च'] },
+            correctAnswer: 1,
+            explanation: { en: 'Sliding window is perfect for finding minimum window containing all characters.', ne: 'स्लाइडिङ विंडो सबै क्यारेक्टरहरू समावेश गर्ने न्यूनतम विंडो खोज्नको लागि उपयुक्त छ।' }
+          }
+        ]
+      }
+    ]
   }
 ];
 
