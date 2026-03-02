@@ -2030,6 +2030,499 @@ window.addEventListener("load", () => {
         ]
       }
     ]
+  },
+  // Phase 7: SQL & Databases
+  {
+    id: 'sql-databases',
+    title: { en: 'SQL & Databases', ne: 'SQL र डेटाबेस' },
+    slug: 'sql-databases',
+    description: { 
+      en: 'Learn SQL and database fundamentals - essential for any developer.', 
+      ne: 'SQL र डेटाबेसको आधारभूत कुराहरू सिक्नुहोस् - कुनै पनि विकासकर्ताको लागि आवश्यक।' 
+    },
+    phase: 7,
+    icon: '🗄️',
+    color: '#4a148c',
+    lessons: [
+      {
+        id: 'sql-intro',
+        slug: 'introduction-to-databases',
+        title: { 
+          en: 'Introduction to Databases', 
+          ne: 'डेटाबेसको परिचय' 
+        },
+        content: {
+          en: `# Introduction to Databases
+
+A database is an organized collection of structured data stored electronically. SQL (Structured Query Language) is the standard language for managing relational databases.
+
+## Why Learn Databases?
+
+- **Data Management**: Essential for storing and retrieving data efficiently
+- **Web Applications**: Every dynamic website uses a database
+- **Data Analysis**: SQL is the language of data analysts
+- **Career Growth**: Database skills are in high demand
+
+## Types of Databases
+
+### Relational Databases (SQL)
+- Data stored in tables with rows and columns
+- Examples: MySQL, PostgreSQL, SQLite, Oracle
+- Uses SQL for queries
+
+### NoSQL Databases
+- Flexible, document-based storage
+- Examples: MongoDB, Redis, Cassandra
+- Uses various query languages
+
+## Basic Database Concepts
+
+### Tables
+Collections of related data entries (rows), where each row has the same columns.
+
+### Columns (Fields)
+Attributes or properties of the data.
+
+### Rows (Records)
+Individual entries in a table.`,
+          ne: `# डेटाबेसको परिचय
+
+डेटाबेस एलेक्ट्रोनिक रूपमा भण्डारण गरिएको संरचित डेटाको व्यवस्थित संग्रह हो। SQL (Structured Query Language) रिलेशनल डेटाबेस व्यवस्थापनको लागि मानक भाषा हो।
+
+## डेटाबेस किन सिक्नुहोस्?
+
+- **डेटा व्यवस्थापन**: डेटालाई कुशलतापूर्वक भण्डारण र पुन: प्राप्त गर्न आवश्यक
+- **वेब अनुप्रयोगहरू**: प्रत्येक गतिशील वेबसाइटले डेटाबेस प्रयोग गर्छ
+- **डेटा विश्लेषण**: SQL डेटा विश्लेषकहरूको भाषा हो
+- **करियर वृद्धि**: डेटाबेस सीपहरूको उच्च माग छ
+
+## डेटाबेसका प्रकारहरू
+
+### रिलेशनल डेटाबेस (SQL)
+- डेटा तालिकाहरूमा पंक्ति र स्तम्भहरूको साथ भण्डारण गरिन्छ
+- उदाहरण: MySQL, PostgreSQL, SQLite, Oracle
+- प्रश्नहरूको लागि SQL प्रयोग गर्छ
+
+### NoSQL डेटाबेस
+- लचिलो, दस्तावेज-आधारित भण्डारण
+- उदाहरण: MongoDB, Redis, Cassandra
+- विभिन्न प्रश्न भाषाहरू प्रयोग गर्छ
+
+## आधारभूत डेटाबेस अवधारणाहरू
+
+### तालिकाहरू
+सम्बन्धित डेटा प्रविष्टिहरूको संग्रह (पंक्तिहरू), जहाँ प्रत्येक पंक्तिमा समान स्तम्भहरू हुन्छन्।
+
+### स्तम्भहरू (फिल्डहरू)
+डेटाको गुणहरू वा विशेषताहरू।
+
+### पंक्तिहरू (रेकर्डहरू)
+तालिकामा व्यक्तिगत प्रविष्टिहरू।`
+        },
+        codeExamples: [
+          {
+            language: 'sql',
+            code: `-- Example: A simple users table
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    age INT,
+    created_at DATE
+);
+
+-- Insert some data
+INSERT INTO users (id, name, email, age, created_at)
+VALUES (1, 'Ram', 'ram@example.com', 25, '2024-01-15');`,
+            explanation: { 
+              en: 'Tables store data in rows and columns. Each column has a specific data type.', 
+              ne: 'तालिकाहरूले डेटालाई पंक्ति र स्तम्भहरूमा भण्डारण गर्छन्। प्रत्येक स्तम्भको एक विशिष्ट डेटा प्रकार हुन्छ।'
+            }
+          },
+          {
+            language: 'sql',
+            code: `-- Select all users
+SELECT * FROM users;
+
+-- Select specific columns
+SELECT name, email FROM users;
+
+-- Filter with WHERE
+SELECT * FROM users WHERE age >= 18;`,
+            explanation: { 
+              en: 'SELECT is used to retrieve data from tables. Use * for all columns or list specific columns.', 
+              ne: 'SELECT तालिकाहरूबाट डेटा प्राप्त गर्न प्रयोग गरिन्छ। सबै स्तम्भहरूको लागि * प्रयोग गर्नुहोस् वा विशिष्ट स्तम्भहरू सूचीबद्ध गर्नुहोस्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'sql-intro-q1',
+            question: { 
+              en: 'What does SQL stand for?', 
+              ne: 'SQLको पूर्ण रूप के हो?' 
+            },
+            options: { 
+              en: ['Structured Query Language', 'Simple Query Language', 'Standard Query Language', 'System Query Language'], 
+              ne: ['Structured Query Language', 'Simple Query Language', 'Standard Query Language', 'System Query Language'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'SQL stands for Structured Query Language, used for managing relational databases.', 
+              ne: 'SQL ले Structured Query Language जनाउँछ, रिलेशनल डेटाबेस व्यवस्थापनको लागि प्रयोग गरिन्छ।'
+            }
+          },
+          {
+            id: 'sql-intro-q2',
+            question: { 
+              en: 'Which type of database uses tables with rows and columns?', 
+              ne: 'पंक्ति र स्तम्भहरूको साथ तालिकाहरू प्रयोग गर्ने कुन प्रकारको डेटाबेस हो?' 
+            },
+            options: { 
+              en: ['NoSQL', 'Relational (SQL)', 'Object-oriented', 'Hierarchical'], 
+              ne: ['NoSQL', 'Relational (SQL)', 'Object-oriented', 'Hierarchical'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Relational databases (SQL) store data in tables with rows and columns.', 
+              ne: 'रिलेशनल डेटाबेस (SQL) ले डेटालाई पंक्ति र स्तम्भहरूको साथ तालिकाहरूमा भण्डारण गर्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'sql-basics',
+        slug: 'sql-basic-commands',
+        title: { 
+          en: 'SQL Basic Commands', 
+          ne: 'SQLका आधारभूत कमाण्डहरू' 
+        },
+        content: {
+          en: `# SQL Basic Commands
+
+SQL provides commands to perform CRUD operations: Create, Read, Update, and Delete data.
+
+## Core SQL Commands
+
+### SELECT - Read Data
+The most frequently used command for retrieving data.
+
+### INSERT - Create Data
+Adds new records to a table.
+
+### UPDATE - Update Data
+Modifies existing records.
+
+### DELETE - Delete Data
+Removes records from a table.
+
+## Filtering with WHERE
+
+The WHERE clause filters records based on conditions.
+
+### Comparison Operators
+- = Equal
+- <> or != Not equal
+- > Greater than
+- < Less than
+- >= Greater than or equal
+- <= Less than or equal
+
+### Logical Operators
+- AND - Both conditions must be true
+- OR - Either condition can be true
+- NOT - Negates a condition`,
+          ne: `# SQLका आधारभूत कमाण्डहरू
+
+SQL ले CRUD कार्यहरू गर्न कमाण्डहरू प्रदान गर्छ: Create (सिर्जना), Read (पढ्नु), Update (अपडेट), र Delete (मेटाउनु) डेटा।
+
+## मुख्य SQL कमाण्डहरू
+
+### SELECT - डेटा पढ्नु
+डेटा प्राप्त गर्नको लागि सबैभन्दा धेरै प्रयोग गरिने कमाण्ड।
+
+### INSERT - डेटा सिर्जना गर्नु
+तालिकामा नयाँ रेकर्डहरू थप्छ।
+
+### UPDATE - डेटा अपडेट गर्नु
+अवस्थित रेकर्डहरू परिवर्तन गर्छ।
+
+### DELETE - डेटा मेटाउनु
+तालिकाबाट रेकर्डहरू हटाउँछ।
+
+## WHERE बाट फिल्टरिंग
+
+WHERE खण्डले सर्तहरूको आधारमा रेकर्डहरू फिल्टर गर्छ।
+
+### तुलना अपरेटरहरू
+- = बराबर
+- <> वा != बराबर छैन
+- > भन्दा ठूलो
+- < भन्दा सानो
+- >= भन्दा ठूलो वा बराबर
+- <= भन्दा सानो वा बराबर
+
+### लॉजिकल अपरेटरहरू
+- AND - दुवै सर्तहरू सत्य हुनुपर्छ
+- OR - कुनै पनि सर्त सत्य हुन सक्छ
+- NOT - सर्तलाई नकारात्मक बनाउँछ`
+        },
+        codeExamples: [
+          {
+            language: 'sql',
+            code: `-- INSERT: Add new records
+INSERT INTO users (name, email, age)
+VALUES ('Shyam', 'shyam@example.com', 22);
+
+-- Insert multiple rows
+INSERT INTO users (name, email, age)
+VALUES 
+  ('Hari', 'hari@example.com', 28),
+  ('Sita', 'sita@example.com', 24);`,
+            explanation: { 
+              en: 'INSERT adds new rows to a table. You can insert one or multiple rows at once.', 
+              ne: 'INSERT ले तालिकामा नयाँ पंक्तिहरू थप्छ। तपाईं एकैपटक एउटा वा धेरै पंक्तिहरू थप्न सक्नुहुन्छ।'
+            }
+          },
+          {
+            language: 'sql',
+            code: `-- UPDATE: Modify existing records
+UPDATE users 
+SET age = 26 
+WHERE name = 'Ram';
+
+-- UPDATE multiple columns
+UPDATE users
+SET age = 27, email = 'newemail@example.com'
+WHERE id = 1;`,
+            explanation: { 
+              en: 'UPDATE modifies existing data. Always use WHERE to specify which rows to update!', 
+              ne: 'UPDATE ले अवस्थित डेटा परिवर्तन गर्छ। कुन पंक्तिहरू अपडेट गर्ने भनेर निर्दिष्ट गर्न सधैं WHERE प्रयोग गर्नुहोस्!'
+            }
+          },
+          {
+            language: 'sql',
+            code: `-- DELETE: Remove records
+DELETE FROM users 
+WHERE age < 18;
+
+-- DELETE all records (careful!)
+-- DELETE FROM users;`,
+            explanation: { 
+              en: 'DELETE removes rows from a table. Without WHERE, it deletes all rows!', 
+              ne: 'DELETE ले तालिकाबाट पंक्तिहरू हटाउँछ। WHERE बिना, यसले सबै पंक्तिहरू मेटाउँछ!'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'sql-basics-q1',
+            question: { 
+              en: 'Which SQL command is used to add new data to a table?', 
+              ne: 'तालिकामा नयाँ डेटा थप्नको लागि कुन SQL कमाण्ड प्रयोग गरिन्छ?' 
+            },
+            options: { 
+              en: ['SELECT', 'INSERT', 'UPDATE', 'DELETE'], 
+              ne: ['SELECT', 'INSERT', 'UPDATE', 'DELETE'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'INSERT is used to add new records to a table.', 
+              ne: 'INSERT ले तालिकामा नयाँ रेकर्डहरू थप्न प्रयोग गरिन्छ।'
+            }
+          },
+          {
+            id: 'sql-basics-q2',
+            question: { 
+              en: 'What happens if you run UPDATE without a WHERE clause?', 
+              ne: 'WHERE खण्ड बिना UPDATE चलाउँदा के हुन्छ?' 
+            },
+            options: { 
+              en: ['Nothing happens', 'Updates all rows in the table', 'Shows an error', 'Deletes all data'], 
+              ne: ['केही हुँदैन', 'तालिकाका सबै पंक्तिहरू अपडेट गर्छ', 'त्रुटि देखाउँछ', 'सबै डेटा मेटाउँछ'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'UPDATE without WHERE updates ALL rows in the table. Always be careful!', 
+              ne: 'WHERE बिना UPDATE ले तालिकाका सबै पंक्तिहरू अपडेट गर्छ। सधैं सावधान रहनुहोस्!'
+            }
+          }
+        ]
+      },
+      {
+        id: 'sql-advanced',
+        slug: 'sql-advanced-queries',
+        title: { 
+          en: 'Advanced SQL Queries', 
+          ne: 'SQLका उन्नत प्रश्नहरू' 
+        },
+        content: {
+          en: `# Advanced SQL Queries
+
+Take your SQL skills to the next level with JOINs, aggregations, and subqueries.
+
+## JOINs
+
+Combine data from multiple tables.
+
+### INNER JOIN
+Returns records that have matching values in both tables.
+
+### LEFT JOIN (LEFT OUTER JOIN)
+Returns all records from the left table and matching records from the right table.
+
+### RIGHT JOIN
+Returns all records from the right table and matching records from the left table.
+
+## Aggregate Functions
+
+Perform calculations on sets of rows.
+
+### COUNT
+Counts the number of rows.
+
+### SUM
+Adds up all values.
+
+### AVG
+Calculates the average.
+
+### MAX / MIN
+Find maximum or minimum values.
+
+## GROUP BY
+
+Groups rows that have the same values into summary rows.
+
+## ORDER BY
+
+Sorts results by one or more columns.`,
+          ne: `# SQLका उन्नत प्रश्नहरू
+
+JOINs, aggregations, र subqueries संग आफ्नो SQL सीपहरूलाई अर्को स्तरमा लैजानुहोस्।
+
+## JOINs
+
+धेरै तालिकाहरूबाट डेटा संयोजन गर्नुहोस्।
+
+### INNER JOIN
+दुवै तालिकाहरूमा मिल्ने मानहरू भएका रेकर्डहरू फर्काउँछ।
+
+### LEFT JOIN (LEFT OUTER JOIN)
+बायाँ तालिकाबाट सबै रेकर्डहरू र दायाँ तालिकाबाट मिल्ने रेकर्डहरू फर्काउँछ।
+
+### RIGHT JOIN
+दायाँ तालिकाबाट सबै रेकर्डहरू र बायाँ तालिकाबाट मिल्ने रेकर्डहरू फर्काउँछ।
+
+## एग्रीगेट फंक्शनहरू
+
+पंक्तिहरूको सेटमा गणना गर्छ।
+
+### COUNT
+पंक्तिहरूको संख्या गणना गर्छ।
+
+### SUM
+सबै मानहरू जोड्छ।
+
+### AVG
+औसत गणना गर्छ।
+
+### MAX / MIN
+अधिकतम वा न्यूनतम मानहरू फेला पार्छ।
+
+## GROUP BY
+
+समान मानहरू भएका पंक्तिहरूलाई सारांश पंक्तिहरूमा समूह बनाउँछ।
+
+## ORDER BY
+
+एक वा धेरै स्तम्भहरू द्वारा परिणामहरू क्रमबद्ध गर्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'sql',
+            code: `-- Create orders table for JOIN examples
+CREATE TABLE orders (
+    id INT PRIMARY KEY,
+    user_id INT,
+    product VARCHAR(100),
+    amount DECIMAL(10,2)
+);
+
+-- INNER JOIN example
+SELECT users.name, orders.product, orders.amount
+FROM users
+INNER JOIN orders ON users.id = orders.user_id;
+
+-- LEFT JOIN example (all users, even without orders)
+SELECT users.name, orders.product
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id;`,
+            explanation: { 
+              en: 'JOINs combine data from multiple tables based on related columns.', 
+              ne: 'JOINs ले सम्बन्धित स्तम्भहरूको आधारमा धेरै तालिकाहरूबाट डेटा संयोजन गर्छ।'
+            }
+          },
+          {
+            language: 'sql',
+            code: `-- COUNT, SUM, AVG examples
+SELECT COUNT(*) as total_orders,
+       SUM(amount) as total_amount,
+       AVG(amount) as average_order
+FROM orders;
+
+-- GROUP BY example
+SELECT user_id, COUNT(*) as order_count, 
+       SUM(amount) as total_spent
+FROM orders
+GROUP BY user_id;
+
+-- ORDER BY example
+SELECT * FROM users
+ORDER BY age DESC;  -- Descending order
+-- ORDER BY age ASC;  -- Ascending order (default)`,
+            explanation: { 
+              en: 'Aggregate functions perform calculations on groups of rows. GROUP BY creates groups.', 
+              ne: 'एग्रीगेट फंक्शनहरूले पंक्तिहरूको समूहमा गणना गर्छन्। GROUP BY ले समूहहरू सिर्जना गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'sql-adv-q1',
+            question: { 
+              en: 'Which JOIN returns all records from the left table and matching records from the right?', 
+              ne: 'कुन JOIN ले बायाँ तालिकाबाट सबै रेकर्डहरू र दायाँ तालिकाबाट मिल्ने रेकर्डहरू फर्काउँछ?' 
+            },
+            options: { 
+              en: ['INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'CROSS JOIN'], 
+              ne: ['INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'CROSS JOIN'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'LEFT JOIN returns all records from the left table and matching records from the right.', 
+              ne: 'LEFT JOIN ले बायाँ तालिकाबाट सबै रेकर्डहरू र दायाँ तालिकाबाट मिल्ने रेकर्डहरू फर्काउँछ।'
+            }
+          },
+          {
+            id: 'sql-adv-q2',
+            question: { 
+              en: 'Which function is used to count the number of rows in SQL?', 
+              ne: 'SQL मा पंक्तिहरूको संख्या गणना गर्नको लागि कुन फंक्शन प्रयोग गरिन्छ?' 
+            },
+            options: { 
+              en: ['COUNT()', 'SUM()', 'TOTAL()', 'NUMBER()'], 
+              ne: ['COUNT()', 'SUM()', 'TOTAL()', 'NUMBER()'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'COUNT() counts the number of rows that match a condition.', 
+              ne: 'COUNT() ले सर्तसँग मिल्ने पंक्तिहरूको संख्या गणना गर्छ।'
+            }
+          }
+        ]
+      }
+    ]
   }
 ];
 
