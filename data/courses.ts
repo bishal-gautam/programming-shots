@@ -1567,6 +1567,1087 @@ def set_age(age):
             }
           }
         ]
+      },
+      // New Lesson: Object-Oriented Programming
+      {
+        id: 'python-oop',
+        slug: 'object-oriented-programming-in-python',
+        title: { 
+          en: 'Object-Oriented Programming (OOP)', 
+          ne: 'अब्जेक्ट-ओरिएन्टेड प्रोग्रामिंग (OOP)' 
+        },
+        content: {
+          en: `# Object-Oriented Programming (OOP)
+
+OOP is a paradigm that uses "objects" - data structures that contain data (attributes) and code (methods). Python fully supports OOP.
+
+## Classes and Objects
+
+A class is a blueprint for creating objects. An object is an instance of a class.
+
+## Key OOP Concepts
+
+### 1. Classes
+Classes define the structure and behavior of objects.
+
+### 2. Inheritance
+Inheritance allows a class to inherit attributes and methods from another class.
+
+### 3. Encapsulation
+Encapsulation restricts access to certain components of an object.
+
+### 4. Polymorphism
+Polymorphism allows the same interface to be used for different data types.`,
+          ne: `# अब्जेक्ट-ओरिएन्टेड प्रोग्रामिंग (OOP)
+
+OOP एक paradigma हो जसले "objects" प्रयोग गर्छ - डेटा (attributes) र कोड (methods) समावेश गर्ने डेटा संरचनाहरू। पाइथनले पूर्ण रूपमा OOP लाई समर्थन गर्छ।
+
+## Classes र Objects
+
+Class objects सिर्जना गर्ने एक blueprint हो। Object एउटा class को instance हो।
+
+## मुख्य OOP अवधारणाहरू
+
+### 1. Classes
+Classes ले objects को संरचना र व्यवहार परिभाषित गर्छ।
+
+### 2. Inheritance
+Inheritance ले एउटा class लाई अर्को class बाट attributes र methods विरासत लिन अनुमति दिन्छ।
+
+### 3. Encapsulation
+Encapsulation ले object's केही components मा पहुँच प्रतिबन्धित गर्छ।
+
+### 4. Polymorphism
+Polymorphism ले उही interface लाई विभिन्न डेटा प्रकारहरूको लागि प्रयोग गर्न अनुमति दिन्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Creating a class
+class Person:
+    # Class attribute
+    species = "Human"
+    
+    # Constructor
+    def __init__(self, name, age):
+        # Instance attributes
+        self.name = name
+        self.age = age
+    
+    # Instance method
+    def greet(self):
+        return f"Hello, I'm {self.name}"
+    
+    # String representation
+    def __str__(self):
+        return f"Person({self.name}, {self.age})"
+
+# Creating objects
+person1 = Person("Ram", 25)
+person2 = Person("Sita", 24)
+
+print(person1.name)        # Ram
+print(person1.greet())      # Hello, I'm Ram
+print(person1.species)     # Human (class attribute)
+print(person2)             # Person(Sita, 24)`,
+            explanation: { 
+              en: '__init__ is the constructor method called when creating an object. self refers to the instance.', 
+              ne: '__init__ object सिर्जना गर्दा call हुने constructor method हो। self ले instance लाई reference गर्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Inheritance example
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return "Some sound"
+    
+    def info(self):
+        return f"I'm a {self.name}"
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+    
+    def fetch(self):
+        return f"{self.name} fetches the ball"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+    
+    def purr(self):
+        return f"{self.name} purrs"
+
+# Creating objects
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+
+print(dog.info())    # I'm a Buddy
+print(dog.speak())   # Woof!
+print(dog.fetch())   # Buddy fetches the ball
+
+print(cat.info())    # I'm a Whiskers
+print(cat.speak())   # Meow!
+print(cat.purr())    # Whiskers purrs`,
+            explanation: { 
+              en: 'Child classes inherit from parent classes. They can override methods like speak().', 
+              ne: 'Child classes parent classes बाट inherit हुन्छन्। तिनीहरूले speak() जस्ता methods override गर्न सक्छन्।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Encapsulation with private attributes
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # Private (name mangling)
+    
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            return True
+        return False
+    
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.__balance:
+            self.__balance -= amount
+            return True
+        return False
+    
+    def get_balance(self):
+        return self.__balance
+
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())  # 1500
+
+# Cannot access account.__balance directly
+# print(account.__balance)  # AttributeError`,
+            explanation: { 
+              en: 'Double underscore makes an attribute "private" - Python name-mangles it to _BankAccount__balance.', 
+              ne: 'Double underscore ले एउटा attribute "private" बनाउँछ - पाइथनले यसलाई _BankAccount__balance मा name-mangle गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-oop-q1',
+            question: { 
+              en: 'What method is called when creating a new object in Python?', 
+              ne: 'पाइथनमा नयाँ object सिर्जना गर्दा कुन method call हुन्छ?' 
+            },
+            options: { 
+              en: ['__create__', '__init__', '__new__', '__start__'], 
+              ne: ['__create__', '__init__', '__new__', '__start__'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: '__init__ is the constructor method called when an object is created.', 
+              ne: '__init__ constructor method हो जुन object सिर्जना गर्दा call हुन्छ।'
+            }
+          },
+          {
+            id: 'py-oop-q2',
+            question: { 
+              en: 'What keyword is used to create a class that inherits from a parent class?', 
+              ne: 'Parent class बाट inherit गर्ने class सिर्जना गर्न कुन keyword प्रयोग हुन्छ?' 
+            },
+            options: { 
+              en: ['extends', 'inherits', 'class', 'super'], 
+              ne: ['extends', 'inherits', 'class', 'super'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'The class ChildClass(ParentClass) syntax creates inheritance in Python.', 
+              ne: 'class ChildClass(ParentClass) सिन्ट्याक्सले पाइथनमा inheritance सिर्जना गर्छ।'
+            }
+          }
+        ]
+      },
+      // New Lesson: List, Dictionary & Set Comprehensions
+      {
+        id: 'python-comprehensions',
+        slug: 'comprehensions-in-python',
+        title: { 
+          en: 'List, Dict & Set Comprehensions', 
+          ne: 'List, Dict र Set Comprehensions' 
+        },
+        content: {
+          en: `# Comprehensions in Python
+
+Comprehensions provide a concise way to create new sequences (lists, dictionaries, sets) from existing iterables.
+
+## Why Use Comprehensions?
+
+- More readable than loops
+- Often faster execution
+- Pythonic way of coding
+
+## Types of Comprehensions
+
+1. List Comprehension - creates lists
+2. Dictionary Comprehension - creates dicts
+3. Set Comprehension - creates sets
+4. Generator Expression - creates generators`,
+          ne: `# Comprehensions in Python
+
+Comprehensions ले exist गर्ने iterables बाट नयाँ sequences (lists, dictionaries, sets) सिर्जना गर्ने संक्षिप्त तरिका प्रदान गर्छन्।
+
+## Comprehensions किन प्रयोग गर्ने?
+
+- Loops भन्दा बढी पठनीय
+- प्राय: छिटो execution
+- Pythonic कोडिंग तरिका
+
+## Comprehensions को प्रकारहरू
+
+1. List Comprehension - lists सिर्जना गर्छ
+2. Dictionary Comprehension - dicts सिर्जना गर्छ
+3. Set Comprehension - sets सिर्जना गर्छ
+4. Generator Expression - generators सिर्जना गर्छ`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# List Comprehension - Basic
+numbers = [1, 2, 3, 4, 5]
+
+# Create square of each number
+squares = [x**2 for x in numbers]
+print(squares)  # [1, 4, 9, 16, 25]
+
+# With condition - only even numbers
+evens = [x for x in numbers if x % 2 == 0]
+print(evens)  # [2, 4]
+
+# Nested list comprehension
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flat = [num for row in matrix for num in row]
+print(flat)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# String operations
+words = ["hello", "world", "python"]
+upper = [word.upper() for word in words]
+print(upper)  # ["HELLO", "WORLD", "PYTHON"]`,
+            explanation: { 
+              en: 'Syntax: [expression for item in iterable if condition]. The if clause is optional.', 
+              ne: 'सिन्ट्याक्स: [expression for item in iterable if condition]। if clause वैकल्पिक हो।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Dictionary Comprehension
+names = ["ram", "sita", "hari"]
+
+# Create dict with name: length
+name_lengths = {name: len(name) for name in names}
+print(name_lengths)  # {"ram": 3, "sita": 4, "hari": 4}
+
+# With condition
+numbers = [1, 2, 3, 4, 5]
+squared_even = {x: x**2 for x in numbers if x % 2 == 0}
+print(squared_even)  # {2: 4, 4: 16}
+
+# From two lists
+keys = ["a", "b", "c"]
+values = [1, 2, 3]
+combined = {k: v for k, v in zip(keys, values)}
+print(combined)  # {"a": 1, "b": 2, "c": 3}
+
+# Set Comprehension
+numbers = [1, 2, 2, 3, 3, 3, 4]
+unique_squares = {x**2 for x in numbers}
+print(unique_squares)  # {1, 4, 9, 16}`,
+            explanation: { 
+              en: 'Dictionary comprehension: {key: value for item in iterable}. Set comprehension removes duplicates.', 
+              ne: 'Dictionary comprehension: {key: value for item in iterable}। Set comprehension duplicates हटाउँछ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Practical examples
+import math
+
+# Filter and transform
+prices = [100, 250, 50, 200, 300]
+# Apply 10% discount only to items > 100
+discounted = {price: price * 0.9 for price in prices if price > 100}
+print(discounted)  # {250: 225.0, 200: 180.0, 300: 270.0}
+
+# Word length dictionary
+sentence = "python is awesome"
+word_lengths = {word: len(word) for word in sentence.split()}
+print(word_lengths)  # {"python": 6, "is": 2, "awesome": 7}
+
+# Inverted dictionary
+original = {"a": 1, "b": 2, "c": 3}
+inverted = {v: k for k, v in original.items()}
+print(inverted)  # {1: "a", 2: "b", 3: "c"}`,
+            explanation: { 
+              en: 'Comprehensions are great for data transformation and filtering in one line.', 
+              ne: 'Comprehensions एकै लाइनमा data transformation र filtering को लागि राम्रो छन्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-comp-q1',
+            question: { 
+              en: 'What will [x*2 for x in range(5)] produce?', 
+              ne: '[x*2 for x in range(5)] ले के produce गर्छ?' 
+            },
+            options: { 
+              en: ['(0, 2, 4, 6, 8)', '[0, 2, 4, 6, 8]', '{0, 2, 4, 6, 8}', 'None of the above'], 
+              ne: ['(0, 2, 4, 6, 8)', '[0, 2, 4, 6, 8]', '{0, 2, 4, 6, 8}', 'None of the above'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'List comprehension always returns a list: [0, 2, 4, 6, 8].', 
+              ne: 'List comprehension सधैँ list दिन्छ: [0, 2, 4, 6, 8]।'
+            }
+          },
+          {
+            id: 'py-comp-q2',
+            question: { 
+              en: 'What is the correct syntax for dictionary comprehension?', 
+              ne: 'Dictionary comprehension को सही सिन्ट्याक्स के हो?' 
+            },
+            options: { 
+              en: ['[k:v for k,v in items]', '{k: v for k,v in items}', '(k: v for k,v in items)', '{k=v for k,v in items}'], 
+              ne: ['[k:v for k,v in items]', '{k: v for k,v in items}', '(k: v for k,v in items)', '{k=v for k,v in items}'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Dictionary comprehension uses curly braces with key: value syntax.', 
+              ne: 'Dictionary comprehension ले curly braces र key: value सिन्ट्याक्स प्रयोग गर्छ।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Lambda Functions & Higher-Order Functions
+      {
+        id: 'python-lambda',
+        slug: 'lambda-functions-and-higher-order-functions',
+        title: { 
+          en: 'Lambda Functions & Map/Filter', 
+          ne: 'Lambda Functions र Map/Filter' 
+        },
+        content: {
+          en: `# Lambda Functions & Higher-Order Functions
+
+## Lambda Functions
+
+Lambda functions are small, anonymous functions defined in a single line. They are useful for short operations where you don't want to define a full function.
+
+## Higher-Order Functions
+
+Functions that take other functions as arguments or return functions are called higher-order functions. Python's built-in higher-order functions include map(), filter(), and reduce().
+
+## When to Use Lambdas
+
+- Simple operations (addition, multiplication)
+- As arguments to higher-order functions
+- Short, one-time use functions`,
+          ne: `# Lambda Functions र Higher-Order Functions
+
+## Lambda Functions
+
+Lambda functions साना, anonymous functions हुन् जुन एकै लाइनमा परिभाषित हुन्छन्। तिनीहरू छोटा operations को लागि उपयोगी हुन् जहाँ तपाईं पूर्ण function परिभाषित गर्न चाहनुहुन्न।
+
+## Higher-Order Functions
+
+जसले अन्य functions लाई arguments को रूपमा लिन्छन् वा functions दिन्छन् तिनीहरूलाई higher-order functions भनिन्छ। Python के built-in higher-order functions मा map(), filter(), र reduce() समावेश छन्।
+
+## Lambda कहिले प्रयोग गर्ने
+
+- सरल operations (addition, multiplication)
+- Higher-order functions मा arguments को रूपमा
+- छोटा, एक-पटक प्रयोग हुने functions`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Lambda function basics
+# Regular function
+def add(a, b):
+    return a + b
+
+# Equivalent lambda
+add_lambda = lambda a, b: a + b
+
+print(add(2, 3))           # 5
+print(add_lambda(2, 3))   # 5
+
+# Lambda with no arguments
+hello = lambda: "Hello!"
+print(hello())  # Hello!
+
+# Lambda with default arguments
+multiply = lambda x, y=2: x * y
+print(multiply(5))    # 10
+print(multiply(5, 3)) # 15`,
+            explanation: { 
+              en: 'Lambda syntax: lambda arguments: expression. No return statement needed.', 
+              ne: 'Lambda सिन्ट्याक्स: lambda arguments: expression। return statement चाहिँदैन।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# map() - apply function to all items
+numbers = [1, 2, 3, 4, 5]
+
+# Using lambda with map
+squared = list(map(lambda x: x**2, numbers))
+print(squared)  # [1, 4, 9, 16, 25]
+
+# Using map with multiple lists
+list1 = [1, 2, 3]
+list2 = [10, 20, 30]
+sums = list(map(lambda x, y: x + y, list1, list2))
+print(sums)  # [11, 22, 33]
+
+# String operations
+words = ["hello", "world", "python"]
+upper = list(map(str.upper, words))
+print(upper)  # ["HELLO", "WORLD", "PYTHON"]`,
+            explanation: { 
+              en: 'map(function, iterable) applies the function to each item and returns a map object.', 
+              ne: 'map(function, iterable) ले function लाई प्रत्येक item मा apply गर्छ र map object दिन्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# filter() - keep items that satisfy condition
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Keep only even numbers
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(evens)  # [2, 4, 6, 8, 10]
+
+# Keep words with length > 4
+words = ["cat", "elephant", "dog", "rhinoceros"]
+long_words = list(filter(lambda w: len(w) > 4, words))
+print(long_words)  # ["elephant", "rhinoceros"]
+
+# Combined: map and filter
+numbers = [1, 2, 3, 4, 5]
+# Square only the even numbers
+result = list(map(lambda x: x**2, filter(lambda x: x % 2 == 0, numbers)))
+print(result)  # [4, 16]`,
+            explanation: { 
+              en: 'filter(function, iterable) keeps items where function returns True.', 
+              ne: 'filter(function, iterable) ले जहाँ function True दिन्छ त्यस्ता items राख्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# reduce() - reduce sequence to single value
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+
+# Sum all numbers
+total = reduce(lambda x, y: x + y, numbers)
+print(total)  # 15
+
+# Find maximum
+maximum = reduce(lambda x, y: x if x > y else y, numbers)
+print(maximum)  # 5
+
+# Product of all numbers
+product = reduce(lambda x, y: x * y, numbers)
+print(product)  # 120
+
+# With initial value
+total_with_initial = reduce(lambda x, y: x + y, numbers, 10)
+print(total_with_initial)  # 25 (10 + 15)`,
+            explanation: { 
+              en: 'reduce applies function cumulatively. First two elements, then result with next, etc.', 
+              ne: 'reduce ले function cumulatively apply गर्छ। पहिलो दुई elements, त्यसपछि result अर्कोसँग, इत्यादि।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-lambda-q1',
+            question: { 
+              en: 'What does list(map(lambda x: x*2, [1,2,3])) return?', 
+              ne: 'list(map(lambda x: x*2, [1,2,3])) ले के return गर्छ?' 
+            },
+            options: { 
+              en: ['[2, 4, 6]', '[1, 2, 3]', '(2, 4, 6)', '{2, 4, 6}'], 
+              ne: ['[2, 4, 6]', '[1, 2, 3]', '(2, 4, 6)', '{2, 4, 6}'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'map applies lambda x*2 to each element: 1*2=2, 2*2=4, 3*2=6.', 
+              ne: 'map ले lambda x*2 लाई प्रत्येक element मा apply गर्छ: 1*2=2, 2*2=4, 3*2=6।'
+            }
+          },
+          {
+            id: 'py-lambda-q2',
+            question: { 
+              en: 'Which higher-order function would you use to keep only numbers greater than 5?', 
+              ne: '5 भन्दा ठूला मात्र संख्याहरू राख्न तपाईं कुन higher-order function प्रयोग गर्नुहुन्छ?' 
+            },
+            options: { 
+              en: ['map()', 'filter()', 'reduce()', 'apply()'], 
+              ne: ['map()', 'filter()', 'reduce()', 'apply()'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'filter() keeps elements that satisfy a condition (return True).', 
+              ne: 'filter() ले तत्वहरू राख्छ जसले condition satisfy गर्छन् (True return गर्छन्)।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Decorators
+      {
+        id: 'python-decorators',
+        slug: 'decorators-in-python',
+        title: { 
+          en: 'Decorators in Python', 
+          ne: 'पाइथनमा Decorators' 
+        },
+        content: {
+          en: `# Decorators in Python
+
+Decorators are a powerful way to modify the behavior of functions or classes. They allow you to wrap a function with another function to add functionality without modifying the original.
+
+## Why Use Decorators?
+
+- Add logging
+- Measure execution time
+- Authentication/Authorization
+- Caching results
+- Rate limiting
+
+## Key Concepts
+
+- A decorator is a function that takes a function as input and returns a new function
+- The @symbol is syntactic sugar for applying a decorator`,
+          ne: `# Decorators in Python
+
+Decorators functions वा classes को व्यवहार परिवर्तन गर्ने एक शक्तिशाली तरिका हो। तिनीहरूले तपाईंलाई original परिवर्तन नगरी functionality थप्नको लागि एउटा function लाई अर्को function ले wrap गर्न अनुमति दिन्छ।
+
+## Decorators किन प्रयोब गर्ने?
+
+- Logging थप्ने
+- Execution time नाप्ने
+- Authentication/Authorization
+- Results caching
+- Rate limiting
+
+## मुख्य अवधारणाहरू
+
+- Decorator एउटा function हो जसले function लाई input को रूपमा लिन्छ र नयाँ function दिन्छ
+- @symbol decorator apply गर्ने syntactic sugar हो`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Basic decorator
+def my_decorator(func):
+    def wrapper():
+        print("Before function call")
+        func()
+        print("After function call")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+# Output:
+# Before function call
+# Hello!
+# After function call`,
+            explanation: { 
+              en: '@my_decorator is equivalent to say_hello = my_decorator(say_hello)', 
+              ne: '@my_decorator say_hello = my_decorator(say_hello) बराबर हो'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Decorator with arguments
+def timing_decorator(func):
+    import time
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"{func.__name__} took {end-start:.4f} seconds")
+        return result
+    return wrapper
+
+@timing_decorator
+def slow_function():
+    import time
+    time.sleep(1)
+    return "Done!"
+
+result = slow_function()
+# Output: slow_function took 1.0012 seconds`,
+            explanation: { 
+              en: '*args and **kwargs allow the decorator to work with any function signature.', 
+              ne: '*args र **kwargs ले decorator लाई कुनैपनि function signature सँग काम गर्न दिन्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Logging decorator
+def log_calls(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} returned {result}")
+        return result
+    return wrapper
+
+@log_calls
+def add(a, b):
+    return a + b
+
+@log_calls  
+def greet(name):
+    return f"Hello, {name}!"
+
+print(add(3, 4))
+print(greet("Ram"))
+# Output:
+# Calling add
+# add returned 7
+# 7
+# Calling greet
+# greet returned Hello, Ram!
+# Hello, Ram!`,
+            explanation: { 
+              en: 'Decorators can inspect and modify arguments and return values.', 
+              ne: 'Decorators ले arguments र return values निरीक्षण र परिवर्तन गर्न सक्छन्।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Multiple decorators
+def bold(func):
+    def wrapper(*args, **kwargs):
+        return f"<b>{func(*args, **kwargs)}</b>"
+    return wrapper
+
+def italic(func):
+    def wrapper(*args, **kwargs):
+        return f"<i>{func(*args, **kwargs)}</i>"
+    return wrapper
+
+@bold
+@italic
+def text():
+    return "Hello"
+
+print(text())  # <b><i>Hello</i></b>
+
+# Order matters! @bold @italic vs @italic @bold gives different results`,
+            explanation: { 
+              en: 'Decorators are applied bottom-up. First @italic, then @bold wraps around it.', 
+              ne: 'Decorators bottom-up apply हुन्छन्। पहिले @italic, त्यसपछि @bold ले wrap गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-decor-q1',
+            question: { 
+              en: 'What is the correct syntax to apply a decorator named "my_decorator"?', 
+              ne: '"my_decorator" नामको decorator apply गर्ने सही सिन्ट्याक्स के हो?' 
+            },
+            options: { 
+              en: ['@my_decorator', '#my_decorator', '::my_decorator', '>>my_decorator'], 
+              ne: ['@my_decorator', '#my_decorator', '::my_decorator', '>>my_decorator'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: '@ symbol is used to apply decorators in Python.', 
+              ne: '@ symbol पाइथनमा decorators apply गर्न प्रयोग हुन्छ।'
+            }
+          },
+          {
+            id: 'py-decor-q2',
+            question: { 
+              en: 'What do *args and **kwargs allow in a decorator?', 
+              ne: '*args र **kwargs ले decorator मा के allow गर्छ?' 
+            },
+            options: { 
+              en: ['Faster execution', 'Accept any number of arguments', 'Return multiple values', 'None of the above'], 
+              ne: ['Faster execution', 'Accept any number of arguments', 'Return multiple values', 'None of the above'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: '*args and **kwargs allow the wrapper to accept any number of positional and keyword arguments.', 
+              ne: '*args र **kwargs ले wrapper लाई कुनैपनि number को positional र keyword arguments स्वीकार गर्न दिन्छ।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Generators and Iterators
+      {
+        id: 'python-generators',
+        slug: 'generators-and-iterators',
+        title: { 
+          en: 'Generators & Iterators', 
+          ne: 'Generators र Iterators' 
+        },
+        content: {
+          en: `# Generators & Iterators
+
+## Iterators
+
+An iterator is an object that can be iterated (looped) upon. It implements two methods: __iter__ and __next__.
+
+## Generators
+
+Generators are a simpler way to create iterators. They use the yield keyword instead of return. When a function contains yield, it becomes a generator function.
+
+## Why Use Generators?
+
+- Memory efficient (don't store entire sequence)
+- Lazy evaluation (produce items on demand)
+- Can represent infinite sequences
+- Cleaner code than iterator classes`,
+          ne: `# Generators & Iterators
+
+## Iterators
+
+Iterator एउटा object हो जुन iterate (loop) गर्न सकिन्छ। यसले दुई methods implement गर्छ: __iter__ र __next__।
+
+## Generators
+
+Generators iterators सिर्जना गर्ने एक सजिलो तरिका हो। तिनीहरूले return को सट्टा yield keyword प्रयोग गर्छन्। जब एउटा function मा yield हुन्छ, यो generator function हुन्छ।
+
+## Generators किन प्रयोब गर्ने?
+
+- Memory efficient (पूरो sequence store गर्दैन)
+- Lazy evaluation (demand मा items produce गर्छ)
+- अनन्त sequences represent गर्न सक्छ
+- Iterator classes भन्दा cleaner code`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `# Basic generator
+def count_up_to(max):
+    count = 1
+    while count <= max:
+        yield count
+        count += 1
+
+# Create generator object
+counter = count_up_to(5)
+
+# Iterate
+print(next(counter))  # 1
+print(next(counter))  # 2
+print(next(counter))  # 3
+
+# Or use in a loop
+for num in count_up_to(3):
+    print(num)
+# Output: 1, 2, 3`,
+            explanation: { 
+              en: 'yield pauses the function and remembers its state. next() resumes from where it left off.', 
+              ne: 'yield ले function लाई pause गर्छ र यसको state याद राख्छ। next() बाट जहाँ छोडिएको थियो त्यहाँबाट जारी राख्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Generator expression (like list comprehension)
+# List comprehension - creates entire list in memory
+squares_list = [x**2 for x in range(1000000)]
+# Takes lots of memory!
+
+# Generator expression - produces on demand
+squares_gen = (x**2 for x in range(1000000))
+
+print(next(squares_gen))  # 0
+print(next(squares_gen))  # 1
+print(next(squares_gen))  # 4
+
+# Use in loops (efficient!)
+total = sum(x**2 for x in range(1000))
+print(total)  # 332833500`,
+            explanation: { 
+              en: 'Generator uses () instead of []. It yields one item at a time, not all at once.', 
+              name: 'Generator ले [] को सट्टा () प्रयोग गर्छ। यसले एकैपटक सबै होइन, एकैचोटि एक item yield गर्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Infinite generator
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+fib = fibonacci()
+for i in range(10):
+    print(next(fib), end=" ")
+# Output: 0 1 1 2 3 5 8 13 21 34
+
+# Can never store infinite in a list!
+# But can iterate with a generator`,
+            explanation: { 
+              en: 'Generators can represent infinite sequences because they produce items on demand.', 
+              ne: 'Generators ले infinite sequences represent गर्न सक्छन् किनभने तिनीहरू demand मा items produce गर्छन्।'
+            }
+          },
+          {
+            language: 'python',
+            code: `# Custom iterator class
+class Countdown:
+    def __init__(self, start):
+        self.current = start
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.current <= 0:
+            raise StopIteration
+        self.current -= 1
+        return self.current + 1
+
+# Use the iterator
+for num in Countdown(5):
+    print(num, end=" ")
+# Output: 5 4 3 2 1`,
+            explanation: { 
+              en: 'Iterator class needs __iter__ (returns self) and __next__ (returns next item or raises StopIteration).', 
+              ne: 'Iterator class लाई __iter__ (self दिन्छ) र __next__ (next item दिन्छ वा StopIteration उठाउँछ) चाहिन्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-gen-q1',
+            question: { 
+              en: 'What keyword makes a function a generator?', 
+              ne: 'कुन keyword ले एउटा function लाई generator बनाउछ?' 
+            },
+            options: { 
+              en: ['generate', 'yield', 'return', 'iterator'], 
+              ne: ['generate', 'yield', 'return', 'iterator'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'The yield keyword turns a function into a generator.', 
+              ne: 'yield keyword ले एउटा function लाई generator मा परिवर्तन गर्छ।'
+            }
+          },
+          {
+            id: 'py-gen-q2',
+            question: { 
+              en: 'What is the main advantage of generators over lists?', 
+              ne: 'Generators को main advantage lists माथि के हो?' 
+            },
+            options: { 
+              en: ['Faster processing', 'More features', 'Memory efficient', 'Can use with any type'], 
+              ne: ['Faster processing', 'More features', 'Memory efficient', 'Can use with any type'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'Generators produce items on demand, so they don\'t store the entire sequence in memory.', 
+              ne: 'Generators demand मा items produce गर्छन्, त्यसैले तिनीहरूले पूरो sequence memory मा store गर्दैनन्।'
+            }
+          }
+        ]
+      },
+      // New Lesson: Working with JSON
+      {
+        id: 'python-json',
+        slug: 'working-with-json-in-python',
+        title: { 
+          en: 'Working with JSON', 
+          ne: 'JSON सँग काम गर्ने' 
+        },
+        content: {
+          en: `# Working with JSON
+
+JSON (JavaScript Object Notation) is a lightweight data interchange format. It's widely used for APIs, configuration files, and data storage.
+
+## JSON in Python
+
+Python's json module makes it easy to work with JSON data. JSON and Python dictionaries share similar syntax.
+
+## Common Operations
+
+- json.dumps() - Python object to JSON string
+- json.loads() - JSON string to Python object
+- json.dump() - Write to file
+- json.load() - Read from file`,
+          ne: `# JSON सँग काम गर्ने
+
+JSON (JavaScript Object Notation) एक lightweight data interchange format हो। यसलाई APIs, configuration files, र data storage को लागि व्यापक रूपमा प्रयोग गरिन्छ।
+
+## Python मा JSON
+
+Python को json module ले JSON data सँग काम गर्न सजिलो बनाउँछ। JSON र Python dictionaries ले समान सिन्ट्याक्स share गर्छन्।
+
+## सामान्य Operations
+
+- json.dumps() - Python object लाई JSON string मा
+- json.loads() - JSON string लाई Python object मा
+- json.dump() - File मा लेख्ने
+- json.load() - File बाट पढ्ने`
+        },
+        codeExamples: [
+          {
+            language: 'python',
+            code: `import json
+
+# Python object to JSON string
+data = {
+    "name": "Ram Sharma",
+    "age": 25,
+    "city": "Kathmandu",
+    "skills": ["Python", "JavaScript", "SQL"],
+    "is_student": False
+}
+
+# Convert to JSON string
+json_string = json.dumps(data)
+print(json_string)
+
+# Pretty print with indentation
+pretty_json = json.dumps(data, indent=2)
+print(pretty_json)
+
+# Sort keys
+sorted_json = json.dumps(data, indent=2, sort_keys=True)
+print(sorted_json)`,
+            explanation: { 
+              en: 'json.dumps() converts Python dict to JSON string. Use indent for readable output.', 
+              ne: 'json.dumps() ले Python dict लाई JSON string मा परिवर्तन गर्छ। पठनीय output को लागि indent प्रयोग गर्नुहोस्।'
+            }
+          },
+          {
+            language: 'python',
+            code: `import json
+
+# JSON string to Python object
+json_string = '{"name": "Sita", "age": 24, "marks": [90, 85, 95]}'
+
+# Parse JSON
+python_dict = json.loads(json_string)
+print(python_dict)  # {'name': 'Sita', 'age': 24, 'marks': [90, 85, 95]}
+print(python_dict["name"])  # Sita
+
+# Nested access
+print(python_dict["marks"][0])  # 90`,
+            explanation: { 
+              en: 'json.loads() parses JSON string into Python dict/list.', 
+              ne: 'json.loads() ले JSON string लाई Python dict/list मा parse गर्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `import json
+
+# Writing JSON to file
+data = {
+    "username": "bistudent",
+    "preferences": {
+        "theme": "dark",
+        "language": "en"
+    }
+}
+
+with open("config.json", "w") as f:
+    json.dump(data, f, indent=2)
+
+print("Written to config.json")
+
+# Reading JSON from file
+with open("config.json", "r") as f:
+    loaded_data = json.load(f)
+
+print(loaded_data)  # {'username': 'bistudent', ...}
+print(loaded_data["preferences"]["theme"])  # dark`,
+            explanation: { 
+              en: 'json.dump() writes directly to file. json.load() reads from file.', 
+              ne: 'json.dump() directly file मा लेख्छ। json.load() file बाट पढ्छ।'
+            }
+          },
+          {
+            language: 'python',
+            code: `import json
+
+# Working with complex data
+products = [
+    {"id": 1, "name": "Laptop", "price": 50000, "in_stock": True},
+    {"id": 2, "name": "Mouse", "price": 500, "in_stock": False},
+    {"id": 3, "name": "Keyboard", "price": 2000, "in_stock": True}
+]
+
+# Custom serialization with default
+def serialize_obj(obj):
+    if hasattr(obj, '__dict__'):
+        return obj.__dict__
+    raise TypeError(f"Object of type {type(obj)} not JSON serializable")
+
+# Or use default parameter
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+p = Product("Monitor", 15000)
+json_str = json.dumps(p.__dict__)
+print(json_str)  # {"name": "Monitor", "price": 15000}`,
+            explanation: { 
+              en: 'JSON can\'t serialize custom objects directly. Use __dict__ or custom default function.', 
+              ne: 'JSON ले direct custom objects serialize गर्न सक्दैन। __dict__ वा custom default function प्रयोग गर्नुहोस्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'py-json-q1',
+            question: { 
+              en: 'Which function converts a Python dict to JSON string?', 
+              ne: 'कुन function ले Python dict लाई JSON string मा परिवर्तन गर्छ?' 
+            },
+            options: { 
+              en: ['json.loads()', 'json.load()', 'json.dumps()', 'json.dump()'], 
+              ne: ['json.loads()', 'json.load()', 'json.dumps()', 'json.dump()'] 
+            },
+            correctAnswer: 2,
+            explanation: { 
+              en: 'json.dumps() (with "s" for string) converts to JSON string.', 
+              ne: 'json.dumps() ("s" को साथ string को लागि) लाई JSON string मा परिवर्तन गर्छ।'
+            }
+          },
+          {
+            id: 'py-json-q2',
+            question: { 
+              en: 'How do you read JSON from a file named "data.json"?', 
+              ne: '"data.json" नामको file बाट JSON कसरी पढ्ने?' 
+            },
+            options: { 
+              en: ['json.read("data.json")', 'json.load("data.json")', 'json.loads("data.json")', 'json.get("data.json")'], 
+              ne: ['json.read("data.json")', 'json.load("data.json")', 'json.loads("data.json")', 'json.get("data.json")'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'json.load() (without "s") reads from a file object.', 
+              ne: 'json.load() ("s" बिना) file object बाट पढ्छ।'
+            }
+          }
+        ]
       }
     ]
   },
