@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import QuizBlock from '@/components/ui/QuizBlock';
 import CodeBlock from '@/components/ui/CodeBlock';
+import PracticeProblem from '@/components/ui/PracticeProblem';
 
 interface PageProps {
   params: Promise<{ locale: string; courseSlug: string; lessonSlug: string }>;
@@ -71,6 +72,25 @@ export default function LessonPage({ params }: PageProps) {
 
   const translatedCodeExamples = getTranslatedCodeExamples();
 
+  // Get translated practice problems
+  const getTranslatedPracticeProblems = () => {
+    if (!lesson?.practiceProblems) return [];
+    
+    return lesson.practiceProblems.map((p) => ({
+      ...p,
+      title: p.title[locale] || p.title.en,
+      description: p.description[locale] || p.description.en,
+      starterCode: p.starterCode[locale] || p.starterCode.en,
+      solution: p.solution[locale] || p.solution.en,
+      hints: {
+        en: p.hints.en || [],
+        ne: p.hints.ne || p.hints.en || [],
+      },
+    }));
+  };
+
+  const translatedPracticeProblems = getTranslatedPracticeProblems();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -120,6 +140,18 @@ export default function LessonPage({ params }: PageProps) {
                     {example.explanation}
                   </p>
                 </div>
+              ))}
+            </div>
+          )}
+
+          {/* Practice Problems */}
+          {translatedPracticeProblems && translatedPracticeProblems.length > 0 && (
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                {locale === 'ne' ? 'अभ्यास समस्याहरू' : 'Practice Problems'}
+              </h2>
+              {translatedPracticeProblems.map((problem, index) => (
+                <PracticeProblem key={index} {...problem} />
               ))}
             </div>
           )}
