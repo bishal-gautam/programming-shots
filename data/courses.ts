@@ -1,3 +1,13 @@
+export interface PracticeProblem {
+  id: string;
+  title: { en: string; ne: string };
+  difficulty: 'easy' | 'medium' | 'hard';
+  description: { en: string; ne: string };
+  starterCode: { en: string; ne: string };
+  solution: { en: string; ne: string };
+  hints: { en: string[]; ne: string[] };
+}
+
 export interface Lesson {
   id: string;
   title: { en: string; ne: string };
@@ -5,6 +15,7 @@ export interface Lesson {
   content: { en: string; ne: string };
   codeExamples: { language: string; code: string; explanation: { en: string; ne: string } }[];
   quiz: QuizQuestion[];
+  practiceProblems?: PracticeProblem[];
 }
 
 export interface QuizQuestion {
