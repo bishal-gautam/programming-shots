@@ -20,12 +20,12 @@ export default function LessonPage({ params }: PageProps) {
   const { t } = useLanguage();
   
   const course = courses.find((c) => c.slug === courseSlug);
-  const lessonIndex = course?.lessons.findIndex((l) => l.slug === lessonSlug);
-  const lesson = course?.lessons[lessonIndex];
+  const lessonIndex = course?.lessons.findIndex((l) => l.slug === lessonSlug) ?? -1;
+  const lesson = lessonIndex !== -1 ? course?.lessons[lessonIndex] : undefined;
 
   // Get translated content based on locale
-  const displayTitle = lesson?.title[locale] || lesson?.title.en;
-  const displayContent = lesson?.content[locale] || lesson?.content.en;
+  const displayTitle = lesson?.title[locale as keyof typeof lesson.title] || lesson?.title.en;
+  const displayContent = lesson?.content[locale as keyof typeof lesson.content] || lesson?.content.en;
 
   if (!course || !lesson) {
     return (
@@ -52,9 +52,9 @@ export default function LessonPage({ params }: PageProps) {
     
     return lesson.quiz.map((q) => ({
       ...q,
-      question: q.question[locale] || q.question.en,
-      explanation: q.explanation[locale] || q.explanation.en,
-      options: q.options[locale] || q.options.en,
+      question: q.question[locale as keyof typeof q.question] || q.question.en,
+      explanation: q.explanation[locale as keyof typeof q.explanation] || q.explanation.en,
+      options: q.options[locale as keyof typeof q.options] || q.options.en,
     }));
   };
 
@@ -66,26 +66,19 @@ export default function LessonPage({ params }: PageProps) {
     
     return lesson.codeExamples.map((example) => ({
       ...example,
-      explanation: example.explanation[locale] || example.explanation.en,
+      explanation: example.explanation[locale as keyof typeof example.explanation] || example.explanation.en,
     }));
   };
 
   const translatedCodeExamples = getTranslatedCodeExamples();
 
-  // Get translated practice problems
+  // Get translated practice problems - keep bilingual structure
   const getTranslatedPracticeProblems = () => {
     if (!lesson?.practiceProblems) return [];
     
-    return lesson.practiceProblems.map((p) => ({
+    return lesson.practiceProblems.map((p, idx) => ({
       ...p,
-      title: p.title[locale] || p.title.en,
-      description: p.description[locale] || p.description.en,
-      starterCode: p.starterCode[locale] || p.starterCode.en,
-      solution: p.solution[locale] || p.solution.en,
-      hints: {
-        en: p.hints.en || [],
-        ne: p.hints.ne || p.hints.en || [],
-      },
+      id: p.id || `problem-${idx}`,
     }));
   };
 
@@ -100,7 +93,7 @@ export default function LessonPage({ params }: PageProps) {
           <Breadcrumb
             items={[
               { label: locale === 'ne' ? 'कोर्सहरू' : 'Courses', href: `/${locale}/courses` },
-              { label: course.title[locale] || course.title.en, href: `/${locale}/courses/${courseSlug}` },
+              { label: course.title[locale as keyof typeof lesson.title] || course.title.en, href: `/${locale}/courses/${courseSlug}` },
               { label: displayTitle as string },
             ]}
           />

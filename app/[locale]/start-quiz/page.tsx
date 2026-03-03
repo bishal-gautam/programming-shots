@@ -27,7 +27,13 @@ export default function StartQuizPage() {
 
   // Find the quiz questions from the selected lesson
   const currentLesson = selectedCourseData?.lessons.find((l) => l.slug === selectedLesson);
-  const quizQuestions = currentLesson?.quiz || [];
+  const quizQuestions = (currentLesson?.quiz || []).map((q) => ({
+    id: q.id,
+    question: q.question[locale === 'ne' ? 'ne' : 'en'],
+    options: q.options[locale === 'ne' ? 'ne' : 'en'],
+    correctAnswer: q.correctAnswer,
+    explanation: q.explanation?.[locale === 'ne' ? 'ne' : 'en'],
+  }));
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -71,7 +77,7 @@ export default function StartQuizPage() {
                     if (!hasQuizzes) return null;
                     return (
                       <option key={course.id} value={course.slug}>
-                        {course.title}
+                        {course.title[locale === "ne" ? "ne" : "en"]}
                       </option>
                     );
                   })}
@@ -94,7 +100,7 @@ export default function StartQuizPage() {
                     </option>
                     {lessonsWithQuizzes.map((lesson) => (
                       <option key={lesson.slug} value={lesson.slug}>
-                        {lesson.title} ({lesson.quiz?.length} {locale === 'ne' ? 'प्रश्न' : 'questions'})
+                        {lesson.title[locale === "ne" ? "ne" : "en"]} ({lesson.quiz?.length} {locale === 'ne' ? 'प्रश्न' : 'questions'})
                       </option>
                     ))}
                   </select>
@@ -135,7 +141,7 @@ export default function StartQuizPage() {
               {quizQuestions.length > 0 ? (
                 <QuizBlock
                   questions={quizQuestions}
-                  title={currentLesson?.title}
+                  title={currentLesson?.title?.[locale === "ne" ? "ne" : "en"]}
                   onComplete={(score) => {
                     console.log('Quiz completed with score:', score);
                   }}
@@ -173,7 +179,7 @@ export default function StartQuizPage() {
                         className="block bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-lg transition-shadow"
                       >
                         <h3 className="font-semibold text-gray-900 dark:text-white">
-                          {course.title}
+                          {course.title[locale === "ne" ? "ne" : "en"]}
                         </h3>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
                           {course.lessons.filter((l) => l.quiz).length}{' '}

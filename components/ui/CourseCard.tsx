@@ -32,7 +32,7 @@ export default function CourseCard({
   progress = 0,
 }: CourseCardProps) {
   const { t, locale } = useLanguage();
-  const { theme } = useTheme();
+  const { mode: theme } = useTheme();
 
   return (
     <Link href={`/${locale}/courses/${slug}`}>

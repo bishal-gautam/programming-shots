@@ -22,9 +22,9 @@ export default function CoursesPage() {
       const query = searchQuery.toLowerCase();
       result = result.filter(
         (course) =>
-          course.title[locale].toLowerCase().includes(query) ||
+          course.title[locale as keyof typeof course.title].toLowerCase().includes(query) ||
           course.title.en.toLowerCase().includes(query) ||
-          course.description[locale].toLowerCase().includes(query) ||
+          course.description[locale as keyof typeof course.description].toLowerCase().includes(query) ||
           course.description.en.toLowerCase().includes(query)
       );
     }
@@ -41,7 +41,7 @@ export default function CoursesPage() {
         result.sort((a, b) => a.phase - b.phase);
         break;
       case 'alphabetic':
-        result.sort((a, b) => a.title[locale].localeCompare(b.title[locale]));
+        result.sort((a, b) => a.title[locale as keyof typeof a.title].localeCompare(b.title[locale as keyof typeof b.title]));
         break;
       default:
         break;
@@ -163,8 +163,8 @@ export default function CoursesPage() {
               {filteredCourses.map((course) => (
                 <CourseCard
                   key={course.id}
-                  title={course.title[locale] || course.title.en}
-                  description={course.description[locale] || course.description.en}
+                  title={course.title[locale as keyof typeof course.title] || course.title.en}
+                  description={course.description[locale as keyof typeof course.description] || course.description.en}
                   slug={course.slug}
                   lessons={course.lessons.length}
                   duration={`${course.phase} ${locale === 'ne' ? 'चरण' : 'Phase'}`}

@@ -42,7 +42,7 @@ export default function CheatsheetsPage() {
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
-                {cheatsheet.language}
+                {cheatsheet.title}
               </button>
             ))}
           </div>
@@ -52,15 +52,15 @@ export default function CheatsheetsPage() {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
               <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {currentCheatsheet.language} {locale === 'ne' ? 'चिटशीट' : 'Cheatsheet'}
+                  {currentCheatsheet.title} {locale === 'ne' ? 'चिटशीट' : 'Cheatsheet'}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 mt-2">
-                  {currentCheatsheet.description}
+                  {currentCheatsheet.category}
                 </p>
               </div>
 
               <div className="p-6 space-y-8">
-                {currentCheatsheet.sections.map((section, sectionIndex) => (
+                {currentCheatsheet.content.map((section, sectionIndex) => (
                   <div key={sectionIndex}>
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                       {section.title}
@@ -68,11 +68,11 @@ export default function CheatsheetsPage() {
                     <CodeBlock
                       code={section.code}
                       language={currentCheatsheet.id}
-                      filename={section.filename}
+                      filename={""}
                     />
-                    {section.explanation && (
+                    {section.description && (
                       <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                        {section.explanation}
+                        {section.description}
                       </p>
                     )}
                   </div>
@@ -86,7 +86,7 @@ export default function CheatsheetsPage() {
             <div className="mt-8 text-center">
               <button
                 onClick={() => {
-                  const content = currentCheatsheet.sections
+                  const content = currentCheatsheet.content
                     .map((s) => `// ${s.title}\n${s.code}`)
                     .join('\n\n');
                   const blob = new Blob([content], { type: 'text/plain' });

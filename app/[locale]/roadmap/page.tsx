@@ -44,7 +44,7 @@ export default function RoadmapPage() {
             {/* Connection Line */}
             <div className="absolute left-8 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-700 hidden md:block" />
 
-            {roadmap.phases.map((phase, index) => {
+            {roadmap.map((phase, index) => {
               const status = getPhaseStatus(index);
               const isLocked = status === 'locked';
 
@@ -80,7 +80,7 @@ export default function RoadmapPage() {
                           {phase.title}
                         </h2>
                         <span className="text-sm text-gray-500 dark:text-gray-400 mt-2 md:mt-0">
-                          {phase.estimatedTime}
+                          {phase.duration}
                         </span>
                       </div>
 
@@ -94,7 +94,7 @@ export default function RoadmapPage() {
                           {t('topics') || 'Topics'}:
                         </h3>
                         <div className="flex flex-wrap gap-2">
-                          {phase.topics.map((topic, i) => (
+                          {phase.courses.map((topic, i) => (
                             <span
                               key={i}
                               className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"

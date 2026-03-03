@@ -136,8 +136,8 @@ export default function HomePage() {
             {featuredCourses.map((course) => (
               <CourseCard
                 key={course.id}
-                title={course.title[locale] || course.title.en}
-                description={course.description[locale] || course.description.en}
+                title={course.title[locale as keyof typeof course.title] || course.title.en}
+                description={course.description[locale as keyof typeof course.description] || course.description.en}
                 slug={course.slug}
                 lessons={course.lessons.length}
                 duration={`${course.phase} ${locale === 'ne' ? 'चरण' : 'Phase'}`}

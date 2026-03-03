@@ -153,11 +153,11 @@ print(f"Welcome, {name}!")`,
               ne: 'प्रयोगकर्ताबाट तिनीहरूको नाम सोध्ने र "नमस्ते, [नाम]! पाइथनमा स्वागत छ।" जस्ता अभिवादन प्रिन्ट गर्ने कार्यक्रम लेख्नुहोस्।'
             },
             starterCode: {
-              en: `# Get user input and print a greeting\nname = input("Enter your name: ")\n# Print the greeting\n`,
+              en: `# Get user input and print a greeting\nname = input("Enter your ne: ")\n# Print the greeting\n`,
               ne: `# प्रयोगकर्ता इनपुट लिनुहोस् र अभिवादन प्रिन्ट गर्नुहोस्\nname = input("तपाईंको नाम लेख्नुहोस्: ")\n# अभिवादन प्रिन्ट गर्नुहोस्\n`
             },
             solution: {
-              en: `name = input("Enter your name: ")\nprint(f"Hello, {name}! Welcome to Python.")`,
+              en: `name = input("Enter your ne: ")\nprint(f"Hello, {name}! Welcome to Python.")`,
               ne: `name = input("तपाईंको नाम लेख्नुहोस्: ")\nprint(f"नमस्ते, {name}! पाइथनमा स्वागत छ।")`
             },
             hints: {
@@ -325,8 +325,8 @@ print(x, y, z, a, b, c)`,
               ne: `# विभिन्न प्रकारहरूका भेरिएबल घोषणा गर्नुहोस्\n# इन्टिजर\nage = 25\n\n# फ्लोट\nprice = 19.99\n\n# स्ट्रिङ\nname = "पाइथन"\n\n# बुलियन\nis_active = True\n\n# तिनीहरूको प्रकार प्रिन्ट गर्नुहोस्\n`
             },
             solution: {
-              en: `age = 25\nprice = 19.99\nname = "Python"\nis_active = True\n\nprint(f"age: {type(age)}")\nprint(f"price: {type(price)}")\nprint(f"name: {type(name)}")\nprint(f"is_active: {type(is_active)}")`,
-              ne: `age = 25\nprice = 19.99\nname = "पाइथन"\nis_active = True\n\nprint(f"age: {type(age)}")\nprint(f"price: {type(price)}")\nprint(f"name: {type(name)}")\nprint(f"is_active: {type(is_active)}")`
+              en: `age = 25\nprice = 19.99\nname = "Python"\nis_active = True\n\nprint(f"age: {type(age)}")\nprint(f"price: {type(price)}")\nprint(f"ne: {type(name)}")\nprint(f"is_active: {type(is_active)}")`,
+              ne: `age = 25\nprice = 19.99\nname = "पाइथन"\nis_active = True\n\nprint(f"age: {type(age)}")\nprint(f"price: {type(price)}")\nprint(f"ne: {type(name)}")\nprint(f"is_active: {type(is_active)}")`
             },
             hints: {
               en: ['Use type() function to get the type of a variable', 'f-strings work with type() output'],
@@ -2375,8 +2375,8 @@ print(upper)  # ["HELLO", "WORLD", "PYTHON"]`,
             code: `# Dictionary Comprehension
 names = ["ram", "sita", "hari"]
 
-# Create dict with name: length
-name_lengths = {name: len(name) for name in names}
+# Create dict with ne: length
+name_lengths = {ne: len(name) for name in names}
 print(name_lengths)  # {"ram": 3, "sita": 4, "hari": 4}
 
 # With condition
@@ -2914,7 +2914,7 @@ total = sum(x**2 for x in range(1000))
 print(total)  # 332833500`,
             explanation: { 
               en: 'Generator uses () instead of []. It yields one item at a time, not all at once.', 
-              name: 'Generator ले [] को सट्टा () प्रयोग गर्छ। यसले एकैपटक सबै होइन, एकैचोटि एक item yield गर्छ।'
+              ne: 'Generator ले [] को सट्टा () प्रयोग गर्छ। यसले एकैपटक सबै होइन, एकैचोटि एक item yield गर्छ।'
             }
           },
           {
@@ -5262,7 +5262,7 @@ Destructuring allows you to extract values from objects into distinct variables.
             language: 'javascript',
             code: `// Creating an object
 let person = {
-  name: "Ram",
+  ne: "Ram",
   age: 25,
   city: "Kathmandu",
   isStudent: true
@@ -5298,7 +5298,7 @@ console.log(calculator.subtract()); // 5`,
           {
             language: 'javascript',
             code: `// Destructuring
-let user = { name: "Sita", age: 22, country: "Nepal" };
+let user = { ne: "Sita", age: 22, country: "Nepal" };
 
 // Extract to variables
 let { name, age } = user;
@@ -5312,7 +5312,7 @@ console.log(status);  // "active"
 // Spread operator
 let updatedUser = { ...user, age: 23, city: "Pokhara" };
 console.log(updatedUser);
-// { name: "Sita", age: 23, country: "Nepal", city: "Pokhara" }
+// { ne: "Sita", age: 23, country: "Nepal", city: "Pokhara" }
 
 // Object methods
 console.log(Object.keys(user));   // ["name", "age", "country"]

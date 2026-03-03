@@ -22,8 +22,8 @@ export default function CourseDetailPage({ params }: PageProps) {
   const course = courses.find((c) => c.slug === courseSlug);
 
   // Get translated title and description based on locale
-  const displayTitle = course?.title[locale] || course?.title.en;
-  const displayDescription = course?.description[locale] || course?.description.en;
+  const displayTitle = course?.title[locale as keyof typeof course.title] || course?.title.en;
+  const displayDescription = course?.description[locale as keyof typeof course.description] || course?.description.en;
 
   if (!course) {
     return (
@@ -57,7 +57,7 @@ export default function CourseDetailPage({ params }: PageProps) {
           <Breadcrumb
             items={[
               { label: locale === 'ne' ? 'कोर्सहरू' : 'Courses', href: `/${locale}/courses` },
-              { label: displayTitle },
+              { label: displayTitle || "" },
             ]}
           />
 
@@ -118,7 +118,7 @@ export default function CourseDetailPage({ params }: PageProps) {
             <div className="space-y-4">
               {course.lessons.map((lesson, index) => {
                 // Get translated lesson title based on locale
-                const displayLessonTitle = lesson.title[locale] || lesson.title.en;
+                const displayLessonTitle = lesson.title[locale as keyof typeof course.title] || lesson.title.en;
                 
                 return (
                 <Link
