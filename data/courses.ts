@@ -5545,6 +5545,500 @@ ORDER BY age DESC;  -- Descending order
         ]
       }
     ]
+  },
+  // Phase 8: TypeScript
+  {
+    id: 'typescript-basics',
+    title: { en: 'TypeScript Fundamentals', ne: 'TypeScript को आधारभूत कुराहरू' },
+    slug: 'typescript-basics',
+    description: { en: 'Master TypeScript - the typed superset of JavaScript. Build safer, more maintainable applications.', ne: 'TypeScript मा महारत हासिल गर्नुहोस् - JavaScript को टाइप गरिएको सुपरसेट। अझ सुरक्षित, अझ मर्मत योग्य अनुप्रयोगहरू बनाउनुहोस्।' },
+    phase: 8,
+    icon: '📘',
+    color: '#3178c6',
+    lessons: [
+      {
+        id: 'ts-intro',
+        slug: 'introduction-to-typescript',
+        title: { 
+          en: 'Introduction to TypeScript', 
+          ne: 'TypeScript को परिचय' 
+        },
+        content: {
+          en: `# Introduction to TypeScript
+
+TypeScript is a strongly typed programming language that builds on JavaScript. Created by Microsoft in 2012, it adds static type definitions to JavaScript.
+
+## Why Learn TypeScript?
+
+- **Type Safety**: Catch errors at compile time rather than runtime
+- **Better IDE Support**: Enhanced autocomplete, refactoring, and navigation
+- **Easier Maintenance**: Self-documenting code with types
+- **Modern Features**: Access to latest JavaScript features
+- **Industry Standard**: Used by major companies like Google, Microsoft, Airbnb
+
+## TypeScript vs JavaScript
+
+TypeScript is a superset of JavaScript - all JavaScript code is valid TypeScript. But TypeScript adds:
+- Static type checking
+- Interfaces and Generics
+- Modern syntax support
+
+## Your First TypeScript
+
+Let's see a simple example that shows TypeScript's type system:`,
+          ne: `# TypeScript को परिचय
+
+TypeScript एक शक्तिशाली रूपमा टाइप गरिएको प्रोग्रामिंग भाषा हो जुन JavaScript मा निर्मित हो। Microsoft द्वारा 2012 मा सिर्जना गरिएको, यसले JavaScript मा स्थिर टाइप परिभाषाहरू थप्छ।
+
+## TypeScript किन सिक्नुहोस्?
+
+- **टाइप सुरक्षा**: रनटाइमको सट्टा कम्पाइल समयमा त्रुटिहरू समात्नुहोस्
+- **उत्तम IDE समर्थन**: बढ़को autocomplete, refactoring, र navigation
+- **सजिलो मर्मत**: टाइपहरूको साथ आफैं-कागजात कोड
+- **आधुनिक विशेषताहरू**: नवीनतम JavaScript विशेषताहरूमा पहुँच
+- **उद्योग मानक**: Google, Microsoft, Airbnb जस्ता प्रमुख कम्पनीहरूद्वारा प्रयोग गरिन्छ
+
+## TypeScript बनाम JavaScript
+
+TypeScript JavaScript को सुपरसेट हो - सबै JavaScript कोड वैध TypeScript हो। तर TypeScript थप्छ:
+- स्थिर टाइप जाँच
+- इन्टरफेस र जेनरिक्स
+- आधुनिक सिन्ट्याक्स समर्थन
+
+## तपाईंको पहिलो TypeScript
+
+TypeScript को टाइप प्रणाली देखाउने सरल उदाहरण हेरौं:`
+        },
+        codeExamples: [
+          {
+            language: 'typescript',
+            code: `// TypeScript with explicit types
+let userName: string = "Ram";
+let userAge: number = 25;
+let isActive: boolean = true;
+
+// Type inference - TypeScript figures out the type
+let inferredName = "Shyam"; // Type is inferred as string
+
+// Array with type
+let scores: number[] = [95, 87, 92];
+
+// Function with typed parameters and return
+function greet(name: string): string {
+    return \`Hello, \${name}!\`;
+}
+
+// This would cause a compile error:
+// userName = 123; // Error: Type 'number' is not assignable to type 'string'`,
+            explanation: { 
+              en: 'TypeScript provides static type checking. Types can be explicit (written) or inferred (figured out automatically).', 
+              ne: 'TypeScript ले स्थिर टाइप जाँच प्रदान गर्छ। टाइपहरू स्पष्ट (लेखिएको) वा अनुमानित (स्वचालित रूपमा पत्ता लगाइएको) हुन सक्छन्।'
+            }
+          },
+          {
+            language: 'typescript',
+            code: `// JavaScript code (valid in TypeScript)
+function add(a, b) {
+    return a + b;
+}
+
+// TypeScript adds type safety
+function addTS(a: number, b: number): number {
+    return a + b;
+}
+
+// Call with wrong type - IDE shows error
+addTS("hello", "world"); // Error!
+addTS(5, 10); // Works fine, returns 15`,
+            explanation: { 
+              en: 'TypeScript catches type-related errors before your code runs. This prevents many runtime bugs.', 
+              ne: 'TypeScript ले तपाईंको कोड चल्नु अघि टाइप-सम्बन्धित त्रुटिहरू समात्छ। यसले धेरै runtime bugs रोक्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'ts-intro-q1',
+            question: { 
+              en: 'What is TypeScript in relation to JavaScript?', 
+              ne: 'JavaScript को सन्दर्भमा TypeScript के हो?' 
+            },
+            options: { 
+              en: ['A replacement for JavaScript', 'A superset of JavaScript', 'A different syntax', 'A framework'], 
+              ne: ['JavaScript को प्रतिस्थापन', 'JavaScript को सुपरसेट', 'फरक सिन्ट्याक्स', 'फ्रेमवर्क'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'TypeScript is a superset of JavaScript - all JavaScript code is valid TypeScript.', 
+              ne: 'TypeScript JavaScript को सुपरसेट हो - सबै JavaScript कोड वैध TypeScript हो।'
+            }
+          },
+          {
+            id: 'ts-intro-q2',
+            question: { 
+              en: 'When does TypeScript catch type errors?', 
+              ne: 'TypeScript ले कहिले टाइप त्रुटिहरू समात्छ?' 
+            },
+            options: { 
+              en: ['At runtime only', 'At compile time', 'Only in production', 'Never'], 
+              ne: ['केवल runtime मा', 'कम्पाइल समयमा', 'केवल production मा', 'कहिल्यै पनि'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'TypeScript catches type errors at compile time, before your code runs.', 
+              ne: 'TypeScript ले तपाईंको कोड चल्नु अघि कम्पाइल समयमा टाइप त्रुटिहरू समात्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'ts-types',
+        slug: 'typescript-types-and-interfaces',
+        title: { 
+          en: 'Types and Interfaces', 
+          ne: 'टाइप र इन्टरफेसहरू' 
+        },
+        content: {
+          en: `# Types and Interfaces
+
+TypeScript's type system is powerful and flexible. Learn how to define and use types effectively.
+
+## Basic Types
+
+TypeScript supports all JavaScript types plus additional ones:
+- **string**, **number**, **boolean**
+- **arrays**: number[], string[]
+- **objects**: { key: type }
+- **null**, **undefined**
+- **any**, **void**, **never**
+
+## Type Aliases
+
+Create your own names for types using type aliases.
+
+## Interfaces
+
+Interfaces define the structure of objects. They're similar to types but have some differences.
+
+## When to Use Types vs Interfaces
+
+- **Interface**: Object shapes, class implementation
+- **Type**: Unions, primitives, tuples`,
+          ne: `# टाइप र इन्टरफेसहरू
+
+TypeScript को टाइप प्रणाली शक्तिशाली र लचिलो छ। प्रभावकारी रूपमा टाइपहरू परिभाषित र प्रयोग गर्न सिक्नुहोस्।
+
+## आधारभूत टाइपहरू
+
+TypeScript ले सबै JavaScript टाइपहरू समर्थन गर्छ plus अतिरिक्त:
+- **string**, **number**, **boolean**
+- **arrays**: number[], string[]
+- **objects**: { key: type }
+- **null**, **undefined**
+- **any**, **void**, **never**
+
+## टाइप एलियासहरू
+
+टाइप एलियासहरू प्रयोग गरेर टाइपहरूको लागि आफ्नै नामहरू सिर्जना गर्नुहोस्।
+
+## इन्टरफेसहरू
+
+इन्टरफेसहरूले वस्तुहरूको संरचना परिभाषित गर्छन्। तिनीहरू टाइपहरू जस्तै छन् तर केही भिन्नताहरू छन्।
+
+## टाइप बनाम इन्टरफेस कहिले प्रयोग गर्ने
+
+- **इन्टरफेस**: वस्तु आकार, क्लास कार्यान्वयन
+- **टाइप**: यूनियन, प्रिमिटिभ, टुपल`
+        },
+        codeExamples: [
+          {
+            language: 'typescript',
+            code: `// Type Alias
+type ID = string | number;
+type UserStatus = "active" | "inactive" | "pending";
+
+let userId: ID = "abc123";
+let status: UserStatus = "active";
+
+// Interface
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    age?: number; // Optional property
+}
+
+// Using the interface
+const user: User = {
+    id: 1,
+    name: "Ram",
+    email: "ram@example.com"
+};
+
+// Extending interfaces
+interface Admin extends User {
+    role: "admin" | "superadmin";
+    permissions: string[];
+}
+
+const admin: Admin = {
+    id: 2,
+    name: "Shyam",
+    email: "shyam@example.com",
+    role: "admin",
+    permissions: ["read", "write", "delete"]
+};`,
+            explanation: { 
+              en: 'Interfaces define object shapes. Use ? for optional properties. extends creates inheritance.', 
+              ne: 'इन्टरफेसहरूले वस्तु आकारहरू परिभाषित गर्छन्। वैकल्पिक प्रोपर्टीहरूको लागि ? प्रयोग गर्नुहोस्। extends ले inheritance सिर्जना गर्छ।'
+            }
+          },
+          {
+            language: 'typescript',
+            code: `// Function types
+type Callback = (result: string) => void;
+
+function fetchData(callback: Callback): void {
+    // Simulating async operation
+    callback("Data received!");
+}
+
+// Generic function
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+const num = identity<number>(42); // number
+const str = identity("hello"); // inferred as string
+
+// Generic interface
+interface Container<T> {
+    value: T;
+    getValue(): T;
+}
+
+const stringContainer: Container<string> = {
+    value: "Hello",
+    getValue() { return this.value; }
+};`,
+            explanation: { 
+              en: 'Generics make code reusable while maintaining type safety. <T> represents a type parameter.', 
+              ne: 'जेनरिक्सले कोडलाई टाइप सुरक्षा कायम राख्दै पुन: प्रयोज्य बनाउँछ। <T> ले टाइप प्यारामिटर प्रतिनिधित्व गर्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'ts-types-q1',
+            question: { 
+              en: 'What does the ? symbol mean in an interface property?', 
+              ne: 'इन्टरफेस प्रोपर्टीमा ? चिन्हको अर्थ के हो?' 
+            },
+            options: { 
+              en: ['The property is required', 'The property is optional', 'The property is private', 'The property is deprecated'], 
+              ne: ['प्रोपर्टी आवश्यक छ', 'प्रोपर्टी वैकल्पिक छ', 'प्रोपर्टी निजी छ', 'प्रोपर्टी हटाइएको छ'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'The ? makes a property optional - it may or may not be present in the object.', 
+              ne: '? ले प्रोपर्टीलाई वैकल्पिक बनाउँछ - यो वस्तुमा हुन सक्छ वा नहुन पनि सक्छ।'
+            }
+          },
+          {
+            id: 'ts-types-q2',
+            question: { 
+              en: 'What is a generic in TypeScript?', 
+              ne: 'TypeScript मा generic के हो?' 
+            },
+            options: { 
+              en: ['A type that works with any data type', 'A special string type', 'A debugging tool', 'A testing framework'], 
+              ne: ['कुनै पनि डेटा टाइपसंग काम गर्ने टाइप', 'विशेष स्ट्रिङ टाइप', 'डिबगिंग उपकरण', 'टेस्टिंग फ्रेमवर्क'] 
+            },
+            correctAnswer: 0,
+            explanation: { 
+              en: 'Generics allow you to write reusable code that works with multiple types while maintaining type safety.', 
+              ne: 'जेनरिक्सले तपाईंलाई टाइप सुरक्षा कायम राख्दै धेरै टाइपहरूसंग काम गर्ने पुन: प्रयोज्य कोड लेख्न अनुमति दिन्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'ts-advanced',
+        slug: 'advanced-typescript',
+        title: { 
+          en: 'Advanced TypeScript', 
+          ne: 'उन्नत TypeScript' 
+        },
+        content: {
+          en: `# Advanced TypeScript
+
+Take your TypeScript skills to the next level with advanced type features.
+
+## Union and Intersection Types
+
+- **Union**: A value can be one of several types (|)
+- **Intersection**: A value must be all of several types (&)
+
+## Literal Types
+
+Specific string, number, or boolean values as types.
+
+## Utility Types
+
+TypeScript provides built-in types for common transformations:
+- Partial, Required, Readonly
+- Pick, Omit
+- Record
+
+## Type Guards
+
+Narrow down types within conditional blocks.
+
+## Mapped Types
+
+Transform types by mapping over property keys.`,
+          ne: `# उन्नत TypeScript
+
+उन्नत टाइप सुविधाहरूको साथ आफ्नो TypeScript सीपहरूलाई अर्को स्तरमा लैजानुहोस्।
+
+## यूनियन र इन्टरसेक्सन टाइपहरू
+
+- **यूनियन**: एउटा मान धेरै टाइपहरू मध्ये एउटा हुन सक्छ (|)
+- **इन्टरसेक्सन**: एउटा मान धेरै टाइपहरूको सबै हुनुपर्छ (&)
+
+## लिटरल टाइपहरू
+
+विशिष्ट स्ट्रिङ, नम्बर, वा बुलियन मानहरू टाइपहरूको रूपमा।
+
+## युटिलिटी टाइपहरू
+
+TypeScript ले सामान्य रूपांतरणहरूको लागि built-in टाइपहरू प्रदान गर्छ:
+- Partial, Required, Readonly
+- Pick, Omit
+- Record
+
+## टाइप गार्डहरू
+
+कन्डिशनल ब्लकहरूभित्र टाइपहरूलाई संकुचित गर्नुहोस्।
+
+## म्याप्ड टाइपहरू
+
+प्रोपर्टी कीज़ म्यापिंग गरेर टाइपहरू रूपांतरण गर्नुहोस्।`
+        },
+        codeExamples: [
+          {
+            language: 'typescript',
+            code: `// Union Types
+type StringOrNumber = string | number;
+let value: StringOrNumber = "hello";
+value = 42; // Also valid
+
+// Type narrowing with typeof
+function printValue(val: string | number) {
+    if (typeof val === "string") {
+        console.log(val.toUpperCase()); // string methods work
+    } else {
+        console.log(val.toFixed(2)); // number methods work
+    }
+}
+
+// Literal types
+type Direction = "north" | "south" | "east" | "west";
+const move: Direction = "north";
+
+// Intersection types
+type Person = { name: string };
+type Employee = { companyId: number };
+type PersonEmployee = Person & Employee;
+
+const person: PersonEmployee = {
+    name: "Ram",
+    companyId: 123
+};`,
+            explanation: { 
+              en: 'Union types use | to allow multiple types. Use typeof or type guards to narrow types.', 
+              ne: 'यूनियन टाइपहरूले धेरै टाइपहरू अनुमति दिन | प्रयोग गर्छन्। टाइपहरू संकुचित गर्न typeof वा टाइप गार्डहरू प्रयोग गर्नुहोस्।'
+            }
+          },
+          {
+            language: 'typescript',
+            code: `// Utility Types
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    age: number;
+}
+
+// Partial - all properties optional
+type PartialUser = Partial<User>;
+
+// Pick - select specific properties
+type UserPreview = Pick<User, "id" | "name">;
+
+// Omit - exclude specific properties
+type UserWithoutEmail = Omit<User, "email">;
+
+// Record - create object type with specific keys
+type UserRoles = Record<string, "admin" | "user" | "guest">;
+
+const roles: UserRoles = {
+    "ram": "admin",
+    "shyam": "user"
+};
+
+// Custom type guard
+function isString(value: unknown): value is string {
+    return typeof value === "string";
+}
+
+function processValue(value: unknown) {
+    if (isString(value)) {
+        console.log(value.toUpperCase());
+    }
+}`,
+            explanation: { 
+              en: 'Utility types provide ready-made type transformations. Type guards help narrow types safely.', 
+              ne: 'युटिलिटी टाइपहरूले तयार-मेड टाइप रूपांतरणहरू प्रदान गर्छन्। टाइप गार्डहरूले टाइपहरूलाई सुरक्षित रूपमा संकुचित गर्न मद्दत गर्छन्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'ts-adv-q1',
+            question: { 
+              en: 'What does the Partial utility type do?', 
+              ne: 'Partial utility type ले के गर्छ?' 
+            },
+            options: { 
+              en: ['Makes all properties required', 'Makes all properties optional', 'Removes all properties', 'Adds new properties'], 
+              ne: ['सबै प्रोपर्टीहरू आवश्यक बनाउँछ', 'सबै प्रोपर्टीहरू वैकल्पिक बनाउँछ', 'सबै प्रोपर्टीहरू हटाउँछ', 'नयाँ प्रोपर्टीहरू थप्छ'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Partial<T> makes all properties of type T optional.', 
+              ne: 'Partial<T> ले टाइप T को सबै प्रोपर्टीहरू वैकल्पिक बनाउँछ।'
+            }
+          },
+          {
+            id: 'ts-adv-q2',
+            question: { 
+              en: 'What symbol is used for union types?', 
+              ne: 'यूनियन टाइपहरूको लागि कुन चिन्ह प्रयोग गरिन्छ?' 
+            },
+            options: { 
+              en: ['&', '|', '||', '&&'], 
+              ne: ['&', '|', '||', '&&'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'The | (pipe) symbol creates union types, meaning a value can be one of multiple types.', 
+              ne: '| (पाइप) चिन्हले यूनियन टाइपहरू सिर्जना गर्छ, जसको अर्थ एउटा मान धेरै टाइपहरू मध्ये एउटा हुन सक्छ।'
+            }
+          }
+        ]
+      }
+    ]
   }
 ];
 
