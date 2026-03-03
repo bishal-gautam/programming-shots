@@ -142,6 +142,50 @@ print(f"Welcome, {name}!")`,
               ne: 'पाइथनमा पाठ आउटपुट गर्न print() प्रकार्य प्रयोग गरिन्छ।'
             }
           }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-intro-hello',
+            title: { en: 'Hello, Name!', ne: 'नमस्ते, नाम!' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a program that asks the user for their name and prints a greeting like "Hello, [Name]! Welcome to Python."',
+              ne: 'प्रयोगकर्ताबाट तिनीहरूको नाम सोध्ने र "नमस्ते, [नाम]! पाइथनमा स्वागत छ।" जस्ता अभिवादन प्रिन्ट गर्ने कार्यक्रम लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Get user input and print a greeting\nname = input("Enter your name: ")\n# Print the greeting\n`,
+              ne: `# प्रयोगकर्ता इनपुट लिनुहोस् र अभिवादन प्रिन्ट गर्नुहोस्\nname = input("तपाईंको नाम लेख्नुहोस्: ")\n# अभिवादन प्रिन्ट गर्नुहोस्\n`
+            },
+            solution: {
+              en: `name = input("Enter your name: ")\nprint(f"Hello, {name}! Welcome to Python.")`,
+              ne: `name = input("तपाईंको नाम लेख्नुहोस्: ")\nprint(f"नमस्ते, {name}! पाइथनमा स्वागत छ।")`
+            },
+            hints: {
+              en: ['Use input() to get user input', 'Use f-strings for formatting'],
+              ne: ['प्रयोगकर्ता इनपुटको लागि input() प्रयोग गर्नुहोस्', 'फर्माटिंगको लागि f-strings प्रयोग गर्नुहोस्']
+            }
+          },
+          {
+            id: 'py-intro-calc',
+            title: { en: 'Simple Calculator', ne: 'सजिलो क्यालकुलेटर' },
+            difficulty: 'medium',
+            description: {
+              en: 'Create a calculator that takes two numbers and an operator (+, -, *, /) from user input and prints the result.',
+              ne: 'दुई संख्या र एक अपरेटर (+, -, *, /) प्रयोगकर्ता इनपुटबाट लिने र परिणाम प्रिन्ट गर्ने क्यालकुलेटर सिर्जना गर्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Simple calculator\n# Get two numbers and an operator from user\nnum1 = float(input("Enter first number: "))\noperator = input("Enter operator (+, -, *, /): ")\nnum2 = float(input("Enter second number: "))\n\n# Calculate and print the result\n`,
+              ne: `# सजिलो क्यालकुलेटर\n# प्रयोगकर्ताबाट दुई संख्या र एक अपरेटर लिनुहोस्\nnum1 = float(input("पहिलो संख्या लेख्नुहोस्: "))\noperator = input("अपरेटर लेख्नुहोस् (+, -, *, /): ")\nnum2 = float(input("दोस्रो संख्या लेख्नुहोस्: "))\n\n# परिणाम गणना र प्रिन्ट गर्नुहोस्\n`
+            },
+            solution: {
+              en: `num1 = float(input("Enter first number: "))\noperator = input("Enter operator (+, -, *, /): ")\nnum2 = float(input("Enter second number: "))\n\nif operator == '+':\n    print(num1 + num2)\nelif operator == '-':\n    print(num1 - num2)\nelif operator == '*':\n    print(num1 * num2)\nelif operator == '/':\n    print(num1 / num2)\nelse:\n    print("Invalid operator")`,
+              ne: `num1 = float(input("पहिलो संख्या लेख्नुहोस्: "))\noperator = input("अपरेटर लेख्नुहोस् (+, -, *, /): ")\nnum2 = float(input("दोस्रो संख्या लेख्नुहोस्: "))\n\nif operator == '+':\n    print(num1 + num2)\nelif operator == '-':\n    print(num1 - num2)\nelif operator == '*':\n    print(num1 * num2)\nelif operator == '/':\n    print(num1 / num2)\nelse:\n    print("अमान्य अपरेटर")`
+            },
+            hints: {
+              en: ['Use if-elif-else for operator selection', 'Convert input to float for decimal numbers'],
+              ne: ['अपरेटर चयनको लागि if-elif-else प्रयोग गर्नुहोस्', 'दशमलव संख्याको लागि इनपुटलाई float मा रूपांतरण गर्नुहोस्']
+            }
+          }
         ]
       },
       {
@@ -264,6 +308,50 @@ print(x, y, z, a, b, c)`,
             explanation: { 
               en: 'Variable names cannot start with a number.', 
               ne: 'भेरिएबल नामहरू अंकबाट सुरु हुन सक्दैनन्।'
+            }
+          }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-var-type',
+            title: { en: 'Type Checker', ne: 'प्रकार जाँचकर्ता' },
+            difficulty: 'easy',
+            description: {
+              en: 'Create a program that declares variables of different types (int, float, string, bool) and prints their types using type().',
+              ne: 'विभिन्न प्रकारहरू (int, float, string, bool) को भेरिएबल घोषणा गर्ने र type() प्रयोग गरेर तिनीहरूको प्रकार प्रिन्ट गर्ने कार्यक्रम बनाउनुहोस्।'
+            },
+            starterCode: {
+              en: `# Declare variables of different types\n# Integer\nage = 25\n\n# Float\nprice = 19.99\n\n# String\nname = "Python"\n\n# Boolean\nis_active = True\n\n# Print their types\n`,
+              ne: `# विभिन्न प्रकारहरूका भेरिएबल घोषणा गर्नुहोस्\n# इन्टिजर\nage = 25\n\n# फ्लोट\nprice = 19.99\n\n# स्ट्रिङ\nname = "पाइथन"\n\n# बुलियन\nis_active = True\n\n# तिनीहरूको प्रकार प्रिन्ट गर्नुहोस्\n`
+            },
+            solution: {
+              en: `age = 25\nprice = 19.99\nname = "Python"\nis_active = True\n\nprint(f"age: {type(age)}")\nprint(f"price: {type(price)}")\nprint(f"name: {type(name)}")\nprint(f"is_active: {type(is_active)}")`,
+              ne: `age = 25\nprice = 19.99\nname = "पाइथन"\nis_active = True\n\nprint(f"age: {type(age)}")\nprint(f"price: {type(price)}")\nprint(f"name: {type(name)}")\nprint(f"is_active: {type(is_active)}")`
+            },
+            hints: {
+              en: ['Use type() function to get the type of a variable', 'f-strings work with type() output'],
+              ne: ['भेरिएबलको प्रकार पाउन type() प्रकार्य प्रयोग गर्नुहोस्', 'f-strings ले type() आउटपुटसँग काम गर्छ']
+            }
+          },
+          {
+            id: 'py-var-convert',
+            title: { en: 'Temperature Converter', ne: 'तापमान रूपांतरक' },
+            difficulty: 'medium',
+            description: {
+              en: 'Write a program that converts Celsius to Fahrenheit. Formula: F = (C * 9/5) + 32',
+              ne: 'सेल्सियसलाई फाहरेनहाइटमा रूपांतर गर्ने कार्यक्रम लेख्नुहोस्। सूत्र: F = (C * 9/5) + 32'
+            },
+            starterCode: {
+              en: `# Convert Celsius to Fahrenheit\ncelsius = float(input("Enter temperature in Celsius: "))\n\n# Apply the formula\n\n# Print the result\n`,
+              ne: `# सेल्सियसलाई फाहरेनहाइटमा रूपांतर गर्नुहोस्\ncelsius = float(input("सेल्सियसमा तापमान लेख्नुहोस्: "))\n\n# सूत्र लागू गर्नुहोस्\n\n# परिणाम प्रिन्ट गर्नुहोस्\n`
+            },
+            solution: {
+              en: `celsius = float(input("Enter temperature in Celsius: "))\nfahrenheit = (celsius * 9/5) + 32\nprint(f"{celsius}°C = {fahrenheit}°F")`,
+              ne: `celsius = float(input("सेल्सियसमा तापमान लेख्नुहोस्: "))\nfahrenheit = (celsius * 9/5) + 32\nprint(f"{celsius}°C = {fahrenheit}°F")`
+            },
+            hints: {
+              en: ['Apply the formula F = (C * 9/5) + 32', 'Use float() for decimal input'],
+              ne: ['सूत्र F = (C * 9/5) + 32 लागू गर्नुहोस्', 'दशमलव इनपुटको लागि float() प्रयोग गर्नुहोस्']
             }
           }
         ]
@@ -670,6 +758,71 @@ pairs = [(x, y) for x in [1,2] for y in [3,4]]`,
             explanation: { 
               en: 'range(start, stop, step) generates numbers from start to stop-1, incrementing by step.', 
               ne: 'range(start, stop, step) ले start देखि stop-1 सम्मका संख्याहरू उत्पन्न गर्छ, step ले बढाउँदै।'
+            }
+          }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-loop-fizzbuzz',
+            title: { en: 'FizzBuzz', ne: 'फिजबज' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a program that prints numbers 1 to 20. For multiples of 3, print "Fizz". For multiples of 5, print "Buzz". For multiples of both, print "FizzBuzz".',
+              ne: '1 देखि 20 सम्मका संख्याहरू प्रिन्ट गर्ने कार्यक्रम लेख्नुहोस्। 3 का गुणनहरूको लागि "Fizz" प्रिन्ट गर्नुहोस्। 5 का गुणनहरूको लागि "Buzz" प्रिन्ट गर्नुहोस्। दुवैका गुणनहरूको लागि "FizzBuzz" प्रिन्ट गर्नुहोस्।'
+            },
+            starterCode: {
+              en: `# FizzBuzz - print 1 to 20 with FizzBuzz rules\nfor i in range(1, 21):\n    # Your code here\n`,
+              ne: `# फिजबज - 1 देखि 20 सम्म फिजबज नियमहरूसँग प्रिन्ट गर्नुहोस्\nfor i in range(1, 21):\n    # तपाईंको कोड यहाँ\n`
+            },
+            solution: {
+              en: `for i in range(1, 21):\n    if i % 3 == 0 and i % 5 == 0:\n        print("FizzBuzz")\n    elif i % 3 == 0:\n        print("Fizz")\n    elif i % 5 == 0:\n        print("Buzz")\n    else:\n        print(i)`,
+              ne: `for i in range(1, 21):\n    if i % 3 == 0 and i % 5 == 0:\n        print("FizzBuzz")\n    elif i % 3 == 0:\n        print("Fizz")\n    elif i % 5 == 0:\n        print("Buzz")\n    else:\n        print(i)`
+            },
+            hints: {
+              en: ['Check divisibility with % operator', 'Check both conditions first (divisible by both 3 and 5)'],
+              ne: ['% अपरेटर प्रयोग गरेर भाज्यता जाँच गर्नुहोस्', 'पहिले दुवै शर्तहरू जाँच गर्नुहोस् (3 र 5 दुवैले भाग जान्छ)']
+            }
+          },
+          {
+            id: 'py-loop-star',
+            title: { en: 'Star Triangle', ne: 'तारा त्रिकोण' },
+            difficulty: 'medium',
+            description: {
+              en: 'Print a right-angled triangle using stars (*). For n=5, it should look like:\n*\n**\n***\n****\n*****',
+              ne: 'तारा (*) प्रयोग गरेर दायाँ-कोण त्रिकोण प्रिन्ट गर्नुहोस्। n=5 को लागि यसको रूप यस्तो हुन्छ:\n*\n**\n***\n****\n*****'
+            },
+            starterCode: {
+              en: `# Print star triangle\nn = 5\n\nfor i in range(1, n + 1):\n    # Print i stars\n`,
+              ne: `# तारा त्रिकोण प्रिन्ट गर्नुहोस्\nn = 5\n\nfor i in range(1, n + 1):\n    # i वटा तारा प्रिन्ट गर्नुहोस्\n`
+            },
+            solution: {
+              en: `n = 5\n\nfor i in range(1, n + 1):\n    print("*" * i)`,
+              ne: `n = 5\n\nfor i in range(1, n + 1):\n    print("*" * i)`
+            },
+            hints: {
+              en: ['Use multiplication to repeat the star character', '"*" * 3 gives "***"'],
+              ne: ['तारा क्यारेक्टर दोहोर्याउन गुणन प्रयोग गर्नुहोस्', '"*" * 3 ले "***" दिन्छ']
+            }
+          },
+          {
+            id: 'py-loop-sum',
+            title: { en: 'Sum of Numbers', ne: 'संख्याहरूको योग' },
+            difficulty: 'easy',
+            description: {
+              en: 'Calculate the sum of all numbers from 1 to n using a for loop.',
+              ne: 'for loop प्रयोग गरेर 1 देखि n सम्मका सबै संख्याहरूको योग गणना गर्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Calculate sum of 1 to n\nn = int(input("Enter n: "))\n\ntotal = 0\nfor i in range(1, n + 1):\n    # Add i to total\n\nprint(f"Sum: {total}")`,
+              ne: `# 1 देखि n सम्मको योग गणना गर्नुहोस्\nn = int(input("n प्रविष्ट गर्नुहोस्: "))\n\ntotal = 0\nfor i in range(1, n + 1):\n    # total मा i थप्नुहोस्\n\nprint(f"योग: {total}")`
+            },
+            solution: {
+              en: `n = int(input("Enter n: "))\n\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\n\nprint(f"Sum: {total}")`,
+              ne: `n = int(input("n प्रविष्ट गर्नुहोस्: "))\n\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\n\nprint(f"योग: {total}")`
+            },
+            hints: {
+              en: ['Initialize total to 0', 'Add each number to total inside the loop'],
+              ne: ['total लाई 0 बाट सुरू गर्नुहोस्', 'लुपभित्र प्रत्येक संख्यालाई total मा थप्नुहोस्']
             }
           }
         ]
