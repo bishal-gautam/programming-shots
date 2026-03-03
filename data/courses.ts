@@ -1552,6 +1552,71 @@ print(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}`,
               ne: 'items() ले कुज-मान जोडीहरूलाई list-जस्तो दृश्यमा tuples को रूपमा फर्काउँछ।'
             }
           }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-dict-count',
+            title: { en: 'Word Frequency Counter', ne: 'शब्द फ्रिक्वेन्सी गणक' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function count_words(words) that returns a dictionary with each word and its frequency.',
+              ne: 'प्रत्येक शब्द र यसको फ्रिक्वेन्सी सहित dictionary फर्काउने count_words(words) फंक्सन लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Count word frequency\ndef count_words(words):\n    # Return dict with word: count\n    pass\n\n# Test\nprint(count_words(["apple", "banana", "apple", "cherry", "banana", "apple"]))\n# {'apple': 3, 'banana': 2, 'cherry': 1}`,
+              ne: `# शब्द फ्रिक्वेन्सी गणना गर्नुहोस्\ndef count_words(words):\n    # शब्द: गणना सहित dictionary फर्काउनुहोस्\n    pass\n\n# परीक्षण\nprint(count_words(["apple", "banana", "apple", "cherry", "banana", "apple"]))\n# {'apple': 3, 'banana': 2, 'cherry': 1}`
+            },
+            solution: {
+              en: `def count_words(words):\n    freq = {}\n    for word in words:\n        if word in freq:\n            freq[word] += 1\n        else:\n            freq[word] = 1\n    return freq\n\nprint(count_words(["apple", "banana", "apple", "cherry", "banana", "apple"]))`,
+              ne: `def count_words(words):\n    freq = {}\n    for word in words:\n        if word in freq:\n            freq[word] += 1\n        else:\n            freq[word] = 1\n    return freq\n\nprint(count_words(["apple", "banana", "apple", "cherry", "banana", "apple"]))`
+            },
+            hints: {
+              en: ['Initialize empty dictionary', 'Check if word exists, then increment or set to 1'],
+              ne: ['खाली dictionary सुरू गर्नुहोस्', 'शब्द छ कि छैन जाँच गर्नुहोस्, त्यसपछि बढाउनुहोस् वा 1 सेट गर्नुहोस्']
+            }
+          },
+          {
+            id: 'py-dict-merge',
+            title: { en: 'Merge Two Dictionaries', ne: 'दुई डिक्शनरीहरू मिलाउनुहोस्' },
+            difficulty: 'medium',
+            description: {
+              en: 'Write a function merge_dicts(dict1, dict2) that merges two dictionaries. If keys overlap, add their values.',
+              ne: 'दुई डिक्शनरीहरू मिलाउने merge_dicts(dict1, dict2) फंक्सन लेख्नुहोस्। यदि keys दोहोरिन्छन्, तिनीहरूको मानहरू जोड्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Merge two dictionaries\ndef merge_dicts(dict1, dict2):\n    # Merge dict2 into dict1\n    pass\n\n# Test\nprint(merge_dicts({"a": 1, "b": 2}, {"b": 3, "c": 4}))\n# {'a': 1, 'b': 5, 'c': 4}`,
+              ne: `# दुई डिक्शनरीहरू मिलाउनुहोस्\ndef merge_dicts(dict1, dict2):\n    # dict2 लाई dict1 मा मिलाउनुहोस्\n    pass\n\n# परीक्षण\nprint(merge_dicts({"a": 1, "b": 2}, {"b": 3, "c": 4}))\n# {'a': 1, 'b': 5, 'c': 4}`
+            },
+            solution: {
+              en: `def merge_dicts(dict1, dict2):\n    result = dict1.copy()\n    for key, value in dict2.items():\n        if key in result:\n            result[key] += value\n        else:\n            result[key] = value\n    return result\n\nprint(merge_dicts({"a": 1, "b": 2}, {"b": 3, "c": 4}))`,
+              ne: `def merge_dicts(dict1, dict2):\n    result = dict1.copy()\n    for key, value in dict2.items():\n        if key in result:\n            result[key] += value\n        else:\n            result[key] = value\n    return result\n\nprint(merge_dicts({"a": 1, "b": 2}, {"b": 3, "c": 4}))`
+            },
+            hints: {
+              en: ['Copy the first dictionary', 'Loop through second dict and add values'],
+              ne: ['पहिलो डिक्शनरीको प्रतिलिपि बनाउनुहोस्', 'दोस्रो dict मा loop गर्नुहोस् र मानहरू जोड्नुहोस्']
+            }
+          },
+          {
+            id: 'py-dict-invert',
+            title: { en: 'Invert Dictionary', ne: 'डिक्शनरी उल्टो पार्नुहोस्' },
+            difficulty: 'medium',
+            description: {
+              en: 'Write a function invert_dict(d) that swaps keys and values. {"a": 1, "b": 2} → {1: "a", 2: "b"}',
+              ne: 'keys र values आदानप्रदान गर्ने invert_dict(d) फंक्सन लेख्नुहोस्। {"a": 1, "b": 2} → {1: "a", 2: "b"}'
+            },
+            starterCode: {
+              en: `# Invert a dictionary\ndef invert_dict(d):\n    # Swap keys and values\n    pass\n\n# Test\nprint(invert_dict({"a": 1, "b": 2, "c": 3}))\n# {1: 'a', 2: 'b', 3: 'c'}`,
+              ne: `# डिक्शनरी उल्टो पार्नुहोस्\ndef invert_dict(d):\n    # keys र values आदानप्रदान गर्नुहोस्\n    pass\n\n# परीक्षण\nprint(invert_dict({"a": 1, "b": 2, "c": 3}))\n# {1: 'a', 2: 'b', 3: 'c'}`
+            },
+            solution: {
+              en: `def invert_dict(d):\n    return {v: k for k, v in d.items()}\n\nprint(invert_dict({"a": 1, "b": 2, "c": 3}))`,
+              ne: `def invert_dict(d):\n    return {v: k for k, v in d.items()}\n\nprint(invert_dict({"a": 1, "b": 2, "c": 3}))`
+            },
+            hints: {
+              en: ['Use dictionary comprehension', 'Loop through items() and swap k, v to v, k'],
+              ne: ['Dictionary comprehension प्रयोग गर्नुहोस्', 'items() मा loop गर्नुहोस् र k, v लाई v, k मा बदल्नुहोस्']
+            }
+          }
         ]
       },
       // New Lesson: Sets
@@ -1663,6 +1728,50 @@ print(set1 ^ set2)        # {1, 2, 5, 6}`,
             explanation: { 
               en: '^ (caret) is the symmetric difference operator - elements in either but not both sets.', 
               ne: '^ (caret) symmetric difference अपरेटर हो - कुनै सेटमा भए तर दुवैमा नभएका तत्वहरू।'
+            }
+          }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-set-unique',
+            title: { en: 'Remove Duplicates', ne: 'डुप्लिकेटहरू हटाउनुहोस्' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function remove_duplicates(items) that returns a list with duplicates removed (preserving order).',
+              ne: 'डुप्लिकेटहरू हटाएर (क्रम कायम राख्दै) list फर्काउने remove_duplicates(items) फंक्सन लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Remove duplicates while preserving order\ndef remove_duplicates(items):\n    # Your code here\n    pass\n\n# Test\nprint(remove_duplicates([1, 2, 2, 3, 1, 4, 3]))  # [1, 2, 3, 4]\nprint(remove_duplicates(["a", "b", "a", "c"]))    # ['a', 'b', 'c']`,
+              ne: `# क्रम कायम राख्दै डुप्लिकेटहरू हटाउनुहोस्\ndef remove_duplicates(items):\n    # तपाईंको कोड यहाँ\n    pass\n\n# परीक्षण\nprint(remove_duplicates([1, 2, 2, 3, 1, 4, 3]))  # [1, 2, 3, 4]\nprint(remove_duplicates(["a", "b", "a", "c"]))    # ['a', 'b', 'c']`
+            },
+            solution: {
+              en: `def remove_duplicates(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n\nprint(remove_duplicates([1, 2, 2, 3, 1, 4, 3]))\nprint(remove_duplicates(["a", "b", "a", "c"]))`,
+              ne: `def remove_duplicates(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n\nprint(remove_duplicates([1, 2, 2, 3, 1, 4, 3]))\nprint(remove_duplicates(["a", "b", "a", "c"]))`
+            },
+            hints: {
+              en: ['Use a set to track seen items', 'Add to result list only if not seen'],
+              ne: ['देखेका आइटमहरू ट्र्याक गर्न set प्रयोग गर्नुहोस्', 'नदेखिएमा 만 result list मा थप्नुहोस्']
+            }
+          },
+          {
+            id: 'py-set-common',
+            title: { en: 'Find Common Elements', ne: 'सामान्य तत्वहरू भेटाउनुहोस्' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function find_common(list1, list2) that returns common elements between two lists.',
+              ne: 'दुई लिस्टहरू बीच सामान्य तत्वहरू फर्काउने find_common(list1, list2) फंक्सन लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Find common elements\ndef find_common(list1, list2):\n    # Your code here\n    pass\n\n# Test\nprint(find_common([1, 2, 3, 4], [3, 4, 5, 6]))  # [3, 4]\nprint(find_common(["a", "b", "c"], ["b", "c", "d"]))  # ['b', 'c']`,
+              ne: `# सामान्य तत्वहरू भेटाउनुहोस्\ndef find_common(list1, list2):\n    # तपाईंको कोड यहाँ\n    pass\n\n# परीक्षण\nprint(find_common([1, 2, 3, 4], [3, 4, 5, 6]))  # [3, 4]\nprint(find_common(["a", "b", "c"], ["b", "c", "d"]))  # ['b', 'c']`
+            },
+            solution: {
+              en: `def find_common(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return list(set1 & set2)\n\nprint(find_common([1, 2, 3, 4], [3, 4, 5, 6]))\nprint(find_common(["a", "b", "c"], ["b", "c", "d"]))`,
+              ne: `def find_common(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return list(set1 & set2)\n\nprint(find_common([1, 2, 3, 4], [3, 4, 5, 6]))\nprint(find_common(["a", "b", "c"], ["b", "c", "d"]))`
+            },
+            hints: {
+              en: ['Convert lists to sets', 'Use & operator for intersection'],
+              ne: ['लिस्टहरूलाई सेटमा रूपांतरण गर्नुहोस्', 'intersection को लागि & अपरेटर प्रयोग गर्नुहोस्']
             }
           }
         ]
@@ -2122,6 +2231,71 @@ print(account.get_balance())  # 1500
             explanation: { 
               en: 'The class ChildClass(ParentClass) syntax creates inheritance in Python.', 
               ne: 'class ChildClass(ParentClass) सिन्ट्याक्सले पाइथनमा inheritance सिर्जना गर्छ।'
+            }
+          }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-oop-class',
+            title: { en: 'Create a Person Class', ne: 'Person Class बनाउनुहोस्' },
+            difficulty: 'easy',
+            description: {
+              en: 'Create a Person class with name and age attributes, and a greet() method that returns "Hello, I am [name]".',
+              ne: 'name र age attributes सहित Person class बनाउनुहोस्, र "नमस्ते, म [name] हुँ" फर्काउने greet() method बनाउनुहोस्।'
+            },
+            starterCode: {
+              en: `# Create Person class\nclass Person:\n    def __init__(self, name, age):\n        # Initialize name and age\n        pass\n    \n    def greet(self):\n        # Return greeting\n        pass\n\n# Test\np = Person("Ram", 25)\nprint(p.greet())  # Hello, I am Ram\nprint(p.name)     # Ram\nprint(p.age)      # 25`,
+              ne: `# Person class बनाउनुहोस्\nclass Person:\n    def __init__(self, name, age):\n        # name र age initialize गर्नुहोस्\n        pass\n    \n    def greet(self):\n        # अभिवादन फर्काउनुहोस्\n        pass\n\n# परीक्षण\np = Person("राम", 25)\nprint(p.greet())  # नमस्ते, म राम हुँ\nprint(p.name)     # राम\nprint(p.age)      # 25`
+            },
+            solution: {
+              en: `class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    \n    def greet(self):\n        return f"Hello, I am {self.name}"\n\np = Person("Ram", 25)\nprint(p.greet())\nprint(p.name)\nprint(p.age)`,
+              ne: `class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    \n    def greet(self):\n        return f"नमस्ते, म {self.name} हुँ"\n\np = Person("राम", 25)\nprint(p.greet())\nprint(p.name)\nprint(p.age)`
+            },
+            hints: {
+              en: ['Use self.name = name to store the name', 'Return f"Hello, I am {self.name}"'],
+              ne: ['name भण्डारण गर्न self.name = name प्रयोग गर्नुहोस्', 'f"नमस्ते, म {self.name} हुँ" फर्काउनुहोस्']
+            }
+          },
+          {
+            id: 'py-oop-inherit',
+            title: { en: 'Animal Inheritance', ne: 'Animal Inheritance' },
+            difficulty: 'medium',
+            description: {
+              en: 'Create an Animal base class with name attribute and speak() method. Then create Dog and Cat classes that inherit from Animal.',
+              ne: 'name attribute र speak() method सहित Animal base class बनाउनुहोस्। त्यसपछि Animal बाट inherit गरेर Dog र Cat classes बनाउनुहोस्।'
+            },
+            starterCode: {
+              en: `# Base class\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def speak(self):\n        pass\n\n# Dog class (inherits from Animal)\nclass Dog(Animal):\n    def speak(self):\n        return "Woof!"\n\n# Cat class (inherits from Animal)\nclass Cat(Animal):\n    def speak(self):\n        return "Meow!"\n\n# Test\ndog = Dog("Buddy")\ncat = Cat("Whiskers")\nprint(dog.name, dog.speak())  # Buddy Woof!\nprint(cat.name, cat.speak())  # Whiskers Meow!`,
+              ne: `# Base class\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def speak(self):\n        pass\n\n# Dog class (Animal बाट inherit)\nclass Dog(Animal):\n    def speak(self):\n        return "भुक्क!"\n\n# Cat class (Animal बाट inherit)\nclass Cat(Animal):\n    def speak(self):\n        return "म्याउ!"\n\n# परीक्षण\ndog = Dog("बडी")\ncat = Cat("हिस्कर्स")\nprint(dog.name, dog.speak())  # बडी भुक्क!\nprint(cat.name, cat.speak())  # हिस्कर्स म्याउ!`
+            },
+            solution: {
+              en: `class Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def speak(self):\n        return "Some sound"\n\nclass Dog(Animal):\n    def speak(self):\n        return "Woof!"\n\nclass Cat(Animal):\n    def speak(self):\n        return "Meow!"\n\ndog = Dog("Buddy")\ncat = Cat("Whiskers")\nprint(dog.name, dog.speak())\nprint(cat.name, cat.speak())`,
+              ne: `class Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def speak(self):\n        return "केही आवाज"\n\nclass Dog(Animal):\n    def speak(self):\n        return "भुक्क!"\n\nclass Cat(Animal):\n    def speak(self):\n        return "म्याउ!"\n\ndog = Dog("बडी")\ncat = Cat("हिस्कर्स")\nprint(dog.name, dog.speak())\nprint(cat.name, cat.speak())`
+            },
+            hints: {
+              en: ['Use class Dog(Animal) to inherit', 'Override speak() in each subclass'],
+              ne: ['inherit गर्न class Dog(Animal) प्रयोग गर्नुहोस्', 'प्रत्येक subclass मा speak() override गर्नुहोस्']
+            }
+          },
+          {
+            id: 'py-oop-bank',
+            title: { en: 'Bank Account Class', ne: 'Bank Account Class' },
+            difficulty: 'medium',
+            description: {
+              en: 'Create a BankAccount class with private balance. Add deposit() and withdraw() methods. Prevent negative balance.',
+              ne: 'private balance सहित BankAccount class बनाउनुहोस्। deposit() र withdraw() methods थप्नुहोस्। negative balance रोक्नुहोस्।'
+            },
+            starterCode: {
+              en: `# BankAccount class with encapsulation\nclass BankAccount:\n    def __init__(self, initial_balance):\n        # Private balance (use __balance)\n        pass\n    \n    def deposit(self, amount):\n        # Add amount to balance if positive\n        pass\n    \n    def withdraw(self, amount):\n        # Subtract if sufficient balance\n        pass\n    \n    def get_balance(self):\n        # Return current balance\n        pass\n\n# Test\naccount = BankAccount(100)\naccount.deposit(50)\nprint(account.get_balance())  # 150\naccount.withdraw(30)\nprint(account.get_balance())  # 120\naccount.withdraw(200)  # Should fail\nprint(account.get_balance())  # Still 120`,
+              ne: `# encapsulation सहित BankAccount class\nclass BankAccount:\n    def __init__(self, initial_balance):\n        # Private balance (__balance प्रयोग गर्नुहोस्)\n        pass\n    \n    def deposit(self, amount):\n        # Positive भएमा balance मा amount थप्नुहोस्\n        pass\n    \n    def withdraw(self, amount):\n        # पर्याप्त balance भएमा घटाउनुहोस्\n        pass\n    \n    def get_balance(self):\n        # हालको balance फर्काउनुहोस्\n        pass\n\n# परीक्षण\naccount = BankAccount(100)\naccount.deposit(50)\nprint(account.get_balance())  # 150\naccount.withdraw(30)\nprint(account.get_balance())  # 120\naccount.withdraw(200)  # असफल हुनुपर्छ\nprint(account.get_balance())  # अझै 120`
+            },
+            solution: {
+              en: `class BankAccount:\n    def __init__(self, initial_balance):\n        self.__balance = initial_balance\n    \n    def deposit(self, amount):\n        if amount > 0:\n            self.__balance += amount\n            return True\n        return False\n    \n    def withdraw(self, amount):\n        if amount > 0 and amount <= self.__balance:\n            self.__balance -= amount\n            return True\n        return False\n    \n    def get_balance(self):\n        return self.__balance\n\naccount = BankAccount(100)\naccount.deposit(50)\nprint(account.get_balance())\naccount.withdraw(30)\nprint(account.get_balance())\naccount.withdraw(200)\nprint(account.get_balance())`,
+              ne: `class BankAccount:\n    def __init__(self, initial_balance):\n        self.__balance = initial_balance\n    \n    def deposit(self, amount):\n        if amount > 0:\n            self.__balance += amount\n            return True\n        return False\n    \n    def withdraw(self, amount):\n        if amount > 0 and amount <= self.__balance:\n            self.__balance -= amount\n            return True\n        return False\n    \n    def get_balance(self):\n        return self.__balance\n\naccount = BankAccount(100)\naccount.deposit(50)\nprint(account.get_balance())\naccount.withdraw(30)\nprint(account.get_balance())\naccount.withdraw(200)\nprint(account.get_balance())`
+            },
+            hints: {
+              en: ['Use __balance for private attribute', 'Check amount > 0 for both deposit and withdraw', 'For withdraw, also check if amount <= balance'],
+              ne: ['private attribute को लागि __balance प्रयोग गर्नुहोस्', 'deposit र withdraw दुवैको लागि amount > 0 जाँच गर्नुहोस्', 'withdraw को लागि amount <= balance पनि जाँच गर्नुहोस्']
             }
           }
         ]
