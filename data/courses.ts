@@ -980,6 +980,71 @@ def calculate_area(width, height):
               ne: 'पाइथनमा फंक्सनहरू परिभाषित गर्न "def" कीवर्ड प्रयोग गरिन्छ।'
             }
           }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-func-greet',
+            title: { en: 'Greeting Function', ne: 'अभिवादन फंक्सन' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function greet(name) that returns "Hello, [name]! Welcome." Then call it with "Python".',
+              ne: 'greet(name) फंक्सन लेख्नुहोस् जसले "नमस्ते, [नाम]! स्वागत छ।" फर्काउँछ। त्यसपछि "Python" सँग call गर्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Define the greet function\ndef greet(name):\n    # Return the greeting\n    pass\n\n# Call the function\nresult = greet("Python")\nprint(result)`,
+              ne: `# greet फंक्सन परिभाषित गर्नुहोस्\ndef greet(name):\n    # अभिवादन फर्काउनुहोस्\n    pass\n\n# फंक्सन call गर्नुहोस्\nresult = greet("Python")\nprint(result)`
+            },
+            solution: {
+              en: `def greet(name):\n    return f"Hello, {name}! Welcome."\n\nresult = greet("Python")\nprint(result)`,
+              ne: `def greet(name):\n    return f"नमस्ते, {name}! स्वागत छ।"\n\nresult = greet("Python")\nprint(result)`
+            },
+            hints: {
+              en: ['Use f-string to format the greeting', 'Remember to return the value from the function'],
+              ne: ['अभिवादन फर्माट गर्न f-string प्रयोग गर्नुहोस्', 'फंक्सनबाट मान फर्काउन नबिर्सनुहोस्']
+            }
+          },
+          {
+            id: 'py-func-calc',
+            title: { en: 'Calculator Function', ne: 'क्यालकुलेटर फंक्सन' },
+            difficulty: 'medium',
+            description: {
+              en: 'Create a function calculate(a, b, operation) that performs +, -, *, or / based on the operation parameter.',
+              ne: 'calculate(a, b, operation) फंक्सन बनाउनुहोस् जसले operation प्यारामीटरको आधारमा +, -, *, वा / गणना गर्छ।'
+            },
+            starterCode: {
+              en: `# Calculator function\ndef calculate(a, b, operation):\n    # Perform the operation\n    pass\n\n# Test it\nprint(calculate(10, 5, "+"))  # Should print 15\nprint(calculate(10, 5, "-"))  # Should print 5\nprint(calculate(10, 5, "*"))  # Should print 50\nprint(calculate(10, 5, "/"))  # Should print 2.0`,
+              ne: `# क्यालकुलेटर फंक्सन\ndef calculate(a, b, operation):\n    # operation गर्नुहोस्\n    pass\n\n# परीक्षण गर्नुहोस्\nprint(calculate(10, 5, "+"))  # 15 प्रिन्ट हुनेछ\nprint(calculate(10, 5, "-"))  # 5 प्रिन्ट हुनेछ\nprint(calculate(10, 5, "*"))  # 50 प्रिन्ट हुनेछ\nprint(calculate(10, 5, "/"))  # 2.0 प्रिन्ट हुनेछ`
+            },
+            solution: {
+              en: `def calculate(a, b, operation):\n    if operation == "+":\n        return a + b\n    elif operation == "-":\n        return a - b\n    elif operation == "*":\n        return a * b\n    elif operation == "/":\n        return a / b\n    else:\n        return "Invalid operation"\n\nprint(calculate(10, 5, "+"))\nprint(calculate(10, 5, "-"))\nprint(calculate(10, 5, "*"))\nprint(calculate(10, 5, "/"))`,
+              ne: `def calculate(a, b, operation):\n    if operation == "+":\n        return a + b\n    elif operation == "-":\n        return a - b\n    elif operation == "*":\n        return a * b\n    elif operation == "/":\n        return a / b\n    else:\n        return "अमान्य अपरेटर"\n\nprint(calculate(10, 5, "+"))\nprint(calculate(10, 5, "-"))\nprint(calculate(10, 5, "*"))\nprint(calculate(10, 5, "/"))`
+            },
+            hints: {
+              en: ['Use if-elif-else to check the operation type', 'Don\'t forget to handle division by zero'],
+              ne: ['operation प्रकार जाँच्न if-elif-else प्रयोग गर्नुहोस्', 'शून्यले भाग गर्ने ह्यान्डल गर्न नबिर्सनुहोस्']
+            }
+          },
+          {
+            id: 'py-func-factorial',
+            title: { en: 'Factorial', ne: 'फ्याक्टोरियल' },
+            difficulty: 'medium',
+            description: {
+              en: 'Write a recursive function factorial(n) that calculates n! (n factorial). Example: 5! = 5 × 4 × 3 × 2 × 1 = 120',
+              ne: 'n! (n फ्याक्टोरियल) गणना गर्ने recursive फंक्सन factorial(n) लेख्नुहोस्। उदाहरण: 5! = 5 × 4 × 3 × 2 × 1 = 120'
+            },
+            starterCode: {
+              en: `# Recursive factorial function\ndef factorial(n):\n    # Base case and recursive call\n    pass\n\n# Test\nprint(factorial(5))  # Should print 120\nprint(factorial(0))  # Should print 1`,
+              ne: `# Recursive फ्याक्टोरियल फंक्सन\ndef factorial(n):\n    # base case र recursive call\n    pass\n\n# परीक्षण\nprint(factorial(5))  # 120 प्रिन्ट हुनेछ\nprint(factorial(0))  # 1 प्रिन्ट हुनेछ`
+            },
+            solution: {
+              en: `def factorial(n):\n    # Base case: 0! = 1 and 1! = 1\n    if n <= 1:\n        return 1\n    # Recursive case: n! = n * (n-1)!\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # 120\nprint(factorial(0))  # 1`,
+              ne: `def factorial(n):\n    # Base case: 0! = 1 र 1! = 1\n    if n <= 1:\n        return 1\n    # Recursive case: n! = n * (n-1)!\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # 120\nprint(factorial(0))  # 1`
+            },
+            hints: {
+              en: ['Base case: factorial of 0 or 1 is 1', 'Recursive case: n! = n * (n-1)!'],
+              ne: ['Base case: 0 वा 1 को फ्याक्टोरियल 1 हो', 'Recursive case: n! = n * (n-1)!']
+            }
+          }
         ]
       },
       {
@@ -1107,6 +1172,71 @@ print(text[::2])   # Pto rgamn`,
               ne: 'upper() विधिले सबै क्यारेक्टरहरूलाई अपरकेसमा रूपांतरण गर्छ।'
             }
           }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-str-reverse',
+            title: { en: 'Reverse String', ne: 'उल्टो स्ट्रिङ' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function reverse_string(s) that reverses a string. Example: "Python" → "nohtyP"',
+              ne: 'स्ट्रिङ उल्टो गर्ने reverse_string(s) फंक्सन लेख्नुहोस्। उदाहरण: "Python" → "nohtyP"'
+            },
+            starterCode: {
+              en: `# Reverse a string\ndef reverse_string(s):\n    # Your code here\n    pass\n\n# Test\nprint(reverse_string("Python"))  # nohtyP\nprint(reverse_string("Hello"))    # olleH`,
+              ne: `# स्ट्रिङ उल्टो गर्नुहोस्\ndef reverse_string(s):\n    # तपाईंको कोड यहाँ\n    pass\n\n# परीक्षण\nprint(reverse_string("Python"))  # nohtyP\nprint(reverse_string("Hello"))    # olleH`
+            },
+            solution: {
+              en: `def reverse_string(s):\n    return s[::-1]\n\nprint(reverse_string("Python"))\nprint(reverse_string("Hello"))`,
+              ne: `def reverse_string(s):\n    return s[::-1]\n\nprint(reverse_string("Python"))\nprint(reverse_string("Hello"))`
+            },
+            hints: {
+              en: ['Use string slicing with step -1: s[::-1]', 'This reverses the entire string'],
+              ne: ['step -1 सहित string slicing प्रयोग गर्नुहोस्: s[::-1]', 'यसले पूरो स्ट्रिङ उल्टो गर्छ']
+            }
+          },
+          {
+            id: 'py-str-palindrome',
+            title: { en: 'Palindrome Checker', ne: 'प्यालिन्ड्रोम जाँचकर्ता' },
+            difficulty: 'medium',
+            description: {
+              en: 'Write a function is_palindrome(s) that checks if a string is a palindrome (reads the same forwards and backwards). Ignore case.',
+              ne: 'स्ट्रिङ palindrome हो कि हैन जाँच्ने is_palindrome(s) फंक्सन लेख्नुहोस् (अगाडि र पछाडि एउटै पढिन्छ)। केस उपेक्षा गर्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Check if palindrome\ndef is_palindrome(s):\n    # Remove spaces and convert to lowercase\n    # Check if it equals its reverse\n    pass\n\n# Test\nprint(is_palindrome("racecar"))   # True\nprint(is_palindrome("A man a plan a canal Panama"))  # True\nprint(is_palindrome("hello"))     # False`,
+              ne: `# palindrome जाँच गर्नुहोस्\ndef is_palindrome(s):\n    # खाली ठाउँ हटाउनुहोस् र lowercase मा रूपांतरण गर्नुहोस्\n    # यसको उल्टो बराबर छ कि छैन जाँच गर्नुहोस्\n    pass\n\n# परीक्षण\nprint(is_palindrome("racecar"))   # True\nprint(is_palindrome("A man a plan a canal Panama"))  # True\nprint(is_palindrome("hello"))     # False`
+            },
+            solution: {
+              en: `def is_palindrome(s):\n    # Remove spaces and convert to lowercase\n    cleaned = s.replace(" ", "").lower()\n    # Check if it equals its reverse\n    return cleaned == cleaned[::-1]\n\nprint(is_palindrome("racecar"))\nprint(is_palindrome("A man a plan a canal Panama"))\nprint(is_palindrome("hello"))`,
+              ne: `def is_palindrome(s):\n    # खाली ठाउँ हटाउनुहोस् र lowercase मा रूपांतरण गर्नुहोस्\n    cleaned = s.replace(" ", "").lower()\n    # यसको उल्टो बराबर छ कि छैन जाँच गर्नुहोस्\n    return cleaned == cleaned[::-1]\n\nprint(is_palindrome("racecar"))\nprint(is_palindrome("A man a plan a canal Panama"))\nprint(is_palindrome("hello"))`
+            },
+            hints: {
+              en: ['Use replace(" ", "") to remove spaces', 'Use lower() to ignore case', 'Compare string with its reverse'],
+              ne: ['खाली ठाउँ हटाउन replace(" ", "") प्रयोग गर्नुहोस्', 'केस उपेक्षा गर्न lower() प्रयोग गर्नुहोस्', 'स्ट्रिङलाई यसको उल्टोसँग तुलना गर्नुहोस्']
+            }
+          },
+          {
+            id: 'py-str-count',
+            title: { en: 'Word Counter', ne: 'शब्द गणक' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function count_words(s) that counts the number of words in a sentence.',
+              ne: 'वाक्यमा शब्दहरूको संख्या गणना गर्ने count_words(s) फंक्सन लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Count words in a sentence\ndef count_words(s):\n    # Split the sentence into words\n    pass\n\n# Test\nprint(count_words("Hello world"))          # 2\nprint(count_words("Python is awesome"))   # 3`,
+              ne: `# वाक्यमा शब्दहरू गणना गर्नुहोस्\ndef count_words(s):\n    # वाक्यलाई शब्दहरूमा विभाजन गर्नुहोस्\n    pass\n\n# परीक्षण\nprint(count_words("नमस्ते संसार"))          # 2\nprint(count_words("पाइथन राम्रो छ"))   # 3`
+            },
+            solution: {
+              en: `def count_words(s):\n    words = s.split()\n    return len(words)\n\nprint(count_words("Hello world"))\nprint(count_words("Python is awesome"))`,
+              ne: `def count_words(s):\n    words = s.split()\n    return len(words)\n\nprint(count_words("नमस्ते संसार"))\nprint(count_words("पाइथन राम्रो छ"))`
+            },
+            hints: {
+              en: ['Use split() method to break string into words', 'Use len() to count the words'],
+              ne: ['शब्दहरूमा विभाजन गर्न split() विधि प्रयोग गर्नुहोस्', 'शब्दहरू गणना गर्न len() प्रयोग गर्नुहोस्']
+            }
+          }
         ]
       },
       {
@@ -1230,6 +1360,71 @@ print(matrix[1][0])  # 3`,
             explanation: { 
               en: 'List comprehension with range(5) generates [0,1,2,3,4], then squares each.', 
               ne: 'range(5) सँग लिस्ट कम्प्रिहेन्सनले [0,1,2,3,4] उत्पन्न गर्छ, त्यसपछि प्रत्येकको वर्ग गर्छ।'
+            }
+          }
+        ],
+        practiceProblems: [
+          {
+            id: 'py-list-max',
+            title: { en: 'Find Maximum', ne: 'अधिकतम भेटाउनुहोस्' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function find_max(nums) that returns the maximum number in a list without using max().',
+              ne: 'max() प्रयोग नगरी nums लिस्टमा अधिकतम संख्या फर्काउने find_max(nums) फंक्सन लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Find maximum without using max()\ndef find_max(nums):\n    # Your code here\n    pass\n\n# Test\nprint(find_max([1, 5, 3, 9, 2]))  # 9\nprint(find_max([-1, -5, -3]))     # -1`,
+              ne: `# max() प्रयोग नगरी अधिकतम भेटाउनुहोस्\ndef find_max(nums):\n    # तपाईंको कोड यहाँ\n    pass\n\n# परीक्षण\nprint(find_max([1, 5, 3, 9, 2]))  # 9\nprint(find_max([-1, -5, -3]))     # -1`
+            },
+            solution: {
+              en: `def find_max(nums):\n    if not nums:\n        return None\n    max_num = nums[0]\n    for num in nums:\n        if num > max_num:\n            max_num = num\n    return max_num\n\nprint(find_max([1, 5, 3, 9, 2]))\nprint(find_max([-1, -5, -3]))`,
+              ne: `def find_max(nums):\n    if not nums:\n        return None\n    max_num = nums[0]\n    for num in nums:\n        if num > max_num:\n            max_num = num\n    return max_num\n\nprint(find_max([1, 5, 3, 9, 2]))\nprint(find_max([-1, -5, -3]))`
+            },
+            hints: {
+              en: ['Start with first element as max', 'Loop through and compare each element'],
+              ne: ['पहिलो तत्वबाट max सुरू गर्नुहोस्', 'प्रत्येक तत्व तुलना गर्न loop गर्नुहोस्']
+            }
+          },
+          {
+            id: 'py-list-even',
+            title: { en: 'Filter Even Numbers', ne: 'जोर संख्याहरू फिल्टर गर्नुहोस्' },
+            difficulty: 'easy',
+            description: {
+              en: 'Write a function filter_evens(nums) that returns only the even numbers from a list.',
+              ne: 'लिस्टबाट मात्र जोर संख्याहरू फर्काउने filter_evens(nums) फंक्सन लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Filter even numbers\ndef filter_evens(nums):\n    # Return only even numbers\n    pass\n\n# Test\nprint(filter_evens([1, 2, 3, 4, 5, 6]))  # [2, 4, 6]\nprint(filter_evens([1, 3, 5]))            # []`,
+              ne: `# जोर संख्याहरू फिल्टर गर्नुहोस्\ndef filter_evens(nums):\n    # मात्र जोर संख्याहरू फर्काउनुहोस्\n    pass\n\n# परीक्षण\nprint(filter_evens([1, 2, 3, 4, 5, 6]))  # [2, 4, 6]\nprint(filter_evens([1, 3, 5]))            # []`
+            },
+            solution: {
+              en: `def filter_evens(nums):\n    return [x for x in nums if x % 2 == 0]\n\nprint(filter_evens([1, 2, 3, 4, 5, 6]))\nprint(filter_evens([1, 3, 5]))`,
+              ne: `def filter_evens(nums):\n    return [x for x in nums if x % 2 == 0]\n\nprint(filter_evens([1, 2, 3, 4, 5, 6]))\nprint(filter_evens([1, 3, 5]))`
+            },
+            hints: {
+              en: ['Use list comprehension', 'Check if number % 2 == 0'],
+              ne: ['List comprehension प्रयोग गर्नुहोस्', 'संख्या % 2 == 0 छ कि छैन जाँच गर्नुहोस्']
+            }
+          },
+          {
+            id: 'py-list-merge',
+            title: { en: 'Merge Two Lists', ne: 'दुई लिस्टहरू मिलाउनुहोस्' },
+            difficulty: 'medium',
+            description: {
+              en: 'Write a function merge_lists(list1, list2) that merges two sorted lists into one sorted list.',
+              ne: 'दुई sorted लिस्टहरूलाई एउटा sorted लिस्टमा मिलाउने merge_lists(list1, list2) फंक्सन लेख्नुहोस्।'
+            },
+            starterCode: {
+              en: `# Merge two sorted lists\ndef merge_lists(list1, list2):\n    # Merge and sort\n    pass\n\n# Test\nprint(merge_lists([1, 3, 5], [2, 4, 6]))  # [1, 2, 3, 4, 5, 6]\nprint(merge_lists([1, 2, 3], [4, 5, 6]))  # [1, 2, 3, 4, 5, 6]`,
+              ne: `# दुई sorted लिस्टहरू मिलाउनुहोस्\ndef merge_lists(list1, list2):\n    # मिलाउनुहोस् र sort गर्नुहोस्\n    pass\n\n# परीक्षण\nprint(merge_lists([1, 3, 5], [2, 4, 6]))  # [1, 2, 3, 4, 5, 6]\nprint(merge_lists([1, 2, 3], [4, 5, 6]))  # [1, 2, 3, 4, 5, 6]`
+            },
+            solution: {
+              en: `def merge_lists(list1, list2):\n    # Simple approach: concatenate and sort\n    return sorted(list1 + list2)\n\nprint(merge_lists([1, 3, 5], [2, 4, 6]))\nprint(merge_lists([1, 2, 3], [4, 5, 6]))`,
+              ne: `def merge_lists(list1, list2):\n    # सरल तरिका: concat गर्नुहोस् र sort गर्नुहोस्\n    return sorted(list1 + list2)\n\nprint(merge_lists([1, 3, 5], [2, 4, 6]))\nprint(merge_lists([1, 2, 3], [4, 5, 6]))`
+            },
+            hints: {
+              en: ['Use + to concatenate lists', 'Use sorted() to sort the result'],
+              ne: ['+ प्रयोग गरेर लिस्टहरू जोड्नुहोस्', 'परिणाम sort गर्न sorted() प्रयोग गर्नुहोस्']
             }
           }
         ]
