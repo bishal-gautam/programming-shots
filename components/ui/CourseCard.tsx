@@ -2,85 +2,56 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
-import { useTheme } from '@/context/ThemeContext';
+import { Box, Typography, Paper } from '@mui/material';
 
-interface CourseCardProps {
-  title: string;
-  description: string;
+interface Course {
+  id: string;
   slug: string;
-  thumbnail?: string;
-  lessons: number;
-  duration: string;
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
-  progress?: number;
+  title: { en: string; ne: string };
+  description: { en: string; ne: string };
+  icon: string;
+  difficulty: string;
+  lessons: { id: string; slug: string; title: { en: string; ne: string } }[];
+  color?: string;
 }
 
-const difficultyColors = {
-  beginner: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-  intermediate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-  advanced: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-};
+interface CourseCardProps {
+  course: Course;
+}
 
-export default function CourseCard({
-  title,
-  description,
-  slug,
-  thumbnail,
-  lessons,
-  duration,
-  difficulty,
-  progress = 0,
-}: CourseCardProps) {
-  const { t, locale } = useLanguage();
-  const { theme } = useTheme();
+export default function CourseCard({ course }: CourseCardProps) {
+  const { locale } = useLanguage();
+  
+  const displayTitle = course.title[locale] || course.title.en;
+  const displayDesc = course.description[locale] || course.description.en;
 
   return (
-    <Link href={`/${locale}/courses/${slug}`}>
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700">
-        {thumbnail && (
-          <div className="h-48 overflow-hidden">
-            <img
-              src={thumbnail}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
-        <div className="p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span className={`px-3 py-1 rounded-full text-xs font-medium ${difficultyColors[difficulty]}`}>
-              {t(difficulty)}
-            </span>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {lessons} {t('lessons')}
-            </span>
-          </div>
-          <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-            {title}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
-            {description}
-          </p>
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {duration}
-            </span>
-            {progress > 0 && (
-              <div className="flex items-center gap-2">
-                <div className="w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-blue-600 rounded-full"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
-                  {progress}%
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </Link>
+    <Paper 
+      component={Link}
+      href={`/${locale}/courses/${course.slug}`}
+      elevation={1}
+      sx={{ 
+        p: 2, 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: 2,
+        textDecoration: 'none',
+        '&:hover': { elevation: 2 }
+      }}
+    >
+      <Typography variant="h4">{course.icon}</Typography>
+      <Box sx={{ flex: 1, minWidth: 0 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ fontSize: '10px', mb: 0.5 }}>
+          {course.lessons.length} lessons
+        </Typography>
+        <Typography variant="subtitle2" noWrap fontWeight="bold">
+          {displayTitle}
+        </Typography>
+        <Typography variant="caption" color="text.secondary" noWrap sx={{ display: 'block' }}>
+          {displayDesc}
+        </Typography>
+      </Box>
+      <Typography color="text.secondary">→</Typography>
+    </Paper>
   );
 }

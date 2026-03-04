@@ -1,11 +1,6 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { courses, Course, Lesson } from '@/data/courses';
-import enCommon from '@/locales/en/common.json';
-import neCommon from '@/locales/ne/common.json';
-import enRoadmap from '@/locales/en/roadmap.json';
-import neRoadmap from '@/locales/ne/roadmap.json';
 
 type Locale = 'en' | 'ne';
 
@@ -13,39 +8,48 @@ interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string, fallback?: string) => string;
-  getCourse: (slug: string) => Course | undefined;
-  getLesson: (courseSlug: string, lessonSlug: string) => Lesson | undefined;
-  getCourses: () => Course[];
 }
-
-const translations: Record<Locale, { common: typeof enCommon; roadmap: typeof enRoadmap }> = {
-  en: {
-    common: enCommon,
-    roadmap: enRoadmap,
-  },
-  ne: {
-    common: neCommon,
-    roadmap: neRoadmap,
-  },
-};
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-// Helper to get nested translation value
-function getNestedValue(obj: Record<string, unknown>, path: string): string | undefined {
-  const keys = path.split('.');
-  let current: unknown = obj;
-  
-  for (const key of keys) {
-    if (current && typeof current === 'object' && key in current) {
-      current = (current as Record<string, unknown>)[key];
-    } else {
-      return undefined;
-    }
-  }
-  
-  return typeof current === 'string' ? current : undefined;
-}
+// Simple translations
+const enCommon: Record<string, string> = {
+  home: 'Home',
+  courses: 'Courses',
+  roadmap: 'Roadmap',
+  quiz: 'Quiz',
+  glossary: 'Glossary',
+  cheatsheets: 'Cheatsheets',
+  resources: 'Resources',
+  progress: 'Progress',
+  about: 'About',
+  lessons: 'lessons',
+  beginner: 'Beginner',
+  intermediate: 'Intermediate',
+  advanced: 'Advanced',
+  easy: 'Easy',
+  medium: 'Medium',
+  hard: 'Hard',
+};
+
+const neCommon: Record<string, string> = {
+  home: 'गृह',
+  courses: 'कोर्सहरू',
+  roadmap: 'रोडम्याप',
+  quiz: 'क्विज',
+  glossary: 'शब्दावली',
+  cheatsheets: 'चीटशीट',
+  resources: 'स्रोतहरू',
+  progress: 'प्रगति',
+  about: 'परिचय',
+  lessons: 'पाठ',
+  beginner: 'सुरुआत',
+  intermediate: 'मध्यम',
+  advanced: 'उन्नत',
+  easy: 'सजिलो',
+  medium: 'मध्यम',
+  hard: 'कठिन',
+};
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('en');
@@ -64,35 +68,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('locale', newLocale);
   };
 
-  // Translation function
   const t = (key: string, fallback?: string): string => {
-    const commonTranslations = translations[locale].common;
-    const value = getNestedValue(commonTranslations as unknown as Record<string, unknown>, key);
-    return value || fallback || key;
+    if (!mounted) return fallback || key;
+    const translations = locale === 'en' ? enCommon : neCommon;
+    return translations[key] || fallback || key;
   };
-
-  // Get course by slug
-  const getCourse = (slug: string): Course | undefined => {
-    return courses.find(course => course.slug === slug);
-  };
-
-  // Get lesson by slug
-  const getLesson = (courseSlug: string, lessonSlug: string): Lesson | undefined => {
-    const course = getCourse(courseSlug);
-    return course?.lessons.find(lesson => lesson.slug === lessonSlug);
-  };
-
-  // Get all courses
-  const getCourses = (): Course[] => {
-    return courses;
-  };
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t, getCourse, getLesson, getCourses }}>
+    <LanguageContext.Provider value={{ locale, setLocale, t }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -101,7 +84,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error('useLanguage must be used within LanguageProvider');
   }
   return context;
 }

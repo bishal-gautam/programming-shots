@@ -89,10 +89,6 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem(STORAGE_KEY);
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <ProgressContext.Provider value={{ progress, markLessonComplete, isLessonComplete, getCourseProgress, resetProgress }}>
       {children}

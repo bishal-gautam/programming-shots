@@ -2,145 +2,177 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Box,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  useTheme,
-  Menu,
-  MenuItem,
-  Divider,
-} from '@mui/material';
-import {
-  Menu as MenuIcon,
-  Brightness4,
-  Brightness7,
-  Language,
-  Home,
-  School,
-  Map,
-  Quiz,
-  Book,
-  Description,
-  Folder,
-  TrendingUp,
-  Info,
-} from '@mui/icons-material';
-import { useTheme as useAppTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { useTheme } from '@/context/ThemeContext';
 
-const drawerWidth = 240;
+const navItems = [
+  { key: 'home', href: '' },
+  { key: 'courses', href: '/courses' },
+  { key: 'roadmap', href: '/roadmap' },
+  { key: 'quiz', href: '/quiz' },
+  { key: 'glossary', href: '/glossary' },
+  { key: 'progress', href: '/progress' },
+];
 
-interface NavbarProps {
-  onMenuClick?: () => void;
-}
+const styles: Record<string, React.CSSProperties> = {
+  nav: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+    backgroundColor: '#fff',
+    borderBottom: '1px solid #e5e7eb',
+  },
+  navDark: {
+    backgroundColor: '#1f2937',
+    borderBottom: '1px solid #374151',
+  },
+  container: {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '0 16px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '44px',
+  },
+  logo: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    textDecoration: 'none',
+  },
+  logoText: {
+    fontSize: '14px',
+    fontWeight: 'bold',
+    color: '#111',
+  },
+  logoTextDark: {
+    color: '#fff',
+  },
+  navLinks: {
+    display: 'flex',
+    gap: '4px',
+  },
+  navLink: {
+    padding: '6px 8px',
+    fontSize: '12px',
+    color: '#374151',
+    borderRadius: '8px',
+    fontWeight: 500,
+  },
+  navLinkDark: {
+    color: '#d1d5db',
+  },
+  actions: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+  },
+  btn: {
+    padding: '6px',
+    fontSize: '12px',
+    color: '#4b5563',
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+  },
+  menuBtn: {
+    padding: '6px',
+    color: '#4b5563',
+    backgroundColor: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+  },
+};
 
-export default function Navbar({ onMenuClick = () => {} }: NavbarProps) {
-  const t = useTranslations('nav');
-  const theme = useTheme();
-  const { mode, toggleTheme } = useAppTheme();
-  const { locale, setLocale } = useLanguage();
-  const pathname = usePathname();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+export default function Navbar() {
+  const { locale, setLocale, t } = useLanguage();
+  const { darkMode, toggleTheme } = useTheme();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = [
-    { label: t('home'), href: `/${locale}`, icon: <Home /> },
-    { label: t('courses'), href: `/${locale}/courses`, icon: <School /> },
-    { label: t('roadmap'), href: `/${locale}/roadmap`, icon: <Map /> },
-    { label: t('quiz'), href: `/${locale}/quiz`, icon: <Quiz /> },
-    { label: t('glossary'), href: `/${locale}/glossary`, icon: <Book /> },
-    { label: t('cheatsheets'), href: `/${locale}/cheatsheets`, icon: <Description /> },
-    { label: t('resources'), href: `/${locale}/resources`, icon: <Folder /> },
-    { label: t('progress'), href: `/${locale}/progress`, icon: <TrendingUp /> },
-    { label: t('about'), href: `/${locale}/about`, icon: <Info /> },
-  ];
-
-  const handleLanguageClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleLanguageClose = (lang: 'en' | 'ne') => {
-    setLocale(lang);
-    setAnchorEl(null);
-  };
+  const currentStyles = darkMode ? { ...styles.nav, ...styles.navDark } : styles.nav;
+  const linkStyles = darkMode ? { ...styles.navLink, ...styles.navLinkDark } : styles.navLink;
 
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` },
-      }}
-    >
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          edge="start"
-          onClick={onMenuClick}
-          sx={{ mr: 2, display: { sm: 'none' } }}
-        >
-          <MenuIcon />
-        </IconButton>
+    <nav style={currentStyles}>
+      <div style={styles.container}>
+        <Link href={`/${locale}`} style={styles.logo}>
+          <span style={{ fontSize: '20px' }}>💻</span>
+          <span style={{ ...styles.logoText, ...(darkMode ? styles.logoTextDark : {}) }} className="desktop-only">
+            CodeShots
+          </span>
+        </Link>
 
-        <Typography
-          variant="h6"
-          component={Link}
-          href={`/${locale}`}
-          sx={{ flexGrow: 0, mr: 4, textDecoration: 'none', color: 'inherit' }}
-        >
-          🚀 Programming Shots
-        </Typography>
+        <div style={styles.navLinks} className="desktop-nav">
+          {navItems.map((item) => (
+            <Link
+              key={item.key}
+              href={`/${locale}${item.href}`}
+              style={linkStyles}
+            >
+              {t(`nav.${item.key}`, item.key)}
+            </Link>
+          ))}
+        </div>
 
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1, flexGrow: 1 }}>
-          {navItems.slice(0, 5).map((item) => (
-            <Button
-              key={item.href}
-              component={Link}
-              href={item.href}
-              color="inherit"
-              sx={{
-                color: pathname === item.href ? 'primary.main' : 'inherit',
+        <div style={styles.actions}>
+          <button
+            onClick={() => setLocale(locale === 'en' ? 'ne' : 'en')}
+            style={styles.btn}
+          >
+            {locale.toUpperCase()}
+          </button>
+          <button onClick={toggleTheme} style={styles.btn}>
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{ ...styles.menuBtn, display: 'none' }}
+            className="mobile-menu-btn"
+          >
+            {mobileMenuOpen ? '✕' : '☰'}
+          </button>
+        </div>
+      </div>
+
+      {mobileMenuOpen && (
+        <div style={{ 
+          padding: '8px', 
+          borderTop: '1px solid #e5e7eb',
+          backgroundColor: darkMode ? '#1f2937' : '#fff',
+        }} className="mobile-menu">
+          {navItems.map((item) => (
+            <Link
+              key={item.key}
+              href={`/${locale}${item.href}`}
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                display: 'block',
+                padding: '8px 12px',
+                fontSize: '14px',
+                color: darkMode ? '#d1d5db' : '#374151',
+                borderRadius: '8px',
               }}
             >
-              {item.label}
-            </Button>
+              {t(`nav.${item.key}`, item.key)}
+            </Link>
           ))}
-        </Box>
+        </div>
+      )}
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <IconButton color="inherit" onClick={handleLanguageClick}>
-            <Language />
-          </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={() => setAnchorEl(null)}
-          >
-            <MenuItem onClick={() => handleLanguageClose('en')}>
-              🇺🇸 English
-            </MenuItem>
-            <MenuItem onClick={() => handleLanguageClose('ne')}>
-              🇳🇵 नेपाली
-            </MenuItem>
-          </Menu>
-
-          <IconButton color="inherit" onClick={toggleTheme}>
-            {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-          </IconButton>
-        </Box>
-      </Toolbar>
-    </AppBar>
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .mobile-menu-btn { display: block !important; }
+          .desktop-only { display: none !important; }
+        }
+        @media (min-width: 769px) {
+          .mobile-menu { display: none !important; }
+        }
+      `}</style>
+    </nav>
   );
 }

@@ -22,10 +22,8 @@ export default function ProgressPage() {
   useEffect(() => {
     // Calculate stats from courses
     const totalLessons = courses.reduce((acc, course) => acc + course.lessons.length, 0);
-    const completedLessons = Object.keys(progress).length;
-    const enrolledCourses = courses.filter((c) => 
-      c.lessons.some((l) => progress[l.slug]?.completed)
-    ).length;
+    const completedLessons = progress.reduce((acc, p) => acc + p.lessonsCompleted, 0);
+    const enrolledCourses = progress.filter((p) => p.lessonsCompleted > 0).length;
 
     setStats({
       totalLessons,
@@ -104,23 +102,26 @@ export default function ProgressPage() {
               <div className="space-y-6">
                 {courses.map((course) => {
                   const courseProgress = getCourseProgress(course.slug);
-                  const hasStarted = courseProgress > 0;
+                  const progressPercent = courseProgress 
+                    ? Math.round((courseProgress.lessonsCompleted / courseProgress.totalLessons) * 100)
+                    : 0;
+                  const hasStarted = courseProgress ? courseProgress.lessonsCompleted > 0 : false;
 
                   return (
                     <div key={course.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                       <div className="flex items-center justify-between mb-3">
                         <h3 className="font-semibold text-gray-900 dark:text-white">
-                          {course.title}
+                          {course.title[locale === "ne" ? "ne" : "en"]}
                         </h3>
                         <span className="text-sm text-gray-500 dark:text-gray-400">
-                          {courseProgress}%
+                          {progressPercent}%
                         </span>
                       </div>
                       <ProgressBar 
-                        progress={courseProgress} 
+                        progress={progressPercent} 
                         size="sm"
                         showLabel={false}
-                        color={hasStarted ? 'blue' : 'gray'}
+                        
                       />
                       <div className="mt-3 flex justify-between items-center">
                         <span className="text-sm text-gray-500 dark:text-gray-400">

@@ -47,10 +47,10 @@ export default function QuizPage() {
                     className="block bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
                   >
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      {course.title}
+                      {course.title[locale === "ne" ? "ne" : "en"]}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                      {course.description}
+                      {course.description[locale === "ne" ? "ne" : "en"]}
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500 dark:text-gray-400">

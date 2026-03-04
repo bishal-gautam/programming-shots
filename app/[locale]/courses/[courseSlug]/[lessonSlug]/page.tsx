@@ -1,164 +1,104 @@
 'use client';
 
-import { useState, use } from 'react';
+import { useState } from 'react';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { courses } from '@/data/courses';
-import LessonViewer from '@/components/ui/LessonViewer';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import Breadcrumb from '@/components/ui/Breadcrumb';
-import QuizBlock from '@/components/ui/QuizBlock';
-import CodeBlock from '@/components/ui/CodeBlock';
-import PracticeProblem from '@/components/ui/PracticeProblem';
+import { Box, Container, Typography, Paper, Breadcrumbs, Link as MuiLink, Button, Chip } from '@mui/material';
 
 interface PageProps {
-  params: Promise<{ locale: string; courseSlug: string; lessonSlug: string }>;
+  params: { locale: string; courseSlug: string; lessonSlug: string };
 }
 
 export default function LessonPage({ params }: PageProps) {
-  const { locale, courseSlug, lessonSlug } = use(params);
-  const { t } = useLanguage();
+  const { locale } = useLanguage();
+  const { courseSlug, lessonSlug } = params;
   
   const course = courses.find((c) => c.slug === courseSlug);
-  const lessonIndex = course?.lessons.findIndex((l) => l.slug === lessonSlug);
-  const lesson = course?.lessons[lessonIndex];
+  const lessonIndex = course?.lessons.findIndex((l) => l.slug === lessonSlug) ?? -1;
+  const lesson = lessonIndex !== -1 ? course?.lessons[lessonIndex] : undefined;
 
-  // Get translated content based on locale
-  const displayTitle = lesson?.title[locale] || lesson?.title.en;
-  const displayContent = lesson?.content[locale] || lesson?.content.en;
+  const displayTitle = lesson?.title[locale as keyof typeof lesson.title] || lesson?.title.en;
+  const displayContent = lesson?.content[locale as keyof typeof lesson.content] || lesson?.content.en;
 
   if (!course || !lesson) {
     return (
-      <div className="min-h-screen flex flex-col">
+      <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Navbar />
-        <main className="flex-grow flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Lesson not found
-            </h1>
-          </div>
-        </main>
+        <Container sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Typography>Lesson not found</Typography>
+        </Container>
         <Footer />
-      </div>
+      </Box>
     );
   }
 
   const previousLesson = lessonIndex > 0 ? course.lessons[lessonIndex - 1] : null;
   const nextLesson = lessonIndex < course.lessons.length - 1 ? course.lessons[lessonIndex + 1] : null;
 
-  // Get translated quiz questions
-  const getTranslatedQuiz = () => {
-    if (!lesson?.quiz) return [];
-    
-    return lesson.quiz.map((q) => ({
-      ...q,
-      question: q.question[locale] || q.question.en,
-      explanation: q.explanation[locale] || q.explanation.en,
-      options: q.options[locale] || q.options.en,
-    }));
-  };
-
-  const translatedQuiz = getTranslatedQuiz();
-
-  // Get translated code examples
-  const getTranslatedCodeExamples = () => {
-    if (!lesson?.codeExamples) return [];
-    
-    return lesson.codeExamples.map((example) => ({
-      ...example,
-      explanation: example.explanation[locale] || example.explanation.en,
-    }));
-  };
-
-  const translatedCodeExamples = getTranslatedCodeExamples();
-
-  // Get translated practice problems
-  const getTranslatedPracticeProblems = () => {
-    if (!lesson?.practiceProblems) return [];
-    
-    return lesson.practiceProblems.map((p) => ({
-      ...p,
-      title: p.title[locale] || p.title.en,
-      description: p.description[locale] || p.description.en,
-      starterCode: p.starterCode[locale] || p.starterCode.en,
-      solution: p.solution[locale] || p.solution.en,
-      hints: {
-        en: p.hints.en || [],
-        ne: p.hints.ne || p.hints.en || [],
-      },
-    }));
-  };
-
-  const translatedPracticeProblems = getTranslatedPracticeProblems();
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
+      <Container maxWidth="md" sx={{ mt: 8, mb: 4, flexGrow: 1 }}>
+        <Breadcrumbs sx={{ mb: 2 }}>
+          <MuiLink component={Link} href={`/${locale}`} color="inherit" underline="hover">Home</MuiLink>
+          <MuiLink component={Link} href={`/${locale}/courses`} color="inherit" underline="hover">Courses</MuiLink>
+          <MuiLink component={Link} href={`/${locale}/courses/${courseSlug}`} color="inherit" underline="hover">
+            {course.title[locale] || course.title.en}
+          </MuiLink>
+          <Typography color="text.primary">{displayTitle}</Typography>
+        </Breadcrumbs>
 
-      <main className="flex-grow bg-gray-50 dark:bg-gray-900 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumb
-            items={[
-              { label: locale === 'ne' ? 'कोर्सहरू' : 'Courses', href: `/${locale}/courses` },
-              { label: course.title[locale] || course.title.en, href: `/${locale}/courses/${courseSlug}` },
-              { label: displayTitle as string },
-            ]}
-          />
+        <Paper sx={{ p: 2, mb: 2 }}>
+          <Box display="flex" alignItems="center" gap={1} mb={1}>
+            <Chip label={`Lesson ${lessonIndex + 1} of ${course.lessons.length}`} size="small" color="primary" />
+          </Box>
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
+            {displayTitle}
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ whiteSpace: 'pre-wrap' }}>
+            {displayContent}
+          </Typography>
+        </Paper>
 
-          <LessonViewer
-            title={displayTitle as string}
-            content={displayContent as string}
-            lessonNumber={lessonIndex + 1}
-            totalLessons={course.lessons.length}
-            previousSlug={previousLesson?.slug}
-            nextSlug={nextLesson?.slug}
-          />
-
-          {/* Quiz Section (if available) */}
-          {translatedQuiz && translatedQuiz.length > 0 && (
-            <div className="mt-8">
-              <QuizBlock
-                questions={translatedQuiz}
-                title={locale === 'ne' ? 'अभ्यास प्रश्न' : 'Practice Quiz'}
-              />
-            </div>
+        {/* Navigation */}
+        <Box display="flex" justifyContent="space-between" gap={2}>
+          {previousLesson ? (
+            <Button 
+              component={Link}
+              href={`/${locale}/courses/${courseSlug}/${previousLesson.slug}`}
+              variant="outlined"
+              size="small"
+            >
+              ← Previous
+            </Button>
+          ) : <Box />}
+          
+          {nextLesson ? (
+            <Button 
+              component={Link}
+              href={`/${locale}/courses/${courseSlug}/${nextLesson.slug}`}
+              variant="contained"
+              size="small"
+            >
+              Next →
+            </Button>
+          ) : (
+            <Button 
+              component={Link}
+              href={`/${locale}/courses`}
+              variant="contained"
+              color="success"
+              size="small"
+            >
+              Complete ✓
+            </Button>
           )}
-
-          {/* Code Examples */}
-          {translatedCodeExamples && translatedCodeExamples.length > 0 && (
-            <div className="mt-8 space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                {locale === 'ne' ? 'कोड उदाहरणहरू' : 'Code Examples'}
-              </h2>
-              {translatedCodeExamples.map((example, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-4">
-                  <CodeBlock
-                    code={example.code}
-                    language={example.language || 'javascript'}
-                  />
-                  <p className="mt-3 text-gray-600 dark:text-gray-300">
-                    {example.explanation}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Practice Problems */}
-          {translatedPracticeProblems && translatedPracticeProblems.length > 0 && (
-            <div className="mt-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                {locale === 'ne' ? 'अभ्यास समस्याहरू' : 'Practice Problems'}
-              </h2>
-              {translatedPracticeProblems.map((problem, index) => (
-                <PracticeProblem key={index} {...problem} />
-              ))}
-            </div>
-          )}
-        </div>
-      </main>
-
+        </Box>
+      </Container>
       <Footer />
-    </div>
+    </Box>
   );
 }
