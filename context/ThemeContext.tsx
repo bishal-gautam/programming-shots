@@ -31,10 +31,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('theme-mode', newMode);
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Always render provider to avoid "useTheme must be used within a ThemeProvider" error
   const theme = mode === 'light' ? lightTheme : darkTheme;
 
   return (

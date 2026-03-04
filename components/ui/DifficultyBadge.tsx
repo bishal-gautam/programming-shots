@@ -1,7 +1,7 @@
 'use client';
 
 interface DifficultyBadgeProps {
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  difficulty: 'beginner' | 'intermediate' | 'advanced' | 'easy' | 'medium' | 'hard';
   showLabel?: boolean;
   size?: 'sm' | 'md' | 'lg';
 }
@@ -18,6 +18,24 @@ const difficultyConfig = {
     bgColor: 'bg-yellow-100 dark:bg-yellow-900',
     textColor: 'text-yellow-800 dark:text-yellow-200',
     borderColor: 'border-yellow-300 dark:border-yellow-700',
+  },
+  easy: {
+    label: 'Easy',
+    bgColor: 'bg-green-100 dark:bg-green-900',
+    textColor: 'text-green-800 dark:text-green-200',
+    borderColor: 'border-green-300 dark:border-green-700',
+  },
+  medium: {
+    label: 'Medium',
+    bgColor: 'bg-yellow-100 dark:bg-yellow-900',
+    textColor: 'text-yellow-800 dark:text-yellow-200',
+    borderColor: 'border-yellow-300 dark:border-yellow-700',
+  },
+  hard: {
+    label: 'Hard',
+    bgColor: 'bg-red-100 dark:bg-red-900',
+    textColor: 'text-red-800 dark:text-red-200',
+    borderColor: 'border-red-300 dark:border-red-700',
   },
   advanced: {
     label: 'Advanced',

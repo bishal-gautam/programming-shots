@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+
 import {
   Drawer,
   List,
@@ -39,21 +39,21 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
-  const t = useTranslations('nav');
+  const { t } = useLanguage();
   const pathname = usePathname();
   const { locale } = useLanguage();
   const [coursesOpen, setCoursesOpen] = useState(true);
 
   const navItems = [
-    { label: t('home'), href: `/${locale}`, icon: <Home /> },
-    { label: t('courses'), href: `/${locale}/courses`, icon: <School />, hasSubmenu: true },
-    { label: t('roadmap'), href: `/${locale}/roadmap`, icon: <Map /> },
-    { label: t('quiz'), href: `/${locale}/quiz`, icon: <Quiz /> },
-    { label: t('glossary'), href: `/${locale}/glossary`, icon: <Book /> },
-    { label: t('cheatsheets'), href: `/${locale}/cheatsheets`, icon: <Description /> },
-    { label: t('resources'), href: `/${locale}/resources`, icon: <Folder /> },
-    { label: t('progress'), href: `/${locale}/progress`, icon: <TrendingUp /> },
-    { label: t('about'), href: `/${locale}/about`, icon: <Info /> },
+    { label: t('nav.home'), href: `/${locale}`, icon: <Home fontSize="small" sx={{ fontSize: "1rem" }} /> },
+    { label: t('nav.courses'), href: `/${locale}/courses`, icon: <School fontSize="small" sx={{ fontSize: "1rem" }} />, hasSubmenu: true },
+    { label: t('nav.roadmap'), href: `/${locale}/roadmap`, icon: <Map fontSize="small" sx={{ fontSize: "1rem" }} /> },
+    { label: t('nav.quiz'), href: `/${locale}/quiz`, icon: <Quiz fontSize="small" sx={{ fontSize: "1rem" }} /> },
+    { label: t('nav.glossary'), href: `/${locale}/glossary`, icon: <Book fontSize="small" sx={{ fontSize: "1rem" }} /> },
+    { label: t('nav.cheatsheets'), href: `/${locale}/cheatsheets`, icon: <Description fontSize="small" sx={{ fontSize: "1rem" }} /> },
+    { label: t('nav.resources'), href: `/${locale}/resources`, icon: <Folder fontSize="small" sx={{ fontSize: "1rem" }} /> },
+    { label: t('nav.progress'), href: `/${locale}/progress`, icon: <TrendingUp fontSize="small" sx={{ fontSize: "1rem" }} /> },
+    { label: t('nav.about'), href: `/${locale}/about`, icon: <Info fontSize="small" sx={{ fontSize: "1rem" }} /> },
   ];
 
   const courseLinks = [
