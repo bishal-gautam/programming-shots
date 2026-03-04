@@ -6666,6 +6666,478 @@ def lengthOfLongestSubstring(s):
         ]
       }
     ]
+  },
+  // Phase 9: React
+  {
+    id: 'react-basics',
+    title: { en: 'React Fundamentals', ne: 'React को आधारभूत कुराहरू' },
+    slug: 'react-basics',
+    description: { 
+      en: 'Master React - the most popular JavaScript library for building user interfaces.', 
+      ne: 'React मा महारत हासिल गर्नुहोस् - प्रयोगकर्ता इन्टरफेस बनाउनको लागि सबैभन्दा लोकप्रिय JavaScript लाइब्रेरी।' 
+    },
+    phase: 9,
+    icon: '⚛️',
+    color: '#61dafb',
+    lessons: [
+      {
+        id: 'react-intro',
+        slug: 'introduction-to-react',
+        title: { 
+          en: 'Introduction to React', 
+          ne: 'React को परिचय' 
+        },
+        content: {
+          en: `# Introduction to React
+
+React is a JavaScript library for building user interfaces, developed by Facebook (Meta). It uses a component-based architecture to create reusable UI elements.
+
+## Why Learn React?
+
+- **Component-Based**: Build encapsulated components that manage their own state
+- **Virtual DOM**: Efficient updates and rendering
+- **Large Ecosystem**: Thousands of libraries and tools
+- **High Demand**: Most sought-after frontend skill
+- **Strong Community**: Extensive documentation and support
+
+## React Fundamentals
+
+### Components
+Components are the building blocks of React applications. They can be functions or classes.
+
+### JSX
+JSX is a syntax extension that lets you write HTML-like code in JavaScript.
+
+### Props
+Props (properties) are how components communicate with each other.
+
+### State
+State is data that changes over time in your application.`,
+          ne: `# React को परिचय
+
+React प्रयोगकर्ता इन्टरफेस बनाउनको लागि एक JavaScript लाइब्रेरी हो, Facebook (Meta) द्वारा विकास गरिएको। यसले पुन: प्रयोज्य UI तत्वहरू सिर्जना गर्नको लागि component-आधारित architecture प्रयोग गर्छ।
+
+## React किन सिक्नुहोस्?
+
+- **Component-आधारित**: आफ्नै state व्यवस्थापन गर्ने encapsulated components बनाउनुहोस्
+- **Virtual DOM**: कुशल अपडेट र rendering
+- **ठूलो Ecosystem**: हजारौं libraries र tools
+- **उच्च माग**: सबैभन्दा खोजेको frontend skill
+- **Strong Community**: व्यापक documentation र support
+
+## React का आधारभूत कुराहरू
+
+### Components
+Components React applications को building blocks हुन्। तिनीहरू functions वा classes हुन सक्छन्।
+
+### JSX
+JSX एक syntax extension हो जसले तपाईंलाई JavaScript मा HTML-जस्तो code लेख्न दिन्छ।
+
+### Props
+Props (properties) components ले एकआपसमा कुरा गर्ने तरिका हो।
+
+### State
+State तपाईंको application मा समयसंग परिवर्तन हुने data हो।`
+        },
+        codeExamples: [
+          {
+            language: 'jsx',
+            code: `// Simple Functional Component
+function Welcome() {
+  return <h1>Hello, World!</h1>;
+}
+
+// Component with Props
+function Welcome({ name }) {
+  return <h1>Hello, {name}!</h1>;
+}
+
+// Using the component
+<Welcome name="Ram" />
+<Welcome name="Sita" />`,
+            explanation: { 
+              en: 'Components are reusable pieces of UI. Props pass data to components.', 
+              ne: 'Components पुन: प्रयोज्य UI टुक्राहरू हुन्। Props components मा data पास गर्छन्।'
+            }
+          },
+          {
+            language: 'jsx',
+            code: `// JSX Example
+function Greeting() {
+  const name = "Ram";
+  const isLoggedIn = true;
+  
+  return (
+    <div className="greeting">
+      <h1>Welcome, {name}!</h1>
+      {isLoggedIn ? (
+        <p>Good to see you again.</p>
+      ) : (
+        <p>Please log in.</p>
+      )}
+    </div>
+  );
+}`,
+            explanation: { 
+              en: 'JSX lets you mix JavaScript and HTML-like syntax. Use {} for dynamic values.', 
+              ne: 'JSX ले तपाईंलाई JavaScript र HTML-जस्तो syntax मिश्रण गर्न दिन्छ। गतिशील मानहरूको लागि {} प्रयोग गर्नुहोस्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'react-intro-q1',
+            question: { 
+              en: 'What is React?', 
+              ne: 'React के हो?' 
+            },
+            options: { 
+              en: ['A programming language', 'A JavaScript library for UI', 'A database', 'A server framework'], 
+              ne: ['प्रोग्रामिंग भाषा', 'UI को लागि JavaScript लाइब्रेरी', 'डेटाबेस', 'सर्भर फ्रेमवर्क'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'React is a JavaScript library for building user interfaces.', 
+              ne: 'React प्रयोगकर्ता इन्टरफेस बनाउनको लागि JavaScript लाइब्रेरी हो।'
+            }
+          },
+          {
+            id: 'react-intro-q2',
+            question: { 
+              en: 'What is JSX?', 
+              ne: 'JSX के हो?' 
+            },
+            options: { 
+              en: ['A database query language', 'A syntax extension for JavaScript', 'A CSS framework', 'A testing tool'], 
+              ne: ['डेटाबेस query भाषा', 'JavaScript को लागि syntax extension', 'CSS फ्रेमवर्क', 'टेस्टिंग टूल'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'JSX is a syntax extension that lets you write HTML-like code in JavaScript.', 
+              ne: 'JSX एक syntax extension हो जसले तपाईंलाई JavaScript मा HTML-जस्तो code लेख्न दिन्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'react-state',
+        slug: 'state-and-hooks',
+        title: { 
+          en: 'State and Hooks', 
+          ne: 'State र Hooks' 
+        },
+        content: {
+          en: `# State and Hooks
+
+React Hooks let you use state and other React features in functional components.
+
+## useState Hook
+
+useState lets you add state to functional components.
+
+## useEffect Hook
+
+useEffect lets you perform side effects in functional components.
+
+## Common Hooks
+
+- useState: Manage component state
+- useEffect: Handle side effects
+- useContext: Access context
+- useRef: Reference DOM elements
+- useMemo: Optimize calculations`,
+          ne: `# State र Hooks
+
+React Hooks ले तपाईंलाई functional components मा state र अन्य React features प्रयोग गर्न दिन्छ।
+
+## useState Hook
+
+useState ले तपाईंलाई functional components मा state थप्न दिन्छ।
+
+## useEffect Hook
+
+useEffect ले तपाईंलाई functional components मा side effects perform गर्न दिन्छ।
+
+## सामान्य Hooks
+
+- useState: Component state व्यवस्थापन
+- useEffect: Side effects ह्यान्डल
+- useContext: Context पहुँच
+- useRef: DOM elements reference
+- useMemo: गणना अप्टिमाइज`
+        },
+        codeExamples: [
+          {
+            language: 'jsx',
+            code: `// useState Hook
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}
+
+// Multiple state values
+function UserForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  
+  return (
+    <form>
+      <input 
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
+      />
+      <input 
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+    </form>
+  );
+}`,
+            explanation: { 
+              en: 'useState returns an array with current state value and a function to update it.', 
+              ne: 'useState ले current state value र अपडेट गर्ने function सहित एरे दिन्छ।'
+            }
+          },
+          {
+            language: 'jsx',
+            code: `// useEffect Hook
+import { useState, useEffect } from 'react';
+
+function DataFetcher() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    // This runs after every render
+    fetch('/api/data')
+      .then(res => res.json())
+      .then(result => {
+        setData(result);
+        setLoading(false);
+      });
+  }, []); // Empty array = run once on mount
+  
+  if (loading) return <p>Loading...</p>;
+  return <div>{data}</div>;
+}
+
+// Cleanup example
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(s => s + 1);
+    }, 1000);
+    
+    // Cleanup on unmount
+    return () => clearInterval(interval);
+  }, []);
+  
+  return <p>Seconds: {seconds}</p>;
+}`,
+            explanation: { 
+              en: 'useEffect runs after render. The dependency array controls when it runs.', 
+              ne: 'useEffect render पछि चल्छ। Dependency array नियन्त्रण गर्छ कि कब चल्छ।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'react-state-q1',
+            question: { 
+              en: 'What does useState return?', 
+              ne: 'useState के दिन्छ?' 
+            },
+            options: { 
+              en: ['Just the state value', 'An array with state value and setter function', 'An object', 'A promise'], 
+              ne: ['केवल state value', 'State value र setter function सहित एरे', 'एक object', 'एक promise'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'useState returns [currentValue, setValue] - the state and a function to update it.', 
+              ne: 'useState ले [currentValue, setValue] दिन्छ - state र अपडेट गर्ने function।'
+            }
+          },
+          {
+            id: 'react-state-q2',
+            question: { 
+              en: 'What does the empty dependency array [] in useEffect mean?', 
+              ne: 'useEffect मा खाली dependency array [] को अर्थ के हो?' 
+            },
+            options: { 
+              en: ['Run on every render', 'Run once on mount', 'Never run', 'Run on unmount'], 
+              ne: ['प्रत्येक render मा चलाउनुहोस्', 'mount पछि एक पटक चलाउनुहोस्', 'कहिल्यै चलाउनुहोस्', 'unmount पछि चलाउनुहोस्'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Empty dependency array means the effect runs only once when the component mounts.', 
+              ne: 'खाली dependency array को अर्थ effect केवल एक पटक component mount हुँदा चल्छ।'
+            }
+          }
+        ]
+      },
+      {
+        id: 'react-components',
+        slug: 'components-and-props',
+        title: { 
+          en: 'Components and Props', 
+          ne: 'Components र Props' 
+        },
+        content: {
+          en: `# Components and Props
+
+Components are reusable pieces of UI. Props pass data from parent to child components.
+
+## Component Types
+
+- Functional Components: Simple JavaScript functions
+- Class Components: ES6 classes (older style)
+
+## Props
+
+Props are read-only data passed from parent to child.
+
+## Composition
+
+React components can be nested to build complex UIs.`,
+          ne: `# Components र Props
+
+Components पुन: प्रयोज्य UI टुक्राहरू हुन्। Props parent बाट child components मा data पास गर्छन्।
+
+## Component प्रकारहरू
+
+- Functional Components: सजिला JavaScript functions
+- Class Components: ES6 classes (पुरानो style)
+
+## Props
+
+Props पढ्न योग्य data हुन् जुन parent बाट child मा पास हुन्छ।
+
+## Composition
+
+React components nested गरेर complex UIs बनाउन सकिन्छ।`
+        },
+        codeExamples: [
+          {
+            language: 'jsx',
+            code: `// Parent Component
+function App() {
+  const users = [
+    { id: 1, name: "Ram", age: 25 },
+    { id: 2, name: "Sita", age: 24 }
+  ];
+  
+  return (
+    <div>
+      <h1>User List</h1>
+      {users.map(user => (
+        <UserCard 
+          key={user.id}
+          name={user.name}
+          age={user.age}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Child Component
+function UserCard({ name, age }) {
+  return (
+    <div className="user-card">
+      <h2>{name}</h2>
+      <p>Age: {age}</p>
+    </div>
+  );
+}`,
+            explanation: { 
+              en: 'Props flow from parent to child. Use key prop when mapping arrays.', 
+              ne: 'Props parent बाट child मा बग्छन्। Arrays mapping गर्दा key prop प्रयोग गर्नुहोस्।'
+            }
+          },
+          {
+            language: 'jsx',
+            code: `// Props with children
+function Card({ title, children }) {
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <div className="card-content">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// Using children
+function App() {
+  return (
+    <Card title="Welcome">
+      <p>This is the card content.</p>
+      <button>Click me</button>
+    </Card>
+  );
+}
+
+// Default props
+function Button({ text = "Click", onClick }) {
+  return <button onClick={onClick}>{text}</button>;
+}`,
+            explanation: { 
+              en: 'children prop lets you pass content between component tags. Default props provide fallback values.', 
+              ne: 'children prop ले तपाईंलाई component tags बीच content pass गर्न दिन्छ। Default props fallback values दिन्छन्।'
+            }
+          }
+        ],
+        quiz: [
+          {
+            id: 'react-props-q1',
+            question: { 
+              en: 'Are props mutable (can be changed by the component)?', 
+              ne: 'Props mutable हुन् (component द्वारा परिवर्तन गर्न सकिन्छ)?' 
+            },
+            options: { 
+              en: ['Yes, they can be changed', 'No, they are read-only', 'Only in class components', 'Only when using state'], 
+              ne: ['हो, परिवर्तन गर्न सकिन्छ', 'हैन, तिनीहरू read-only हुन्', 'केवल class components मा', 'केवल state प्रयोग गर्दा'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'Props are read-only. If you need to change data, use state instead.', 
+              ne: 'Props read-only हुन्। यदि तपाईंलाई data परिवर्तन चाहिन्छ, state प्रयोग गर्नुहोस्।'
+            }
+          },
+          {
+            id: 'react-props-q2',
+            question: { 
+              en: 'What is the children prop?', 
+              ne: 'children prop के हो?' 
+            },
+            options: { 
+              en: ['A required prop', 'Content passed between component tags', 'A special hook', 'A type of state'], 
+              ne: ['एक required prop', 'Component tags बीच पास गरिएको content', 'एक विशेष hook', 'एक प्रकारको state'] 
+            },
+            correctAnswer: 1,
+            explanation: { 
+              en: 'children is content passed between opening and closing tags of a component.', 
+              ne: 'children एक component को opening र closing tags बीच पास गरिएको content हो।'
+            }
+          }
+        ]
+      }
+    ]
   }
 ];
 
