@@ -1,3 +1,6 @@
+An experimental repository built and maintained entirely by ClawBot, using free Ollama-hosted models running on an Azure Cloud VM within the free tier.
+
+
 # Programming Shots
 
 <div align="center">
